@@ -1,106 +1,120 @@
-import Image from "next/image";
 import styles from "./page.module.css";
-import FullPlayer from '../components/FullPlayer';
+import Link from 'next/link';
+
+const videoTests = [
+  {
+    id: 'local',
+    title: 'Lokales MP4 Video',
+    description: 'Test mit lokalem MP4 Video, Untertiteln und Audiodeskription',
+    poster: '/videos/posters/local-video.jpg',
+    href: '/test/local'
+  },
+  {
+    id: 'youtube',
+    title: 'YouTube Video',
+    description: 'Test mit eingebettetem YouTube Video',
+    poster: '/videos/posters/youtube-video.jpg',
+    href: '/test/youtube'
+  },
+  {
+    id: 'vimeo',
+    title: 'Vimeo Video',
+    description: 'Test mit eingebettetem Vimeo Video',
+    poster: '/videos/posters/vimeo-video.jpg',
+    href: '/test/vimeo'
+  },
+  {
+    id: 'bundestag',
+    title: 'Bundestag Video',
+    description: 'Test mit Bundestag.tv Video',
+    poster: '/videos/posters/bundestag-video.jpg',
+    href: '/test/bundestag'
+  }
+];
 
 export default function Home() {
   return (
     <div className={styles.page}>
       <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+        <div className="container">
+          <header className={styles.header}>
+            <h1 className={styles.title}>Barrierefreier Video Player</h1>
+            <p className={styles.subtitle}>
+              Testen Sie unseren vollständig barrierefreien Video Player mit verschiedenen Video-Quellen
+            </p>
+          </header>
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+          <div className={styles.videoGrid}>
+            {videoTests.map((test) => (
+              <Link 
+                key={test.id} 
+                href={test.href}
+                className={styles.videoCard}
+              >
+                <div className={styles.cardContainer}>
+                  {/* Poster Image */}
+                  <div className={styles.poster}>
+                    {/* Fallback wenn kein Poster vorhanden */}
+                    <div className={styles.posterIcon}>
+                      {test.id === 'local' && '🎬'}
+                      {test.id === 'youtube' && '📺'}
+                      {test.id === 'vimeo' && '🎥'}
+                      {test.id === 'bundestag' && '🏛️'}
+                    </div>
+                    
+                    {/* Play Button Overlay */}
+                    <div className={styles.playButton}>
+                      ▶️
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div className={styles.cardContent}>
+                    <h3 className={styles.cardTitle}>
+                      {test.title}
+                    </h3>
+                    <p className={styles.cardDescription}>
+                      {test.description}
+                    </p>
+
+                    {/* Features */}
+                    <div className={styles.features}>
+                      {['Untertitel', 'Audiodeskription', 'Kapitel', 'Tastatur'].map((feature) => (
+                        <span key={feature} className={styles.featureTag}>
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Footer Info */}
+          <footer className={styles.footer}>
+            <h3 className={styles.footerTitle}>Barrierefreiheits-Features</h3>
+            <div className={styles.featuresGrid}>
+              <div className={styles.featureItem}>
+                <h4>🎯 Tastaturnavigation</h4>
+                <p>Vollständige Steuerung ohne Maus</p>
+              </div>
+              <div className={styles.featureItem}>
+                <h4>👁️ Screen Reader</h4>
+                <p>ARIA-Labels und semantisches HTML</p>
+              </div>
+              <div className={styles.featureItem}>
+                <h4>🔤 Untertitel</h4>
+                <p>WebVTT Untertitel verfügbar</p>
+              </div>
+              <div className={styles.featureItem}>
+                <h4>🎙️ Audiodeskription</h4>
+                <p>TTS und Audio-Tracks</p>
+              </div>
+            </div>
+          </footer>
         </div>
-
-        <h1>Barrierefreier Video FullPlayer</h1>
-        <FullPlayer
-          src="/videos/sample.mp4"
-          captions="/videos/sample_captions.vtt"
-          description="/videos/sample_description.vtt"
-          chapters="/videos/sample_chapters.vtt"
-          autoplay={false}
-          muted={false}
-        />
       </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }

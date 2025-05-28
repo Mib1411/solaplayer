@@ -1,0 +1,104 @@
+/* [project]/src/components/TranscriptSidebar.module.css [app-client] (css) */
+.TranscriptSidebar-module__4kXxWW__transcriptContainer {
+  background: #f5f5f5;
+  border-radius: 4px;
+  flex-direction: column;
+  height: 100%;
+  min-height: 40px;
+  margin-top: 16px;
+  padding: 8px;
+  display: flex;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptHeader {
+  color: #fff;
+  background: #333;
+  border-bottom: 1px solid #555;
+  padding: 12px;
+  font-weight: bold;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptContent {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptItem {
+  border-bottom: 1px solid #444;
+  border-radius: 2px;
+  margin-bottom: 2px;
+  margin-right: 2px;
+  padding: 8px 0;
+  transition: background .2s;
+  display: block;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptItem.TranscriptSidebar-module__4kXxWW__current {
+  background: #007acc4d;
+  border-left: 3px solid #007acc;
+  outline: 2px solid #1976d2;
+  margin-left: -8px;
+  padding-left: 8px;
+  font-weight: bold;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptTime {
+  color: #999;
+  margin-bottom: 4px;
+  font-size: 11px;
+  display: block;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptText {
+  color: #fff;
+  line-height: 1.4;
+  display: block;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptItem.TranscriptSidebar-module__4kXxWW__caption .TranscriptSidebar-module__4kXxWW__transcriptText {
+  color: #fff;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptItem.TranscriptSidebar-module__4kXxWW__description .TranscriptSidebar-module__4kXxWW__transcriptText {
+  color: #64b5f6;
+  font-style: italic;
+}
+
+.TranscriptSidebar-module__4kXxWW__noContent {
+  color: #999;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptContainer.TranscriptSidebar-module__4kXxWW__dark {
+  color: #fff;
+  background: #2d2d2d;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptItem.TranscriptSidebar-module__4kXxWW__caption.TranscriptSidebar-module__4kXxWW__dark {
+  color: #fff;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptItem.TranscriptSidebar-module__4kXxWW__caption.TranscriptSidebar-module__4kXxWW__current.TranscriptSidebar-module__4kXxWW__dark {
+  color: #000;
+  background: #ffa726;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptItem.TranscriptSidebar-module__4kXxWW__description.TranscriptSidebar-module__4kXxWW__dark {
+  color: #64b5f6;
+}
+
+.TranscriptSidebar-module__4kXxWW__transcriptItem.TranscriptSidebar-module__4kXxWW__description.TranscriptSidebar-module__4kXxWW__current.TranscriptSidebar-module__4kXxWW__dark {
+  color: #fff;
+  background: #1976d2;
+}
+
+/*# sourceMappingURL=src_components_TranscriptSidebar_module_css_f9ee138c._.single.css.map*/

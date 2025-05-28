@@ -1,0 +1,199 @@
+/* [project]/src/components/FullPlayer.module.css [app-client] (css) */
+.FullPlayer-module__Y6esrG__container {
+  flex-direction: column;
+  gap: 16px;
+  max-width: 100%;
+  display: flex;
+}
+
+.FullPlayer-module__Y6esrG__playerSection {
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+}
+
+.FullPlayer-module__Y6esrG__videoContainer {
+  background: #000;
+  border-radius: 8px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.FullPlayer-module__Y6esrG__posterOverlay {
+  z-index: 5;
+  cursor: pointer;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.FullPlayer-module__Y6esrG__grayOverlay {
+  background: #333;
+}
+
+.FullPlayer-module__Y6esrG__videoTypeIcon {
+  background: #ffffffe6;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+  font-size: 48px;
+  display: flex;
+}
+
+.FullPlayer-module__Y6esrG__overlayPlayButton {
+  color: #fff;
+  cursor: pointer;
+  background: #000c;
+  border: none;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  font-size: 32px;
+  transition: transform .2s;
+  display: flex;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.FullPlayer-module__Y6esrG__overlayPlayButton:hover {
+  transform: scale(1.1);
+}
+
+.FullPlayer-module__Y6esrG__videoElement {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.FullPlayer-module__Y6esrG__youtubeContainer, .FullPlayer-module__Y6esrG__vimeoContainer {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}
+
+.FullPlayer-module__Y6esrG__controlsOverlay {
+  z-index: 10;
+  opacity: 0;
+  background: linear-gradient(#0000, #000c);
+  padding: 20px;
+  transition: opacity .3s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.FullPlayer-module__Y6esrG__controlsOverlay.FullPlayer-module__Y6esrG__visible {
+  opacity: 1;
+}
+
+.FullPlayer-module__Y6esrG__controlsRow {
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+  display: flex;
+}
+
+.FullPlayer-module__Y6esrG__controlsRow:last-child {
+  margin-bottom: 0;
+}
+
+.FullPlayer-module__Y6esrG__leftControls {
+  align-items: center;
+  gap: 16px;
+  display: flex;
+}
+
+.FullPlayer-module__Y6esrG__rightControls {
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+  display: flex;
+}
+
+.FullPlayer-module__Y6esrG__controlButton {
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  font-size: 20px;
+  transition: opacity .2s;
+}
+
+.FullPlayer-module__Y6esrG__controlButton:hover {
+  opacity: .8;
+}
+
+.FullPlayer-module__Y6esrG__playPauseButton {
+  font-size: 24px;
+}
+
+.FullPlayer-module__Y6esrG__progressBar {
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  margin-top: 8px;
+  display: flex;
+}
+
+.FullPlayer-module__Y6esrG__timeDisplay {
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  color: #666;
+  min-width: 48px;
+  font-size: 14px;
+}
+
+.FullPlayer-module__Y6esrG__progressSlider {
+  cursor: pointer;
+  background: #ddd;
+  border-radius: 3px;
+  outline: none;
+  flex: 1;
+  height: 6px;
+}
+
+.FullPlayer-module__Y6esrG__loadingOverlay {
+  z-index: 15;
+  color: #fff;
+  background: #000c;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+@media (width <= 768px) {
+  .FullPlayer-module__Y6esrG__videoTypeIcon {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+  }
+
+  .FullPlayer-module__Y6esrG__overlayPlayButton {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .FullPlayer-module__Y6esrG__controlsRow, .FullPlayer-module__Y6esrG__leftControls, .FullPlayer-module__Y6esrG__rightControls {
+    gap: 12px;
+  }
+}
+
+/*# sourceMappingURL=src_components_FullPlayer_module_css_f9ee138c._.single.css.map*/

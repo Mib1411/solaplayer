@@ -1,0 +1,9 @@
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/page": "app/page.js",
+  "/test/bundestag/page": "app/test/bundestag/page.js",
+  "/test/local/page": "app/test/local/page.js",
+  "/test/vimeo/page": "app/test/vimeo/page.js",
+  "/test/youtube/page": "app/test/youtube/page.js"
+}

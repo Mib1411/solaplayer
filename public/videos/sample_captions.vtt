@@ -1,9 +1,13 @@
 WEBVTT
 
-1
 00:00:00.000 --> 00:00:04.000
 Hallo und willkommen zum barrierefreien Video!
 
-2
 00:00:04.000 --> 00:00:08.000
-Dies ist ein Beispiel für Untertitel im VTT-Format. 
+Dies ist ein Beispiel für Untertitel im VTT-Format.
+
+00:00:08.000 --> 00:00:12.000
+Sprecher 1: Hier ist der erste Sprecher.
+
+00:00:12.000 --> 00:00:16.000
+Sprecher 2: Und hier ist der zweite Sprecher.

@@ -1,0 +1,84 @@
+/* [project]/src/components/ChaptersSidebar.module.css [app-client] (css) */
+.ChaptersSidebar-module__ojRHxa__chaptersContainer {
+  background: #f5f5f5;
+  border-radius: 4px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.ChaptersSidebar-module__ojRHxa__chaptersHeader {
+  color: #333;
+  background: #e0e0e0;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+.ChaptersSidebar-module__ojRHxa__chaptersList {
+  max-height: 300px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem {
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  padding: 8px 12px;
+  transition: background .2s;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem:hover {
+  background: #f0f0f0;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem.ChaptersSidebar-module__ojRHxa__current {
+  background: #e3f2fd;
+  border-left: 4px solid #1976d2;
+  padding-left: 8px;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterTime {
+  color: #666;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterTitle {
+  color: #333;
+  font-weight: 500;
+}
+
+.ChaptersSidebar-module__ojRHxa__chaptersContainer.ChaptersSidebar-module__ojRHxa__dark {
+  background: #2d2d2d;
+}
+
+.ChaptersSidebar-module__ojRHxa__chaptersHeader.ChaptersSidebar-module__ojRHxa__dark {
+  color: #fff;
+  background: #1a1a1a;
+  border-bottom-color: #444;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem.ChaptersSidebar-module__ojRHxa__dark {
+  border-bottom-color: #444;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem.ChaptersSidebar-module__ojRHxa__dark:hover {
+  background: #3a3a3a;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem.ChaptersSidebar-module__ojRHxa__current.ChaptersSidebar-module__ojRHxa__dark {
+  color: #fff;
+  background: #1976d2;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterTime.ChaptersSidebar-module__ojRHxa__dark {
+  color: #ccc;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterTitle.ChaptersSidebar-module__ojRHxa__dark {
+  color: #fff;
+}
+
+/*# sourceMappingURL=src_components_ChaptersSidebar_module_css_f9ee138c._.single.css.map*/

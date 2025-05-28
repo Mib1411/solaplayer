@@ -1,0 +1,395 @@
+/* [project]/src/components/PlayerControls.module.css [app-client] (css) */
+.PlayerControls-module__55r3oa__fullControlsContainer {
+  width: 100%;
+  padding: 6px;
+}
+
+.PlayerControls-module__55r3oa__minimalControlsContainer {
+  color: #fff;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+}
+
+.PlayerControls-module__55r3oa__progressBar {
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  display: flex;
+}
+
+.PlayerControls-module__55r3oa__timeDisplay {
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  min-width: 40px;
+  font-size: 12px;
+}
+
+.PlayerControls-module__55r3oa__progressSlider {
+  -webkit-appearance: none;
+  background: #ffffff4d;
+  border-radius: 2px;
+  outline: none;
+  flex: 1;
+  height: 4px;
+}
+
+.PlayerControls-module__55r3oa__progressSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #007acc;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.PlayerControls-module__55r3oa__progressSlider::-moz-range-thumb {
+  cursor: pointer;
+  background: #007acc;
+  border: none;
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.PlayerControls-module__55r3oa__volumeSlider {
+  -webkit-appearance: none;
+  background: #ffffff4d;
+  border-radius: 2px;
+  outline: none;
+  width: 60px;
+  height: 3px;
+}
+
+.PlayerControls-module__55r3oa__volumeSlider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #007acc;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.PlayerControls-module__55r3oa__volumeSlider::-moz-range-thumb {
+  cursor: pointer;
+  background: #007acc;
+  border: none;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+}
+
+.PlayerControls-module__55r3oa__controlsRow {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+  display: flex;
+}
+
+.PlayerControls-module__55r3oa__leftControls, .PlayerControls-module__55r3oa__rightControls {
+  align-items: center;
+  gap: 8px;
+  display: flex;
+}
+
+.PlayerControls-module__55r3oa__controlButton {
+  cursor: pointer;
+  color: #fff;
+  background: #000000b3;
+  border: 1px solid #fff3;
+  border-radius: 4px;
+  padding: 6px;
+  font-size: 12px;
+  transition: all .2s;
+}
+
+.PlayerControls-module__55r3oa__controlButton:hover {
+  background: #000000e6;
+  border-color: #fff6;
+}
+
+.PlayerControls-module__55r3oa__playPauseButton {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.PlayerControls-module__55r3oa__active {
+  background: #007acccc !important;
+  border-color: #007acc !important;
+}
+
+.PlayerControls-module__55r3oa__dropdownContainer {
+  position: relative;
+}
+
+.PlayerControls-module__55r3oa__dropdown {
+  z-index: 1000;
+  background: #000000f2;
+  border: 1px solid #ffffff4d;
+  border-radius: 4px;
+  min-width: 80px;
+  margin-bottom: 8px;
+  padding: 4px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.PlayerControls-module__55r3oa__dropdownItem {
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  width: 100%;
+  padding: 6px 12px;
+  font-size: 12px;
+  transition: background .2s;
+  display: block;
+}
+
+.PlayerControls-module__55r3oa__dropdownItem:hover {
+  background: #ffffff1a;
+}
+
+.PlayerControls-module__55r3oa__dropdownItem.PlayerControls-module__55r3oa__active {
+  color: #fff;
+  background: #007acccc;
+}
+
+@media (width <= 768px) {
+  .PlayerControls-module__55r3oa__controlsRow, .PlayerControls-module__55r3oa__leftControls, .PlayerControls-module__55r3oa__rightControls {
+    gap: 8px;
+  }
+
+  .PlayerControls-module__55r3oa__controlButton {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .PlayerControls-module__55r3oa__playPauseButton {
+    padding: 10px;
+    font-size: 20px;
+  }
+
+  .PlayerControls-module__55r3oa__timeDisplay {
+    min-width: 40px;
+    font-size: 12px;
+  }
+
+  .PlayerControls-module__55r3oa__minimalControlsContainer {
+    gap: 12px;
+  }
+
+  .PlayerControls-module__55r3oa__volumeSlider {
+    width: 60px;
+  }
+
+  .PlayerControls-module__55r3oa__speedSelect, .PlayerControls-module__55r3oa__qualitySelect {
+    padding: 2px 4px;
+    font-size: 12px;
+  }
+}
+
+
+/* [project]/src/components/ChaptersSidebar.module.css [app-client] (css) */
+.ChaptersSidebar-module__ojRHxa__chaptersContainer {
+  background: #f5f5f5;
+  border-radius: 4px;
+  margin-top: 16px;
+  overflow: hidden;
+}
+
+.ChaptersSidebar-module__ojRHxa__chaptersHeader {
+  color: #333;
+  background: #e0e0e0;
+  border-bottom: 1px solid #ccc;
+  padding: 8px 12px;
+  font-weight: bold;
+}
+
+.ChaptersSidebar-module__ojRHxa__chaptersList {
+  max-height: 300px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem {
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  padding: 8px 12px;
+  transition: background .2s;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem:hover {
+  background: #f0f0f0;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem.ChaptersSidebar-module__ojRHxa__current {
+  background: #e3f2fd;
+  border-left: 4px solid #1976d2;
+  padding-left: 8px;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterTime {
+  color: #666;
+  margin-bottom: 2px;
+  font-size: 12px;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterTitle {
+  color: #333;
+  font-weight: 500;
+}
+
+.ChaptersSidebar-module__ojRHxa__chaptersContainer.ChaptersSidebar-module__ojRHxa__dark {
+  background: #2d2d2d;
+}
+
+.ChaptersSidebar-module__ojRHxa__chaptersHeader.ChaptersSidebar-module__ojRHxa__dark {
+  color: #fff;
+  background: #1a1a1a;
+  border-bottom-color: #444;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem.ChaptersSidebar-module__ojRHxa__dark {
+  border-bottom-color: #444;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem.ChaptersSidebar-module__ojRHxa__dark:hover {
+  background: #3a3a3a;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterItem.ChaptersSidebar-module__ojRHxa__current.ChaptersSidebar-module__ojRHxa__dark {
+  color: #fff;
+  background: #1976d2;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterTime.ChaptersSidebar-module__ojRHxa__dark {
+  color: #ccc;
+}
+
+.ChaptersSidebar-module__ojRHxa__chapterTitle.ChaptersSidebar-module__ojRHxa__dark {
+  color: #fff;
+}
+
+
+/* [project]/src/components/PlayerContainer.module.css [app-client] (css) */
+.PlayerContainer-module__IInhMG__container {
+  aspect-ratio: 16 / 9;
+  background: #000;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.PlayerContainer-module__IInhMG__containerClickable {
+  cursor: pointer;
+}
+
+.PlayerContainer-module__IInhMG__containerDefault {
+  cursor: default;
+}
+
+.PlayerContainer-module__IInhMG__videoElement {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.PlayerContainer-module__IInhMG__youtubeContainer, .PlayerContainer-module__IInhMG__vimeoContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.PlayerContainer-module__IInhMG__loadingOverlay {
+  color: #fff;
+  z-index: 5;
+  background: #000c;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.PlayerContainer-module__IInhMG__posterOverlay {
+  z-index: 10;
+  background: #00000080;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.PlayerContainer-module__IInhMG__playButton {
+  color: #fff;
+  cursor: pointer;
+  background: #000c;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  transition: all .2s;
+  display: flex;
+}
+
+.PlayerContainer-module__IInhMG__playButton:hover {
+  background: #000000e6;
+  transform: scale(1.1);
+}
+
+.PlayerContainer-module__IInhMG__captionsOverlay {
+  z-index: 15;
+  pointer-events: none;
+  position: absolute;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.PlayerContainer-module__IInhMG__captionsText {
+  color: #fff;
+  text-align: center;
+  background: #000c;
+  border-radius: 4px;
+  max-width: 80vw;
+  padding: 8px 16px;
+  font-size: 16px;
+}
+
+.PlayerContainer-module__IInhMG__controlBar {
+  z-index: 10;
+  background: linear-gradient(#0000, #000c);
+  padding: 8px 16px 12px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+@media (width <= 768px) {
+  .PlayerContainer-module__IInhMG__playButton {
+    width: 60px;
+    height: 60px;
+  }
+
+  .PlayerContainer-module__IInhMG__captionsText {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .PlayerContainer-module__IInhMG__controlBar {
+    padding: 6px 12px 8px;
+  }
+}
+
+
+/*# sourceMappingURL=src_components_043c77bd._.css.map*/

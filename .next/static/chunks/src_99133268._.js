@@ -1,0 +1,2600 @@
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push([typeof document === "object" ? document.currentScript : undefined, {
+
+"[project]/src/components/icons.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "AudioDescIcon": (()=>AudioDescIcon),
+    "CCIcon": (()=>CCIcon),
+    "ChaptersIcon": (()=>ChaptersIcon),
+    "FullscreenIcon": (()=>FullscreenIcon),
+    "InfoIcon": (()=>InfoIcon),
+    "MuteIcon": (()=>MuteIcon),
+    "PauseIcon": (()=>PauseIcon),
+    "PiPIcon": (()=>PiPIcon),
+    "PlayIcon": (()=>PlayIcon),
+    "QualityIcon": (()=>QualityIcon),
+    "SettingsIcon": (()=>SettingsIcon),
+    "SpeedIcon": (()=>SpeedIcon),
+    "TranscriptIcon": (()=>TranscriptIcon),
+    "UnmuteIcon": (()=>UnmuteIcon),
+    "VolumeIcon": (()=>VolumeIcon)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+;
+const PlayIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
+            points: "6,4 20,12 6,20"
+        }, void 0, false, {
+            fileName: "[project]/src/components/icons.tsx",
+            lineNumber: 5,
+            columnNumber: 5
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 4,
+        columnNumber: 3
+    }, this);
+_c = PlayIcon;
+const PauseIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                x: "6",
+                y: "4",
+                width: "4",
+                height: "16"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 11,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                x: "14",
+                y: "4",
+                width: "4",
+                height: "16"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 12,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 10,
+        columnNumber: 3
+    }, this);
+_c1 = PauseIcon;
+const MuteIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
+                points: "6,8 10,8 14,4 14,20 10,16 6,16"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 18,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                x1: "18",
+                y1: "8",
+                x2: "22",
+                y2: "16",
+                stroke: "currentColor",
+                strokeWidth: "2"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 19,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                x1: "22",
+                y1: "8",
+                x2: "18",
+                y2: "16",
+                stroke: "currentColor",
+                strokeWidth: "2"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 20,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 17,
+        columnNumber: 3
+    }, this);
+_c2 = MuteIcon;
+const UnmuteIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
+                points: "6,8 10,8 14,4 14,20 10,16 6,16"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 26,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                d: "M17 9a4 4 0 0 1 0 6",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                fill: "none"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 27,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 25,
+        columnNumber: 3
+    }, this);
+_c3 = UnmuteIcon;
+const TranscriptIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        stroke: "currentColor",
+        fill: "none",
+        "stroke-width": "0",
+        viewBox: "0 0 24 24",
+        height: "200px",
+        width: "200px",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                d: "M5 16C5 15.4477 5.44772 15 6 15H14C14.5523 15 15 15.4477 15 16C15 16.5523 14.5523 17 14 17H6C5.44772 17 5 16.5523 5 16Z",
+                fill: "currentColor"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 32,
+                columnNumber: 141
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                d: "M18 11C18.5523 11 19 11.4477 19 12C19 12.5523 18.5523 13 18 13H10C9.44772 13 9 12.5523 9 12C9 11.4477 9.44772 11 10 11H18Z",
+                fill: "currentColor"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 32,
+                columnNumber: 298
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                d: "M16 16C16 15.4477 16.4477 15 17 15H18C18.5523 15 19 15.4477 19 16C19 16.5523 18.5523 17 18 17H17C16.4477 17 16 16.5523 16 16Z",
+                fill: "currentColor"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 32,
+                columnNumber: 458
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                d: "M7 11C7.55228 11 8 11.4477 8 12C8 12.5523 7.55228 13 7 13H6C5.44772 13 5 12.5523 5 12C5 11.4477 5.44772 11 6 11H7Z",
+                fill: "currentColor"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 32,
+                columnNumber: 621
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                "fill-rule": "evenodd",
+                "clip-rule": "evenodd",
+                d: "M4 3C2.34315 3 1 4.34315 1 6V18C1 19.6569 2.34315 21 4 21H20C21.6569 21 23 19.6569 23 18V6C23 4.34315 21.6569 3 20 3H4ZM20 5H4C3.44772 5 3 5.44772 3 6V18C3 18.5523 3.44772 19 4 19H20C20.5523 19 21 18.5523 21 18V6C21 5.44771 20.5523 5 20 5Z",
+                fill: "currentColor"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 32,
+                columnNumber: 773
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 32,
+        columnNumber: 1
+    }, this);
+_c4 = TranscriptIcon;
+const SpeedIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("circle", {
+                cx: "12",
+                cy: "12",
+                r: "10",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                fill: "none"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 37,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                d: "M12 6v6l4 2",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                fill: "none"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 38,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 36,
+        columnNumber: 3
+    }, this);
+_c5 = SpeedIcon;
+const CCIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        stroke: "currentColor",
+        fill: "currentColor",
+        "stroke-width": "0",
+        viewBox: "0 0 512 512",
+        height: "200px",
+        width: "200px",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            d: "M464 64H48C21.5 64 0 85.5 0 112v288c0 26.5 21.5 48 48 48h416c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48zM218.1 287.7c2.8-2.5 7.1-2.1 9.2.9l19.5 27.7c1.7 2.4 1.5 5.6-.5 7.7-53.6 56.8-172.8 32.1-172.8-67.9 0-97.3 121.7-119.5 172.5-70.1 2.1 2 2.5 3.2 1 5.7l-17.5 30.5c-1.9 3.1-6.2 4-9.1 1.7-40.8-32-94.6-14.9-94.6 31.2.1 48 51.1 70.5 92.3 32.6zm190.4 0c2.8-2.5 7.1-2.1 9.2.9l19.5 27.7c1.7 2.4 1.5 5.6-.5 7.7-53.5 56.9-172.7 32.1-172.7-67.9 0-97.3 121.7-119.5 172.5-70.1 2.1 2 2.5 3.2 1 5.7L420 222.2c-1.9 3.1-6.2 4-9.1 1.7-40.8-32-94.6-14.9-94.6 31.2 0 48 51 70.5 92.2 32.6z"
+        }, void 0, false, {
+            fileName: "[project]/src/components/icons.tsx",
+            lineNumber: 43,
+            columnNumber: 151
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 43,
+        columnNumber: 1
+    }, this);
+_c6 = CCIcon;
+const FullscreenIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            d: "M4 4h6v2H6v4H4V4zm10 0h6v6h-2V6h-4V4zm6 10v6h-6v-2h4v-4h2zm-10 6H4v-6h2v4h4v2z"
+        }, void 0, false, {
+            fileName: "[project]/src/components/icons.tsx",
+            lineNumber: 48,
+            columnNumber: 5
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 47,
+        columnNumber: 3
+    }, this);
+_c7 = FullscreenIcon;
+const PiPIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                x: "3",
+                y: "5",
+                width: "18",
+                height: "14",
+                rx: "2"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 54,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                x: "13",
+                y: "13",
+                width: "7",
+                height: "5",
+                rx: "1",
+                fill: "#fff"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 55,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 53,
+        columnNumber: 3
+    }, this);
+_c8 = PiPIcon;
+const VolumeIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("polygon", {
+                points: "6,8 10,8 14,4 14,20 10,16 6,16"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 61,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+                d: "M16 8a4 4 0 0 1 0 8",
+                stroke: "currentColor",
+                strokeWidth: "2",
+                fill: "none"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 62,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 60,
+        columnNumber: 3
+    }, this);
+_c9 = VolumeIcon;
+const AudioDescIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        stroke: "currentColor",
+        fill: "currentColor",
+        "stroke-width": "0",
+        viewBox: "0 0 512 512",
+        height: "200px",
+        width: "200px",
+        xmlns: "http://www.w3.org/2000/svg",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            d: "M162.925 238.709l8.822 30.655h-25.606l9.041-30.652c1.277-4.421 2.651-9.994 3.872-15.245 1.22 5.251 2.594 10.823 3.871 15.242zm166.474-32.099h-14.523v98.781h14.523c29.776 0 46.175-17.678 46.175-49.776 0-32.239-17.49-49.005-46.175-49.005zM512 112v288c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h416c26.51 0 48 21.49 48 48zM245.459 336.139l-57.097-168A12.001 12.001 0 0 0 177 160h-35.894a12.001 12.001 0 0 0-11.362 8.139l-57.097 168C70.003 343.922 75.789 352 84.009 352h29.133a12 12 0 0 0 11.535-8.693l8.574-29.906h51.367l8.793 29.977A12 12 0 0 0 204.926 352h29.172c8.22 0 14.006-8.078 11.361-15.861zm184.701-80.525c0-58.977-37.919-95.614-98.96-95.614h-57.366c-6.627 0-12 5.373-12 12v168c0 6.627 5.373 12 12 12H331.2c61.041 0 98.96-36.933 98.96-96.386z"
+        }, void 0, false, {
+            fileName: "[project]/src/components/icons.tsx",
+            lineNumber: 67,
+            columnNumber: 151
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 67,
+        columnNumber: 1
+    }, this);
+_c10 = AudioDescIcon;
+const ChaptersIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        viewBox: "0 0 24 24",
+        width: 24,
+        height: 24,
+        fill: "currentColor",
+        "aria-hidden": "true",
+        ...props,
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("rect", {
+                x: "4",
+                y: "5",
+                width: "16",
+                height: "14",
+                rx: "2",
+                fill: "none",
+                stroke: "currentColor",
+                strokeWidth: "2"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 72,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                x1: "8",
+                y1: "9",
+                x2: "16",
+                y2: "9",
+                stroke: "currentColor",
+                strokeWidth: "2"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 73,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                x1: "8",
+                y1: "13",
+                x2: "16",
+                y2: "13",
+                stroke: "currentColor",
+                strokeWidth: "2"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 74,
+                columnNumber: 5
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("line", {
+                x1: "8",
+                y1: "17",
+                x2: "12",
+                y2: "17",
+                stroke: "currentColor",
+                strokeWidth: "2"
+            }, void 0, false, {
+                fileName: "[project]/src/components/icons.tsx",
+                lineNumber: 75,
+                columnNumber: 5
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 71,
+        columnNumber: 3
+    }, this);
+_c11 = ChaptersIcon;
+const SettingsIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        width: "20",
+        height: "20",
+        viewBox: "0 0 24 24",
+        fill: "currentColor",
+        ...props,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            d: "M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3c-.46-4.17-3.77-7.48-7.94-7.94V1h-2v2.06C6.83 3.52 3.52 6.83 3.06 11H1v2h2.06c.46 4.17 3.77 7.48 7.94 7.94V23h2v-2.06c4.17-.46 7.48-3.77 7.94-7.94H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"
+        }, void 0, false, {
+            fileName: "[project]/src/components/icons.tsx",
+            lineNumber: 81,
+            columnNumber: 5
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 80,
+        columnNumber: 3
+    }, this);
+_c12 = SettingsIcon;
+const InfoIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        width: "20",
+        height: "20",
+        viewBox: "0 0 24 24",
+        fill: "currentColor",
+        ...props,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            d: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"
+        }, void 0, false, {
+            fileName: "[project]/src/components/icons.tsx",
+            lineNumber: 87,
+            columnNumber: 5
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 86,
+        columnNumber: 3
+    }, this);
+_c13 = InfoIcon;
+const QualityIcon = (props)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
+        width: "20",
+        height: "20",
+        viewBox: "0 0 24 24",
+        fill: "currentColor",
+        ...props,
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
+            d: "M17 10.5V7c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h12c.55 0 1-.45 1-1v-3.5l4 4v-11l-4 4zM14 13h-3v3H9v-3H6v-2h3V8h2v3h3v2z"
+        }, void 0, false, {
+            fileName: "[project]/src/components/icons.tsx",
+            lineNumber: 93,
+            columnNumber: 5
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/icons.tsx",
+        lineNumber: 92,
+        columnNumber: 3
+    }, this);
+_c14 = QualityIcon;
+var _c, _c1, _c2, _c3, _c4, _c5, _c6, _c7, _c8, _c9, _c10, _c11, _c12, _c13, _c14;
+__turbopack_context__.k.register(_c, "PlayIcon");
+__turbopack_context__.k.register(_c1, "PauseIcon");
+__turbopack_context__.k.register(_c2, "MuteIcon");
+__turbopack_context__.k.register(_c3, "UnmuteIcon");
+__turbopack_context__.k.register(_c4, "TranscriptIcon");
+__turbopack_context__.k.register(_c5, "SpeedIcon");
+__turbopack_context__.k.register(_c6, "CCIcon");
+__turbopack_context__.k.register(_c7, "FullscreenIcon");
+__turbopack_context__.k.register(_c8, "PiPIcon");
+__turbopack_context__.k.register(_c9, "VolumeIcon");
+__turbopack_context__.k.register(_c10, "AudioDescIcon");
+__turbopack_context__.k.register(_c11, "ChaptersIcon");
+__turbopack_context__.k.register(_c12, "SettingsIcon");
+__turbopack_context__.k.register(_c13, "InfoIcon");
+__turbopack_context__.k.register(_c14, "QualityIcon");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/src/components/AudioDescSettingsModal.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "default": (()=>__TURBOPACK__default__export__)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+;
+const AudioDescSettingsModal = ({ open, onClose, voices, selectedVoice, setSelectedVoice, pitch, setPitch, autoStop, setAutoStop, autoStart, setAutoStart, mode, setMode, hasAudioTrack, hasSignTrack, ttsAvailable, ttsError })=>{
+    _s();
+    const [testText, setTestText] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('Audiodeskription Test');
+    const handleTest = ()=>{
+        if (!ttsAvailable) return;
+        const utter = new window.SpeechSynthesisUtterance(testText);
+        utter.voice = voices.find((v)=>v.voiceURI === selectedVoice) || null;
+        utter.pitch = pitch;
+        window.speechSynthesis.speak(utter);
+    };
+    if (!open) return null;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        role: "dialog",
+        "aria-modal": "true",
+        style: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0,0,0,0.3)',
+            zIndex: 1000,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
+        },
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+            style: {
+                background: '#fff',
+                borderRadius: 8,
+                padding: 24,
+                minWidth: 320,
+                maxWidth: 400
+            },
+            children: [
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
+                    id: "ad-modal-title",
+                    style: {
+                        marginTop: 0
+                    },
+                    children: "Audiodeskription Einstellungen"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                    lineNumber: 59,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                    children: "Modus:"
+                }, void 0, false, {
+                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                    lineNumber: 63,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                    value: mode,
+                    onChange: (e)=>setMode(e.target.value),
+                    style: {
+                        width: '100%',
+                        marginBottom: 12
+                    },
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                            value: "tts",
+                            children: "Transkript vorlesen"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 69,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                            value: "audio",
+                            disabled: !hasAudioTrack,
+                            children: [
+                                "Zur Audiospur wechseln ",
+                                hasAudioTrack ? '' : '(nicht verfügbar)'
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 70,
+                            columnNumber: 11
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                            value: "sign",
+                            disabled: !hasSignTrack,
+                            children: [
+                                "Gebärdensprache-Overlay ",
+                                hasSignTrack ? '' : '(nicht verfügbar)'
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 73,
+                            columnNumber: 11
+                        }, this)
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                    lineNumber: 64,
+                    columnNumber: 9
+                }, this),
+                mode === 'tts' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                    children: [
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                            htmlFor: "ad-voice",
+                            children: "Stimme:"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 80,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                            id: "ad-voice",
+                            value: selectedVoice,
+                            onChange: (e)=>setSelectedVoice(e.target.value),
+                            style: {
+                                width: '100%',
+                                marginBottom: 12
+                            },
+                            children: voices.map((v)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                    value: v.voiceURI,
+                                    children: [
+                                        v.name,
+                                        " (",
+                                        v.lang,
+                                        ")"
+                                    ]
+                                }, v.voiceURI, true, {
+                                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                                    lineNumber: 88,
+                                    columnNumber: 17
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 81,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                            htmlFor: "ad-pitch",
+                            children: [
+                                "Pitch: ",
+                                pitch.toFixed(2)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 94,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                            id: "ad-pitch",
+                            type: "range",
+                            min: 0.5,
+                            max: 2,
+                            step: 0.01,
+                            value: pitch,
+                            onChange: (e)=>setPitch(Number(e.target.value)),
+                            style: {
+                                width: '100%'
+                            }
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 95,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                margin: '12px 0'
+                            },
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                            type: "checkbox",
+                                            checked: autoStop,
+                                            onChange: (e)=>setAutoStop(e.target.checked)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                                            lineNumber: 108,
+                                            columnNumber: 17
+                                        }, this),
+                                        "Video automatisch stoppen"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                                    lineNumber: 107,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("br", {}, void 0, false, {
+                                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                                    lineNumber: 115,
+                                    columnNumber: 15
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                            type: "checkbox",
+                                            checked: autoStart,
+                                            onChange: (e)=>setAutoStart(e.target.checked)
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                                            lineNumber: 117,
+                                            columnNumber: 17
+                                        }, this),
+                                        "Video nach Vorlesen automatisch starten"
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                                    lineNumber: 116,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 106,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                            htmlFor: "ad-test",
+                            children: "Testtext:"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 126,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                            id: "ad-test",
+                            type: "text",
+                            value: testText,
+                            onChange: (e)=>setTestText(e.target.value),
+                            style: {
+                                width: '100%'
+                            }
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 127,
+                            columnNumber: 13
+                        }, this),
+                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            style: {
+                                margin: '8px 0'
+                            },
+                            onClick: handleTest,
+                            disabled: !ttsAvailable,
+                            children: "Stimme testen"
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 134,
+                            columnNumber: 13
+                        }, this),
+                        !ttsAvailable && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                color: 'red',
+                                marginTop: 8
+                            },
+                            children: ttsError || 'Text-to-Speech nicht verfügbar!'
+                        }, void 0, false, {
+                            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                            lineNumber: 142,
+                            columnNumber: 15
+                        }, this)
+                    ]
+                }, void 0, true),
+                mode === 'audio' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        margin: '12px 0',
+                        color: hasAudioTrack ? '#333' : '#aaa'
+                    },
+                    children: [
+                        "Zur Audiospur wechseln ",
+                        hasAudioTrack ? '' : '(nicht verfügbar)'
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                    lineNumber: 150,
+                    columnNumber: 11
+                }, this),
+                mode === 'sign' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        margin: '12px 0',
+                        color: hasSignTrack ? '#333' : '#aaa'
+                    },
+                    children: [
+                        "Gebärdensprache-Overlay ",
+                        hasSignTrack ? '' : '(nicht verfügbar)'
+                    ]
+                }, void 0, true, {
+                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                    lineNumber: 156,
+                    columnNumber: 11
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    style: {
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        gap: 8
+                    },
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                        onClick: onClose,
+                        children: "Schließen"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                        lineNumber: 162,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+                    lineNumber: 161,
+                    columnNumber: 9
+                }, this)
+            ]
+        }, void 0, true, {
+            fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+            lineNumber: 52,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/AudioDescSettingsModal.tsx",
+        lineNumber: 36,
+        columnNumber: 5
+    }, this);
+};
+_s(AudioDescSettingsModal, "gNXJZcfNRlYQzvrKo9lF5M4X2mg=");
+_c = AudioDescSettingsModal;
+const __TURBOPACK__default__export__ = AudioDescSettingsModal;
+var _c;
+__turbopack_context__.k.register(_c, "AudioDescSettingsModal");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/src/utils/videoUtils.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "addPlayerStyles": (()=>addPlayerStyles),
+    "formatTime": (()=>formatTime),
+    "parseChaptersVtt": (()=>parseChaptersVtt),
+    "parseVtt": (()=>parseVtt),
+    "toSeconds": (()=>toSeconds)
+});
+const parseVtt = (vtt, type)=>{
+    const cues = [];
+    const lines = vtt.replace(/^WEBVTT.*\n/, '').split(/\r?\n/).filter((l)=>l.trim() !== '');
+    let i = 0;
+    while(i < lines.length){
+        if (/^\d+$/.test(lines[i])) i++;
+        if (/^\d{2}:\d{2}:\d{2}\.\d{3} -->/.test(lines[i])) {
+            const [start, end] = lines[i].split(' --> ').map(toSeconds);
+            i++;
+            let text = '';
+            while(i < lines.length && !/^\d{2}:\d{2}:\d{2}\.\d{3} -->/.test(lines[i]) && !/^\d+$/.test(lines[i])){
+                text += (text ? ' ' : '') + lines[i];
+                i++;
+            }
+            cues.push({
+                start,
+                end,
+                text,
+                type
+            });
+        } else {
+            i++;
+        }
+    }
+    return cues;
+};
+const toSeconds = (s)=>{
+    const [h, m, rest] = s.split(':');
+    const [sec, ms] = rest.split(',');
+    return parseInt(h) * 3600 + parseInt(m) * 60 + parseInt(sec) + (ms ? parseInt(ms) / 1000 : 0);
+};
+const parseChaptersVtt = (vtt)=>{
+    const chapters = [];
+    const lines = vtt.replace(/^WEBVTT.*\n/, '').split(/\r?\n/).filter((l)=>l.trim() !== '');
+    let i = 0;
+    while(i < lines.length){
+        if (/^\d+$/.test(lines[i])) i++;
+        if (/^\d{2}:\d{2}:\d{2}\.\d{3} -->/.test(lines[i])) {
+            const [start, end] = lines[i].split(' --> ').map(toSeconds);
+            i++;
+            let title = '';
+            while(i < lines.length && !/^\d{2}:\d{2}:\d{2}\.\d{3} -->/.test(lines[i]) && !/^\d+$/.test(lines[i])){
+                title += (title ? ' ' : '') + lines[i];
+                i++;
+            }
+            chapters.push({
+                start,
+                end,
+                title
+            });
+        } else {
+            i++;
+        }
+    }
+    return chapters;
+};
+const formatTime = (sec)=>{
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `${m}:${s.toString().padStart(2, '0')}`;
+};
+const addPlayerStyles = ()=>{
+    const style = document.createElement('style');
+    style.innerHTML = `
+    .player-btn:focus {
+      outline: 3px solid #1976d2;
+      outline-offset: 2px;
+      z-index: 2;
+    }
+  `;
+    document.head.appendChild(style);
+    return ()=>{
+        document.head.removeChild(style);
+    };
+};
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/src/components/ChaptersSidebar.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "default": (()=>__TURBOPACK__default__export__)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/videoUtils.ts [app-client] (ecmascript)");
+;
+;
+const ChaptersSidebar = ({ chapters, currentChapterIdx, onChapterClick, visible })=>{
+    if (!visible || chapters.length === 0) return null;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("aside", {
+        style: {
+            width: 220,
+            marginLeft: 16,
+            background: '#f0f4f8',
+            borderRadius: 4,
+            padding: 12,
+            height: '100%',
+            maxHeight: 480,
+            overflowY: 'auto'
+        },
+        "aria-label": "Kapitel-Liste",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                style: {
+                    fontSize: 18,
+                    margin: '0 0 8px 0'
+                },
+                children: "Kapitel"
+            }, void 0, false, {
+                fileName: "[project]/src/components/ChaptersSidebar.tsx",
+                lineNumber: 34,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
+                style: {
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: 0
+                },
+                children: chapters.map((ch, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                        style: {
+                            marginBottom: 8
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                            className: "player-btn",
+                            style: {
+                                width: '100%',
+                                textAlign: 'left',
+                                background: idx === currentChapterIdx ? '#ffe082' : '#fff',
+                                border: '1px solid #bbb',
+                                borderRadius: 3,
+                                padding: 6,
+                                cursor: 'pointer',
+                                fontWeight: idx === currentChapterIdx ? 'bold' : 'normal'
+                            },
+                            onClick: ()=>onChapterClick(ch.start),
+                            "aria-label": `Springe zu ${ch.title}`,
+                            children: [
+                                ch.title,
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    style: {
+                                        float: 'right',
+                                        color: '#888',
+                                        fontSize: 12
+                                    },
+                                    children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["formatTime"])(ch.start)
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/ChaptersSidebar.tsx",
+                                    lineNumber: 54,
+                                    columnNumber: 15
+                                }, this)
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/ChaptersSidebar.tsx",
+                            lineNumber: 38,
+                            columnNumber: 13
+                        }, this)
+                    }, idx, false, {
+                        fileName: "[project]/src/components/ChaptersSidebar.tsx",
+                        lineNumber: 37,
+                        columnNumber: 11
+                    }, this))
+            }, void 0, false, {
+                fileName: "[project]/src/components/ChaptersSidebar.tsx",
+                lineNumber: 35,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/ChaptersSidebar.tsx",
+        lineNumber: 21,
+        columnNumber: 5
+    }, this);
+};
+_c = ChaptersSidebar;
+const __TURBOPACK__default__export__ = ChaptersSidebar;
+var _c;
+__turbopack_context__.k.register(_c, "ChaptersSidebar");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/src/components/Transcript.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "default": (()=>__TURBOPACK__default__export__)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+;
+const Transcript = ({ cues, currentCueIdx, visible })=>{
+    if (!visible || cues.length === 0) return null;
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+        style: {
+            marginTop: 16,
+            background: '#f5f5f5',
+            padding: 8,
+            borderRadius: 4,
+            minHeight: 40
+        },
+        "aria-live": "polite",
+        role: "region",
+        "aria-label": "Synchronisiertes Transkript",
+        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ol", {
+            style: {
+                listStyle: 'none',
+                padding: 0,
+                margin: 0
+            },
+            children: cues.map((cue, idx)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("li", {
+                    "aria-current": idx === currentCueIdx ? 'true' : undefined,
+                    tabIndex: idx === currentCueIdx ? 0 : -1,
+                    style: {
+                        background: idx === currentCueIdx ? cue.type === 'caption' ? '#ffe082' : '#b3e5fc' : 'transparent',
+                        fontWeight: idx === currentCueIdx ? 'bold' : 'normal',
+                        color: cue.type === 'caption' ? '#333' : '#0277bd',
+                        padding: '0 2px',
+                        borderRadius: 2,
+                        marginRight: 2,
+                        outline: idx === currentCueIdx ? '2px solid #1976d2' : 'none',
+                        display: 'inline-block',
+                        marginBottom: 2
+                    },
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                        "aria-label": cue.type === 'caption' ? 'Untertitel' : 'Beschreibung',
+                        children: cue.text + ' '
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/Transcript.tsx",
+                        lineNumber: 44,
+                        columnNumber: 13
+                    }, this)
+                }, idx, false, {
+                    fileName: "[project]/src/components/Transcript.tsx",
+                    lineNumber: 28,
+                    columnNumber: 11
+                }, this))
+        }, void 0, false, {
+            fileName: "[project]/src/components/Transcript.tsx",
+            lineNumber: 26,
+            columnNumber: 7
+        }, this)
+    }, void 0, false, {
+        fileName: "[project]/src/components/Transcript.tsx",
+        lineNumber: 14,
+        columnNumber: 5
+    }, this);
+};
+_c = Transcript;
+const __TURBOPACK__default__export__ = Transcript;
+var _c;
+__turbopack_context__.k.register(_c, "Transcript");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/src/hooks/useVideoData.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "useChaptersData": (()=>useChaptersData),
+    "useTranscriptData": (()=>useTranscriptData),
+    "useVoicesData": (()=>useVoicesData)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/videoUtils.ts [app-client] (ecmascript)");
+var _s = __turbopack_context__.k.signature(), _s1 = __turbopack_context__.k.signature(), _s2 = __turbopack_context__.k.signature();
+;
+;
+const useTranscriptData = (captions, description)=>{
+    _s();
+    const [cues, setCues] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "useTranscriptData.useEffect": ()=>{
+            let cap = [];
+            let desc = [];
+            ({
+                "useTranscriptData.useEffect": async ()=>{
+                    if (captions) {
+                        const txt = await fetch(captions).then({
+                            "useTranscriptData.useEffect": (r)=>r.text()
+                        }["useTranscriptData.useEffect"]);
+                        cap = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseVtt"])(txt, 'caption');
+                    }
+                    if (description) {
+                        const txt = await fetch(description).then({
+                            "useTranscriptData.useEffect": (r)=>r.text()
+                        }["useTranscriptData.useEffect"]);
+                        desc = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseVtt"])(txt, 'description');
+                    }
+                    setCues([
+                        ...cap,
+                        ...desc
+                    ].sort({
+                        "useTranscriptData.useEffect": (a, b)=>a.start - b.start
+                    }["useTranscriptData.useEffect"]));
+                }
+            })["useTranscriptData.useEffect"]();
+        }
+    }["useTranscriptData.useEffect"], [
+        captions,
+        description
+    ]);
+    return cues;
+};
+_s(useTranscriptData, "pDlUmnMr/VmtW7Zv+msn34HEvoM=");
+const useChaptersData = (chapters)=>{
+    _s1();
+    const [parsedChapters, setParsedChapters] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "useChaptersData.useEffect": ()=>{
+            if (!chapters) return;
+            fetch(chapters).then({
+                "useChaptersData.useEffect": (r)=>r.text()
+            }["useChaptersData.useEffect"]).then({
+                "useChaptersData.useEffect": (txt)=>setParsedChapters((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["parseChaptersVtt"])(txt))
+            }["useChaptersData.useEffect"]);
+        }
+    }["useChaptersData.useEffect"], [
+        chapters
+    ]);
+    return parsedChapters;
+};
+_s1(useChaptersData, "40GMY8MaP8gU5YFyLEU9QlL7FG0=");
+const useVoicesData = ()=>{
+    _s2();
+    const [voices, setVoices] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])([]);
+    const [selectedVoice, setSelectedVoice] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "useVoicesData.useEffect": ()=>{
+            const updateVoices = {
+                "useVoicesData.useEffect.updateVoices": ()=>{
+                    const vs = window.speechSynthesis.getVoices();
+                    setVoices(vs);
+                    if (!selectedVoice && vs.length > 0) setSelectedVoice(vs[0].voiceURI);
+                }
+            }["useVoicesData.useEffect.updateVoices"];
+            updateVoices();
+            window.speechSynthesis.onvoiceschanged = updateVoices;
+        }
+    }["useVoicesData.useEffect"], [
+        selectedVoice
+    ]);
+    return {
+        voices,
+        selectedVoice,
+        setSelectedVoice
+    };
+};
+_s2(useVoicesData, "ItijQAAku9sjVz0zvz8uUFBIVM8=");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/src/utils/videoExtractors.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "extractBundestagId": (()=>extractBundestagId),
+    "extractBundestagVideo": (()=>extractBundestagVideo),
+    "extractVimeoId": (()=>extractVimeoId),
+    "extractVimeoVideo": (()=>extractVimeoVideo),
+    "extractYouTubeId": (()=>extractYouTubeId),
+    "extractYouTubeVideo": (()=>extractYouTubeVideo)
+});
+async function extractYouTubeVideo(url) {
+    const videoId = extractYouTubeId(url);
+    if (!videoId) throw new Error('Invalid YouTube URL');
+    // Für YouTube verwenden wir die IFrame API, nicht direkte URLs
+    // Diese Funktion ist nur für Kompatibilität - eigentliche Logik ist in YouTubePlayerWrapper
+    return {
+        mp4: [
+            {
+                url: `https://www.youtube.com/embed/${videoId}?enablejsapi=1`,
+                quality: 'iframe',
+                width: 1280,
+                height: 720
+            }
+        ]
+    };
+}
+async function extractVimeoVideo(url) {
+    const videoId = extractVimeoId(url);
+    if (!videoId) throw new Error('Invalid Vimeo URL');
+    // Für Vimeo verwenden wir die Player API, nicht direkte URLs
+    // Diese Funktion ist nur für Kompatibilität - eigentliche Logik ist in VimeoPlayerWrapper
+    return {
+        mp4: [
+            {
+                url: `https://player.vimeo.com/video/${videoId}`,
+                quality: 'player',
+                width: 1280,
+                height: 720
+            }
+        ]
+    };
+}
+async function extractBundestagVideo(url) {
+    const videoId = extractBundestagId(url);
+    if (!videoId) throw new Error('Invalid Bundestag URL');
+    const baseUrl = 'https://cldf-od.r53.cdn.tv1.eu/1000153copo/ondemand/app144277506/145293313';
+    const qualities = [
+        {
+            url: `${baseUrl}/${videoId}/${videoId}_h264_1920_1080_8000kb_baseline_de_8000.mp4`,
+            quality: '1080p',
+            width: 1920,
+            height: 1080,
+            bitrate: 8000
+        },
+        {
+            url: `${baseUrl}/${videoId}/${videoId}_h264_1280_720_3000kb_baseline_de_3000.mp4`,
+            quality: '720p',
+            width: 1280,
+            height: 720,
+            bitrate: 3000
+        },
+        {
+            url: `${baseUrl}/${videoId}/${videoId}_h264_640_360_1000kb_baseline_de_1000.mp4`,
+            quality: '360p',
+            width: 640,
+            height: 360,
+            bitrate: 1000
+        },
+        {
+            url: `${baseUrl}/${videoId}/${videoId}_h264_512_288_514kb_baseline_de_514.mp4`,
+            quality: '288p',
+            width: 512,
+            height: 288,
+            bitrate: 514
+        }
+    ];
+    return {
+        mp4: qualities
+    };
+}
+function extractYouTubeId(url) {
+    // Wie AblePlayer: die letzten 11 Zeichen bei YouTube URLs
+    if (url.indexOf('youtu') !== -1) {
+        url = url.trim();
+        const idStartPos = url.length - 11;
+        const id = url.substring(idStartPos);
+        return id;
+    }
+    return null;
+}
+function extractVimeoId(url) {
+    const regex = /vimeo\.com\/(\d+)/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+}
+function extractBundestagId(url) {
+    const regex = /dbtg\.tv\/cvid\/(\d+)/;
+    const match = url.match(regex);
+    return match ? match[1] : null;
+}
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/src/utils/youtubePlayer.ts [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "YouTubePlayerWrapper": (()=>YouTubePlayerWrapper),
+    "extractYouTubeId": (()=>extractYouTubeId)
+});
+class YouTubePlayerWrapper {
+    player = null;
+    containerId;
+    videoId;
+    isReady = false;
+    eventListeners = {};
+    constructor(containerId, videoId){
+        this.containerId = containerId;
+        this.videoId = videoId;
+    }
+    async init() {
+        await this.loadYouTubeAPI();
+        return this.createPlayer();
+    }
+    async loadYouTubeAPI() {
+        return new Promise((resolve)=>{
+            if (window.YT && window.YT.Player) {
+                resolve();
+                return;
+            }
+            window.onYouTubeIframeAPIReady = ()=>{
+                resolve();
+            };
+            if (!document.querySelector('script[src*="youtube.com/iframe_api"]')) {
+                const script = document.createElement('script');
+                script.src = 'https://www.youtube.com/iframe_api';
+                script.async = true;
+                document.head.appendChild(script);
+            }
+        });
+    }
+    createPlayer() {
+        return new Promise((resolve, reject)=>{
+            this.player = new window.YT.Player(this.containerId, {
+                videoId: this.videoId,
+                playerVars: {
+                    autoplay: 0,
+                    controls: 0,
+                    disablekb: 1,
+                    enablejsapi: 1,
+                    fs: 0,
+                    iv_load_policy: 3,
+                    modestbranding: 1,
+                    rel: 0,
+                    showinfo: 0,
+                    cc_load_policy: 1,
+                    playsinline: 1
+                },
+                events: {
+                    onReady: ()=>{
+                        this.isReady = true;
+                        this.emit('ready');
+                        resolve();
+                    },
+                    onStateChange: (event)=>{
+                        this.handleStateChange(event.data);
+                    },
+                    onError: (event)=>{
+                        this.emit('error', event);
+                        reject(new Error(`YouTube Player Error: ${event.data}`));
+                    }
+                }
+            });
+        });
+    }
+    handleStateChange(state) {
+        switch(state){
+            case window.YT.PlayerState.PLAYING:
+                this.emit('play');
+                break;
+            case window.YT.PlayerState.PAUSED:
+                this.emit('pause');
+                break;
+            case window.YT.PlayerState.ENDED:
+                this.emit('ended');
+                break;
+            case window.YT.PlayerState.BUFFERING:
+                this.emit('waiting');
+                break;
+        }
+        this.emit('statechange', state);
+    }
+    // Event System
+    on(event, listener) {
+        if (!this.eventListeners[event]) {
+            this.eventListeners[event] = [];
+        }
+        this.eventListeners[event].push(listener);
+    }
+    off(event, listener) {
+        if (this.eventListeners[event]) {
+            const index = this.eventListeners[event].indexOf(listener);
+            if (index > -1) {
+                this.eventListeners[event].splice(index, 1);
+            }
+        }
+    }
+    emit(event, data) {
+        if (this.eventListeners[event]) {
+            this.eventListeners[event].forEach((listener)=>listener(data));
+        }
+    }
+    // Player Control Methods
+    play() {
+        if (this.player && this.isReady) {
+            this.player.playVideo();
+        }
+    }
+    pause() {
+        if (this.player && this.isReady) {
+            this.player.pauseVideo();
+        }
+    }
+    seekTo(seconds) {
+        if (this.player && this.isReady) {
+            this.player.seekTo(seconds);
+        }
+    }
+    getCurrentTime() {
+        if (this.player && this.isReady) {
+            return this.player.getCurrentTime();
+        }
+        return 0;
+    }
+    getDuration() {
+        if (this.player && this.isReady) {
+            return this.player.getDuration();
+        }
+        return 0;
+    }
+    setVolume(volume) {
+        if (this.player && this.isReady) {
+            this.player.setVolume(volume * 100); // YouTube erwartet 0-100
+        }
+    }
+    getVolume() {
+        if (this.player && this.isReady) {
+            return this.player.getVolume() / 100; // Normalisieren auf 0-1
+        }
+        return 1;
+    }
+    mute() {
+        if (this.player && this.isReady) {
+            this.player.mute();
+        }
+    }
+    unmute() {
+        if (this.player && this.isReady) {
+            this.player.unMute();
+        }
+    }
+    isMuted() {
+        if (this.player && this.isReady) {
+            return this.player.isMuted();
+        }
+        return false;
+    }
+    setPlaybackRate(rate) {
+        if (this.player && this.isReady) {
+            this.player.setPlaybackRate(rate);
+        }
+    }
+    getPlaybackRate() {
+        if (this.player && this.isReady) {
+            return this.player.getPlaybackRate();
+        }
+        return 1;
+    }
+    setSize(width, height) {
+        if (this.player && this.isReady) {
+            this.player.setSize(width, height);
+        }
+    }
+    destroy() {
+        if (this.player) {
+            this.player.destroy();
+            this.player = null;
+            this.isReady = false;
+        }
+    }
+}
+function extractYouTubeId(url) {
+    if (url.indexOf('youtu') !== -1) {
+        // AblePlayer Logik: die letzten 11 Zeichen
+        url = url.trim();
+        const idStartPos = url.length - 11;
+        const id = url.substring(idStartPos);
+        return id;
+    }
+    return null;
+}
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+"[project]/src/components/FullPlayer.tsx [app-client] (ecmascript)": ((__turbopack_context__) => {
+"use strict";
+
+var { g: global, __dirname, k: __turbopack_refresh__, m: module } = __turbopack_context__;
+{
+__turbopack_context__.s({
+    "default": (()=>__TURBOPACK__default__export__)
+});
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/icons.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$AudioDescSettingsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/AudioDescSettingsModal.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ChaptersSidebar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/ChaptersSidebar.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Transcript$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/components/Transcript.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useVideoData$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/hooks/useVideoData.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/videoUtils.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoExtractors$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/videoExtractors.ts [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$youtubePlayer$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/src/utils/youtubePlayer.ts [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
+"use client";
+;
+;
+;
+;
+;
+;
+;
+;
+;
+const FullPlayer = ({ mp4, webm, youtube, vimeo, btag, captions, description, chapters, autoplay, muted })=>{
+    _s();
+    const videoRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const controlsRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const spoolingRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const lastDescIdxRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(-1);
+    const youtubeContainerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const youtubePlayerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    // Basic player state
+    const [isPlaying, setIsPlaying] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isMuted, setIsMuted] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(muted);
+    const [currentTime, setCurrentTime] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [duration, setDuration] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(0);
+    const [volume, setVolume] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
+    const [playbackRate, setPlaybackRate] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
+    const [controlsVisible, setControlsVisible] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [isPiPSupported, setIsPiPSupported] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isLoading, setIsLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // UI state
+    const [showTranscript, setShowTranscript] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [showCC, setShowCC] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [showChapters, setShowChapters] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [isSpooling, setIsSpooling] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Audio description state
+    const [audioDescActive, setAudioDescActive] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [ttsBusy, setTtsBusy] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [audioDescSettingsOpen, setAudioDescSettingsOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [pitch, setPitch] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(1);
+    const [autoStop, setAutoStop] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [autoStart, setAutoStart] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [audioDescMode, setAudioDescMode] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('tts');
+    const [ttsAvailable, setTtsAvailable] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(true);
+    const [ttsError, setTtsError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('');
+    const [hasAudioTrack, setHasAudioTrack] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [hasSignTrack, setHasSignTrack] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    // Content indexes
+    const [currentCueIdx, setCurrentCueIdx] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(-1);
+    const [currentChapterIdx, setCurrentChapterIdx] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(-1);
+    // Data hooks
+    const cues = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useVideoData$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTranscriptData"])(captions, description);
+    const parsedChapters = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useVideoData$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useChaptersData"])(chapters);
+    const { voices, selectedVoice, setSelectedVoice } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useVideoData$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useVoicesData"])();
+    // Player type state
+    const [playerType, setPlayerType] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])('video');
+    const [youtubePlayerId] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(`youtube-player-${Math.random().toString(36).substr(2, 9)}`);
+    // Video source resolution
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            const resolveVideoSource = {
+                "FullPlayer.useEffect.resolveVideoSource": async ()=>{
+                    setIsLoading(true);
+                    try {
+                        if (mp4) {
+                            setPlayerType('video');
+                            setVideoSrc(mp4);
+                            setVideoSources({
+                                mp4: [
+                                    {
+                                        url: mp4,
+                                        quality: 'original',
+                                        width: 1920,
+                                        height: 1080
+                                    }
+                                ]
+                            });
+                        } else if (youtube) {
+                            setPlayerType('youtube');
+                        // YouTube wird über YouTubePlayerWrapper gehandhabt
+                        } else if (vimeo) {
+                            setPlayerType('vimeo');
+                        // TODO: Vimeo implementation
+                        } else if (btag) {
+                            setPlayerType('btag');
+                            const sources = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoExtractors$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["extractBundestagVideo"])(btag);
+                            setVideoSources(sources);
+                            if (sources.mp4?.[0]) {
+                                setVideoSrc(sources.mp4[0].url);
+                                setSelectedQuality(sources.mp4[0].quality);
+                            }
+                        }
+                    } catch (error) {
+                        console.error('Video source resolution failed:', error);
+                    } finally{
+                        setIsLoading(false);
+                    }
+                }
+            }["FullPlayer.useEffect.resolveVideoSource"];
+            resolveVideoSource();
+        }
+    }["FullPlayer.useEffect"], [
+        mp4,
+        youtube,
+        vimeo,
+        btag
+    ]);
+    // YouTube player initialization
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            if (playerType === 'youtube' && youtube) {
+                const initYouTubePlayer = {
+                    "FullPlayer.useEffect.initYouTubePlayer": async ()=>{
+                        const videoId = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$youtubePlayer$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["extractYouTubeId"])(youtube);
+                        if (!videoId) return;
+                        if (youtubeContainerRef.current) {
+                            youtubeContainerRef.current.innerHTML = `<div id="${youtubePlayerId}"></div>`;
+                            try {
+                                const ytPlayer = new __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$youtubePlayer$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["YouTubePlayerWrapper"](youtubePlayerId, videoId);
+                                await ytPlayer.init();
+                                youtubePlayerRef.current = ytPlayer;
+                                // Event listeners
+                                ytPlayer.on('ready', {
+                                    "FullPlayer.useEffect.initYouTubePlayer": ()=>{
+                                        setDuration(ytPlayer.getDuration());
+                                        if (muted) ytPlayer.mute();
+                                        setVolume(ytPlayer.getVolume());
+                                    }
+                                }["FullPlayer.useEffect.initYouTubePlayer"]);
+                                ytPlayer.on('play', {
+                                    "FullPlayer.useEffect.initYouTubePlayer": ()=>setIsPlaying(true)
+                                }["FullPlayer.useEffect.initYouTubePlayer"]);
+                                ytPlayer.on('pause', {
+                                    "FullPlayer.useEffect.initYouTubePlayer": ()=>setIsPlaying(false)
+                                }["FullPlayer.useEffect.initYouTubePlayer"]);
+                                ytPlayer.on('ended', {
+                                    "FullPlayer.useEffect.initYouTubePlayer": ()=>setIsPlaying(false)
+                                }["FullPlayer.useEffect.initYouTubePlayer"]);
+                            } catch (error) {
+                                console.error('Failed to initialize YouTube player:', error);
+                            }
+                        }
+                    }
+                }["FullPlayer.useEffect.initYouTubePlayer"];
+                initYouTubePlayer();
+            }
+            return ({
+                "FullPlayer.useEffect": ()=>{
+                    if (youtubePlayerRef.current) {
+                        youtubePlayerRef.current.destroy();
+                        youtubePlayerRef.current = null;
+                    }
+                }
+            })["FullPlayer.useEffect"];
+        }
+    }["FullPlayer.useEffect"], [
+        playerType,
+        youtube,
+        youtubePlayerId,
+        muted
+    ]);
+    // Quality selection handler
+    const handleQualityChange = (quality)=>{
+        setSelectedQuality(quality);
+        if (videoSources.mp4) {
+            const selectedSource = videoSources.mp4.find((source)=>source.quality === quality);
+            if (selectedSource && !isEmbedPlayer) {
+                const currentTime = videoRef.current?.currentTime || 0;
+                setVideoSrc(selectedSource.url);
+                // Restore time after source change
+                setTimeout(()=>{
+                    if (videoRef.current) {
+                        videoRef.current.currentTime = currentTime;
+                    }
+                }, 100);
+            }
+        }
+    };
+    // Chapter highlighting
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            if (parsedChapters.length === 0) return;
+            const idx = parsedChapters.findIndex({
+                "FullPlayer.useEffect.idx": (ch)=>currentTime >= ch.start && currentTime < ch.end
+            }["FullPlayer.useEffect.idx"]);
+            setCurrentChapterIdx(idx);
+        }
+    }["FullPlayer.useEffect"], [
+        currentTime,
+        parsedChapters
+    ]);
+    // Video event listeners
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            const video = videoRef.current;
+            if (!video) return;
+            const onTimeUpdate = {
+                "FullPlayer.useEffect.onTimeUpdate": ()=>setCurrentTime(video.currentTime)
+            }["FullPlayer.useEffect.onTimeUpdate"];
+            const onLoaded = {
+                "FullPlayer.useEffect.onLoaded": ()=>setDuration(video.duration)
+            }["FullPlayer.useEffect.onLoaded"];
+            video.addEventListener('timeupdate', onTimeUpdate);
+            video.addEventListener('loadedmetadata', onLoaded);
+            return ({
+                "FullPlayer.useEffect": ()=>{
+                    video.removeEventListener('timeupdate', onTimeUpdate);
+                    video.removeEventListener('loadedmetadata', onLoaded);
+                }
+            })["FullPlayer.useEffect"];
+        }
+    }["FullPlayer.useEffect"], []);
+    // Auto-hide controls
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            if (!controlsVisible || !isPlaying) return;
+            const timeout = setTimeout({
+                "FullPlayer.useEffect.timeout": ()=>setControlsVisible(false)
+            }["FullPlayer.useEffect.timeout"], 3000);
+            return ({
+                "FullPlayer.useEffect": ()=>clearTimeout(timeout)
+            })["FullPlayer.useEffect"];
+        }
+    }["FullPlayer.useEffect"], [
+        controlsVisible,
+        isPlaying,
+        currentTime
+    ]);
+    // Show controls on interaction
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            const show = {
+                "FullPlayer.useEffect.show": ()=>setControlsVisible(true)
+            }["FullPlayer.useEffect.show"];
+            window.addEventListener('mousemove', show);
+            window.addEventListener('keydown', show);
+            return ({
+                "FullPlayer.useEffect": ()=>{
+                    window.removeEventListener('mousemove', show);
+                    window.removeEventListener('keydown', show);
+                }
+            })["FullPlayer.useEffect"];
+        }
+    }["FullPlayer.useEffect"], []);
+    // PiP support check
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            setIsPiPSupported(!!document.pictureInPictureEnabled && typeof videoRef.current?.requestPictureInPicture === 'function');
+        }
+    }["FullPlayer.useEffect"], []);
+    // Track detection
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            const checkTracks = {
+                "FullPlayer.useEffect.checkTracks": ()=>{
+                    const video = videoRef.current;
+                    if (!video) return;
+                    setHasAudioTrack(!!video.querySelector('track[kind="descriptions"]'));
+                    setHasSignTrack(!!video.querySelector('track[kind="sign"]'));
+                }
+            }["FullPlayer.useEffect.checkTracks"];
+            checkTracks();
+        }
+    }["FullPlayer.useEffect"], []);
+    // TTS availability check
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            if (!('speechSynthesis' in window)) {
+                setTtsAvailable(false);
+                setTtsError('Text-to-Speech wird von diesem Browser nicht unterstützt.');
+            } else {
+                setTtsAvailable(true);
+                setTtsError('');
+            }
+        }
+    }["FullPlayer.useEffect"], []);
+    // Audio description logic
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            if (!videoRef.current || cues.length === 0) return;
+            const video = videoRef.current;
+            let ttsUtter = null;
+            const onTimeUpdate = {
+                "FullPlayer.useEffect.onTimeUpdate": ()=>{
+                    const t = video.currentTime;
+                    const idx = cues.findIndex({
+                        "FullPlayer.useEffect.onTimeUpdate.idx": (cue)=>t >= cue.start && t <= cue.end && (audioDescMode === 'tts' && cue.type === 'description' || audioDescMode === 'tts' && cue.type === 'caption' && !cues.some({
+                                "FullPlayer.useEffect.onTimeUpdate.idx": (c)=>c.type === 'description'
+                            }["FullPlayer.useEffect.onTimeUpdate.idx"]))
+                    }["FullPlayer.useEffect.onTimeUpdate.idx"]);
+                    setCurrentCueIdx(idx);
+                    if (audioDescActive && audioDescMode === 'tts' && idx !== -1 && !ttsBusy && lastDescIdxRef.current !== idx && ttsAvailable) {
+                        setTtsBusy(true);
+                        lastDescIdxRef.current = idx;
+                        if (autoStop) video.pause();
+                        ttsUtter = new window.SpeechSynthesisUtterance(cues[idx].text);
+                        ttsUtter.voice = voices.find({
+                            "FullPlayer.useEffect.onTimeUpdate": (v)=>v.voiceURI === selectedVoice
+                        }["FullPlayer.useEffect.onTimeUpdate"]) || null;
+                        ttsUtter.pitch = pitch;
+                        ttsUtter.onend = ({
+                            "FullPlayer.useEffect.onTimeUpdate": ()=>{
+                                setTtsBusy(false);
+                                if (autoStart) video.play();
+                            }
+                        })["FullPlayer.useEffect.onTimeUpdate"];
+                        window.speechSynthesis.speak(ttsUtter);
+                    }
+                    if (idx === -1) {
+                        lastDescIdxRef.current = -1;
+                    }
+                }
+            }["FullPlayer.useEffect.onTimeUpdate"];
+            video.addEventListener('timeupdate', onTimeUpdate);
+            return ({
+                "FullPlayer.useEffect": ()=>{
+                    video.removeEventListener('timeupdate', onTimeUpdate);
+                    if (ttsUtter) window.speechSynthesis.cancel();
+                }
+            })["FullPlayer.useEffect"];
+        }
+    }["FullPlayer.useEffect"], [
+        cues,
+        audioDescActive,
+        ttsBusy,
+        voices,
+        selectedVoice,
+        pitch,
+        autoStop,
+        autoStart,
+        audioDescMode,
+        ttsAvailable
+    ]);
+    // Playback rate effect
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            if (videoRef.current) {
+                videoRef.current.playbackRate = playbackRate;
+            }
+        }
+    }["FullPlayer.useEffect"], [
+        playbackRate
+    ]);
+    // Volume effect
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            if (videoRef.current) {
+                videoRef.current.volume = volume;
+            }
+        }
+    }["FullPlayer.useEffect"], [
+        volume
+    ]);
+    // CC toggle effect
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            if (videoRef.current) {
+                const tracks = videoRef.current.textTracks;
+                for(let i = 0; i < tracks.length; i++){
+                    tracks[i].mode = showCC ? 'showing' : 'hidden';
+                }
+            }
+        }
+    }["FullPlayer.useEffect"], [
+        showCC,
+        captions
+    ]);
+    // Styles
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FullPlayer.useEffect": ()=>{
+            return (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["addPlayerStyles"])();
+        }
+    }["FullPlayer.useEffect"], []);
+    // Unified control handlers
+    const handlePlay = ()=>{
+        if (playerType === 'youtube' && youtubePlayerRef.current) {
+            youtubePlayerRef.current.play();
+        } else if (videoRef.current) {
+            videoRef.current.play();
+        }
+    };
+    const handlePause = ()=>{
+        if (playerType === 'youtube' && youtubePlayerRef.current) {
+            youtubePlayerRef.current.pause();
+        } else if (videoRef.current) {
+            videoRef.current.pause();
+        }
+    };
+    const handleSeek = (time)=>{
+        if (playerType === 'youtube' && youtubePlayerRef.current) {
+            youtubePlayerRef.current.seekTo(time);
+        } else if (videoRef.current) {
+            videoRef.current.currentTime = time;
+        }
+    };
+    // Control handlers
+    const handleFullscreen = ()=>{
+        if (videoRef.current) {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                videoRef.current.requestFullscreen();
+            }
+        }
+    };
+    const handlePiP = ()=>{
+        if (videoRef.current && videoRef.current.requestPictureInPicture) {
+            videoRef.current.requestPictureInPicture();
+        }
+    };
+    const handleSpool = (dir)=>{
+        if (!videoRef.current) return;
+        setIsSpooling(true);
+        videoRef.current.muted = true;
+        spoolingRef.current = setInterval(()=>{
+            if (!videoRef.current) return;
+            videoRef.current.currentTime += dir === 'forward' ? 0.2 : -0.2;
+        }, 20);
+    };
+    const stopSpool = ()=>{
+        setIsSpooling(false);
+        if (spoolingRef.current) clearInterval(spoolingRef.current);
+        if (videoRef.current) videoRef.current.muted = !!isMuted;
+    };
+    const handleChapterClick = (startTime)=>{
+        if (videoRef.current) videoRef.current.currentTime = startTime;
+    };
+    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
+        "aria-label": "Barrierefreier Video Player",
+        children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                style: {
+                    flex: 1,
+                    minWidth: 0,
+                    display: 'flex',
+                    flexDirection: 'column'
+                },
+                children: [
+                    playerType === 'video' || playerType === 'btag' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
+                        ref: videoRef,
+                        width: "100%",
+                        "aria-label": "Video mit Untertiteln und Beschreibung",
+                        muted: isMuted,
+                        tabIndex: 0,
+                        onPlay: ()=>setIsPlaying(true),
+                        onPause: ()=>setIsPlaying(false),
+                        autoPlay: autoplay,
+                        playsInline: true,
+                        crossOrigin: "anonymous",
+                        children: [
+                            videoSrc && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
+                                src: videoSrc,
+                                type: "video/mp4"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 398,
+                                columnNumber: 26
+                            }, this),
+                            webm && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("source", {
+                                src: webm,
+                                type: "video/webm"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 399,
+                                columnNumber: 22
+                            }, this),
+                            captions && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("track", {
+                                kind: "subtitles",
+                                src: captions,
+                                srcLang: "de",
+                                label: "Deutsch",
+                                default: true
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 400,
+                                columnNumber: 26
+                            }, this),
+                            description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("track", {
+                                kind: "descriptions",
+                                src: description,
+                                srcLang: "de",
+                                label: "Audiodeskription"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 401,
+                                columnNumber: 29
+                            }, this),
+                            chapters && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("track", {
+                                kind: "chapters",
+                                src: chapters,
+                                srcLang: "de",
+                                label: "Kapitel"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 402,
+                                columnNumber: 26
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/FullPlayer.tsx",
+                        lineNumber: 386,
+                        columnNumber: 11
+                    }, this) : null,
+                    playerType === 'youtube' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        ref: youtubeContainerRef,
+                        style: {
+                            width: '100%',
+                            height: '400px'
+                        },
+                        "aria-label": "YouTube Video Player"
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/FullPlayer.tsx",
+                        lineNumber: 408,
+                        columnNumber: 11
+                    }, this),
+                    playerType === 'btag' && videoSources.mp4 && videoSources.mp4.length > 1 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            marginTop: 8,
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 8
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
+                                htmlFor: "quality-select",
+                                children: "Qualität:"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 418,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
+                                id: "quality-select",
+                                value: selectedQuality,
+                                onChange: (e)=>handleQualityChange(e.target.value),
+                                style: {
+                                    padding: 4,
+                                    borderRadius: 4
+                                },
+                                children: videoSources.mp4.map((source)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
+                                        value: source.quality,
+                                        children: [
+                                            source.quality,
+                                            " (",
+                                            source.width,
+                                            "x",
+                                            source.height,
+                                            ")",
+                                            source.bitrate && ` - ${Math.round(source.bitrate)}kbps`
+                                        ]
+                                    }, source.quality, true, {
+                                        fileName: "[project]/src/components/FullPlayer.tsx",
+                                        lineNumber: 426,
+                                        columnNumber: 17
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 419,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/FullPlayer.tsx",
+                        lineNumber: 417,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 8,
+                            marginTop: 4,
+                            width: '100%'
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    minWidth: 48,
+                                    textAlign: 'right',
+                                    fontVariantNumeric: 'tabular-nums'
+                                },
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["formatTime"])(currentTime)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 437,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                type: "range",
+                                min: 0,
+                                max: duration || 1,
+                                step: 0.01,
+                                value: currentTime,
+                                onChange: (e)=>{
+                                    if (videoRef.current) videoRef.current.currentTime = Number(e.target.value);
+                                },
+                                "aria-label": "Fortschritt",
+                                style: {
+                                    flex: 1
+                                }
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 440,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    minWidth: 48,
+                                    textAlign: 'left',
+                                    fontVariantNumeric: 'tabular-nums'
+                                },
+                                children: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$utils$2f$videoUtils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["formatTime"])(duration)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 450,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/FullPlayer.tsx",
+                        lineNumber: 436,
+                        columnNumber: 9
+                    }, this),
+                    controlsVisible && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("nav", {
+                        ref: controlsRef,
+                        "aria-label": "Player-Steuerung",
+                        style: {
+                            marginTop: 8,
+                            display: 'flex',
+                            gap: 8,
+                            flexWrap: 'wrap',
+                            alignItems: 'center',
+                            background: 'rgba(255,255,255,0.95)',
+                            borderRadius: 4,
+                            padding: 4
+                        },
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: ()=>{
+                                    if (videoRef.current) videoRef.current.currentTime = 0;
+                                },
+                                "aria-label": "Zum Start",
+                                title: "Zum Start",
+                                children: "|◀"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 458,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: ()=>{
+                                    if (videoRef.current) videoRef.current.paused ? videoRef.current.play() : videoRef.current.pause();
+                                },
+                                "aria-label": isPlaying ? 'Pause' : 'Abspielen',
+                                title: isPlaying ? 'Pause' : 'Abspielen',
+                                children: isPlaying ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PauseIcon"], {
+                                    "aria-label": "Pause"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 461,
+                                    columnNumber: 28
+                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PlayIcon"], {
+                                    "aria-label": "Abspielen"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 461,
+                                    columnNumber: 63
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 460,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: ()=>{
+                                    if (videoRef.current) videoRef.current.currentTime = Math.max(0, videoRef.current.currentTime - 10);
+                                },
+                                onMouseDown: ()=>handleSpool('back'),
+                                onMouseUp: stopSpool,
+                                onMouseLeave: stopSpool,
+                                onTouchStart: ()=>handleSpool('back'),
+                                onTouchEnd: stopSpool,
+                                "aria-label": "10 Sekunden zurück",
+                                title: "10 Sekunden zurück",
+                                children: "◀◀"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 464,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: ()=>{
+                                    if (videoRef.current) videoRef.current.currentTime = Math.min(duration, videoRef.current.currentTime + 10);
+                                },
+                                onMouseDown: ()=>handleSpool('forward'),
+                                onMouseUp: stopSpool,
+                                onMouseLeave: stopSpool,
+                                onTouchStart: ()=>handleSpool('forward'),
+                                onTouchEnd: stopSpool,
+                                "aria-label": "10 Sekunden vor",
+                                title: "10 Sekunden vor",
+                                children: "▶▶"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 475,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: ()=>setIsMuted((m)=>!m),
+                                "aria-label": isMuted ? 'Ton an' : 'Ton aus',
+                                title: isMuted ? 'Ton an' : 'Ton aus',
+                                children: isMuted ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["UnmuteIcon"], {
+                                    "aria-label": "Ton an"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 487,
+                                    columnNumber: 26
+                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["MuteIcon"], {
+                                    "aria-label": "Ton aus"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 487,
+                                    columnNumber: 63
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 486,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 4
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["VolumeIcon"], {
+                                        "aria-label": "Lautstärke"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/FullPlayer.tsx",
+                                        lineNumber: 491,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        type: "range",
+                                        min: 0,
+                                        max: 1,
+                                        step: 0.01,
+                                        value: volume,
+                                        onChange: (e)=>setVolume(Number(e.target.value)),
+                                        "aria-label": "Lautstärke",
+                                        style: {
+                                            width: 80
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/FullPlayer.tsx",
+                                        lineNumber: 492,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 490,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: `player-btn${audioDescActive ? ' active' : ''}`,
+                                style: {
+                                    background: audioDescActive ? '#b3e5fc' : undefined
+                                },
+                                onClick: ()=>setAudioDescSettingsOpen(true),
+                                "aria-pressed": audioDescActive,
+                                "aria-label": "Audiodeskription Einstellungen",
+                                title: "Audiodeskription Einstellungen",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AudioDescIcon"], {
+                                    style: {
+                                        verticalAlign: 'middle'
+                                    },
+                                    "aria-label": "Audiodeskription"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 512,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 504,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                style: {
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    gap: 4
+                                },
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SpeedIcon"], {
+                                        style: {
+                                            verticalAlign: 'middle'
+                                        },
+                                        "aria-label": "Geschwindigkeit"
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/FullPlayer.tsx",
+                                        lineNumber: 516,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                                        type: "range",
+                                        min: 0.5,
+                                        max: 2,
+                                        step: 0.05,
+                                        value: playbackRate,
+                                        onChange: (e)=>setPlaybackRate(Number(e.target.value)),
+                                        "aria-label": "Geschwindigkeit",
+                                        style: {
+                                            width: 80
+                                        }
+                                    }, void 0, false, {
+                                        fileName: "[project]/src/components/FullPlayer.tsx",
+                                        lineNumber: 517,
+                                        columnNumber: 15
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                        style: {
+                                            minWidth: 32,
+                                            textAlign: 'center'
+                                        },
+                                        children: [
+                                            playbackRate.toFixed(2),
+                                            "x"
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/src/components/FullPlayer.tsx",
+                                        lineNumber: 527,
+                                        columnNumber: 15
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 515,
+                                columnNumber: 13
+                            }, this),
+                            captions && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: ()=>setShowCC((v)=>!v),
+                                "aria-pressed": showCC,
+                                "aria-label": "Untertitel ein-/ausblenden",
+                                title: "Untertitel ein-/ausblenden",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CCIcon"], {
+                                    style: {
+                                        verticalAlign: 'middle'
+                                    },
+                                    "aria-label": "CC"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 532,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 531,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: handleFullscreen,
+                                "aria-label": "Vollbild",
+                                title: "Vollbild",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FullscreenIcon"], {
+                                    style: {
+                                        verticalAlign: 'middle'
+                                    },
+                                    "aria-label": "Vollbild"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 537,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 536,
+                                columnNumber: 13
+                            }, this),
+                            isPiPSupported && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: handlePiP,
+                                "aria-label": "Bild-in-Bild",
+                                title: "Bild-in-Bild",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["PiPIcon"], {
+                                    style: {
+                                        verticalAlign: 'middle'
+                                    },
+                                    "aria-label": "Bild-in-Bild"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 542,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 541,
+                                columnNumber: 15
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: ()=>setShowChapters((v)=>!v),
+                                "aria-pressed": showChapters,
+                                "aria-label": "Kapitel anzeigen/verbergen",
+                                title: "Kapitel anzeigen/verbergen",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ChaptersIcon"], {
+                                    style: {
+                                        verticalAlign: 'middle'
+                                    },
+                                    "aria-label": "Kapitel"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 547,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 546,
+                                columnNumber: 13
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                className: "player-btn",
+                                onClick: ()=>setShowTranscript((v)=>!v),
+                                "aria-pressed": showTranscript,
+                                "aria-label": "Transkript anzeigen/verbergen",
+                                title: "Transkript anzeigen/verbergen",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$icons$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["TranscriptIcon"], {
+                                    style: {
+                                        verticalAlign: 'middle'
+                                    },
+                                    "aria-label": "Transkript"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/FullPlayer.tsx",
+                                    lineNumber: 551,
+                                    columnNumber: 15
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/FullPlayer.tsx",
+                                lineNumber: 550,
+                                columnNumber: 13
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/FullPlayer.tsx",
+                        lineNumber: 457,
+                        columnNumber: 11
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Transcript$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                        cues: cues,
+                        currentCueIdx: currentCueIdx,
+                        visible: showTranscript
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/FullPlayer.tsx",
+                        lineNumber: 556,
+                        columnNumber: 9
+                    }, this)
+                ]
+            }, void 0, true, {
+                fileName: "[project]/src/components/FullPlayer.tsx",
+                lineNumber: 382,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ChaptersSidebar$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                chapters: parsedChapters,
+                currentChapterIdx: currentChapterIdx,
+                onChapterClick: handleChapterClick,
+                visible: showChapters
+            }, void 0, false, {
+                fileName: "[project]/src/components/FullPlayer.tsx",
+                lineNumber: 563,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$AudioDescSettingsModal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                open: audioDescSettingsOpen,
+                onClose: ()=>setAudioDescSettingsOpen(false),
+                voices: voices,
+                selectedVoice: selectedVoice,
+                setSelectedVoice: setSelectedVoice,
+                pitch: pitch,
+                setPitch: setPitch,
+                autoStop: autoStop,
+                setAutoStop: setAutoStop,
+                autoStart: autoStart,
+                setAutoStart: setAutoStart,
+                mode: audioDescMode,
+                setMode: (m)=>setAudioDescMode(m),
+                hasAudioTrack: hasAudioTrack,
+                hasSignTrack: hasSignTrack,
+                ttsAvailable: ttsAvailable,
+                ttsError: ttsError
+            }, void 0, false, {
+                fileName: "[project]/src/components/FullPlayer.tsx",
+                lineNumber: 570,
+                columnNumber: 7
+            }, this)
+        ]
+    }, void 0, true, {
+        fileName: "[project]/src/components/FullPlayer.tsx",
+        lineNumber: 381,
+        columnNumber: 5
+    }, this);
+};
+_s(FullPlayer, "OSt0TryF0brVdlKSOiTkHxCaDxs=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useVideoData$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useTranscriptData"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useVideoData$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useChaptersData"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$useVideoData$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useVoicesData"]
+    ];
+});
+_c = FullPlayer;
+const __TURBOPACK__default__export__ = FullPlayer;
+var _c;
+__turbopack_context__.k.register(_c, "FullPlayer");
+if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
+    __turbopack_context__.k.registerExports(module, globalThis.$RefreshHelpers$);
+}
+}}),
+}]);
+
+//# sourceMappingURL=src_99133268._.js.map

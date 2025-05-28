@@ -1,0 +1,142 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: #1a1a1a;
+  color: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow: auto;
+  border: 1px solid #333;
+}
+
+.modalTitle {
+  color: #ffffff;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.select {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px;
+  border-radius: 4px;
+  background: #333;
+  color: #fff;
+  border: 1px solid #555;
+  font-size: 14px;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #007acc;
+}
+
+.rangeContainer {
+  margin-bottom: 12px;
+}
+
+.rangeInput {
+  width: 100%;
+  margin-bottom: 12px;
+  accent-color: #007acc;
+}
+
+.testButton {
+  background: #007acc;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
+  font-size: 14px;
+  transition: background 0.2s ease;
+}
+
+.testButton:hover:not(:disabled) {
+  background: #005fa3;
+}
+
+.testButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.checkboxContainer {
+  margin: 12px 0;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.checkbox {
+  margin-right: 8px;
+  accent-color: #007acc;
+}
+
+.errorMessage {
+  color: #ff6b6b;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: #2d1b1b;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.closeButton {
+  background: #007acc;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
+  transition: background 0.2s ease;
+}
+
+.closeButton:hover {
+  background: #005fa3;
+}
+
+.closeButton:focus {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
+}

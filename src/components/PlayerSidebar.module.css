@@ -1,0 +1,26 @@
+.sidebarContainer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 50px; /* Platz für Controls */
+  width: 300px;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  overflow-y: auto;
+  z-index: 20;
+  border-left: 1px solid #333;
+}
+
+@media (max-width: 768px) {
+  .sidebarContainer {
+    width: 250px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebarContainer {
+    width: 100%;
+    right: 0;
+    left: 0;
+  }
+}

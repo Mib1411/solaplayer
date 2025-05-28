@@ -1,0 +1,165 @@
+/* [project]/src/components/PlayerContainer.module.css [app-client] (css) */
+.PlayerContainer-module__IInhMG__container {
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 800px;
+  position: relative;
+  overflow: hidden;
+}
+
+.PlayerContainer-module__IInhMG__containerClickable {
+  cursor: pointer;
+}
+
+.PlayerContainer-module__IInhMG__containerDefault {
+  cursor: default;
+}
+
+.PlayerContainer-module__IInhMG__loadingOverlay {
+  z-index: 10;
+  color: #fff;
+  background: #000c;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.PlayerContainer-module__IInhMG__posterOverlay {
+  z-index: 5;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  position: absolute;
+  inset: 0;
+}
+
+.PlayerContainer-module__IInhMG__videoTypeIcon {
+  background: #ffffffe6;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  margin-bottom: 20px;
+  font-size: 48px;
+  display: flex;
+}
+
+.PlayerContainer-module__IInhMG__playButton {
+  color: #fff;
+  cursor: pointer;
+  background: #000c;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  transition: transform .2s;
+  display: flex;
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+}
+
+.PlayerContainer-module__IInhMG__playButton:hover {
+  transform: scale(1.1);
+}
+
+.PlayerContainer-module__IInhMG__videoElement {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.PlayerContainer-module__IInhMG__youtubeContainer, .PlayerContainer-module__IInhMG__vimeoContainer {
+  width: 100%;
+  height: 100%;
+}
+
+.PlayerContainer-module__IInhMG__controlBar {
+  z-index: 8;
+  background: linear-gradient(#0000, #000c);
+  padding: 20px 16px 16px;
+  transition: opacity .3s;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.PlayerContainer-module__IInhMG__controls {
+  color: #fff;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+}
+
+.PlayerContainer-module__IInhMG__controlButton {
+  color: #fff;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  transition: opacity .2s;
+}
+
+.PlayerContainer-module__IInhMG__controlButton:hover {
+  opacity: .8;
+}
+
+.PlayerContainer-module__IInhMG__playPauseButton {
+  font-size: 24px;
+}
+
+.PlayerContainer-module__IInhMG__volumeButton, .PlayerContainer-module__IInhMG__fullscreenButton {
+  font-size: 20px;
+}
+
+.PlayerContainer-module__IInhMG__timeDisplay {
+  font-variant-numeric: tabular-nums;
+  min-width: 100px;
+  font-size: 14px;
+}
+
+.PlayerContainer-module__IInhMG__spacer {
+  flex: 1;
+}
+
+@media (width <= 768px) {
+  .PlayerContainer-module__IInhMG__container {
+    max-width: 100%;
+  }
+
+  .PlayerContainer-module__IInhMG__videoTypeIcon {
+    width: 80px;
+    height: 80px;
+    font-size: 32px;
+  }
+
+  .PlayerContainer-module__IInhMG__playButton {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .PlayerContainer-module__IInhMG__controls {
+    gap: 12px;
+  }
+
+  .PlayerContainer-module__IInhMG__timeDisplay {
+    min-width: 80px;
+    font-size: 12px;
+  }
+}
+
+
+/*# sourceMappingURL=src_components_PlayerContainer_module_c0b61b67.css.map*/
