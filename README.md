@@ -125,7 +125,7 @@ WcagPlayer (Haupt-Component)
 ### Hook-System
 
 ```
-useMediaPlayer     → Core Player State
+usehtmlPlayer     → Core Player State
 usePlayerUI        → UI State Management  
 useVideoSources    → Video Source Logic
 usePlayerControls  → Control Actions (Full)

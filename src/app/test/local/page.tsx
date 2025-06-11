@@ -36,7 +36,7 @@ export default function LocalVideoTest() {
     <div style={{ maxWidth: '1200px', margin: 'auto', padding: '24px' }}>
         <WcagPlayer
           playerMode="extended"
-          mp4="/videos/sample.mp4"
+          mp4={['/videos/SampleVideo_md.mp4','/videos/SampleVideo_sd.mp4']}
           captionsUrl="/videos/sample_captions.vtt"
           descriptionsUrl="/videos/sample_description.vtt"
           poster="/videos/poster.jpg"

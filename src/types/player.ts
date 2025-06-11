@@ -12,19 +12,37 @@ export interface FullPlayerProps {
   muted?: boolean;
 }
 
-export interface TranscriptCue {
-  id?: string; // Optional ID for easier reference
+export interface CaptionCue {
+  id: string;
   startTime: number;
   endTime: number;
   text: string;
-  type?: 'caption' | 'description';
+}
+
+export interface TranscriptCue {
+  id: string;
+  startTime: number;
+  endTime: number;
+  text: string;
+  speaker?: string;
+  type?: 'speech' | 'sound' | 'music' | 'description';
 }
 
 export interface Chapter {
-  id?: string; // Optional ID for easier reference
-  startTime: number;
-  endTime: number;
+  id: string;
   title: string;
+  startTime: number;
+  endTime?: number;
+  description?: string;
+  thumbnail?: string;
+}
+
+// ✅ PARSED CONTENT INTERFACE:
+export interface ParsedContent {
+  chapters: Chapter[];
+  captions: CaptionCue[];
+  descriptions: TranscriptCue[];
+  transcript: TranscriptCue[];
 }
 
 export interface VideoQuality {
@@ -258,7 +276,7 @@ export type PlayerStateWithActions = PlayerState & PlayerActions;
 // WCAG Player Types
 export interface WcagPlayerProps {
   mp4?: string | string[];
-  webm?: string | string[];
+  webm?: string[];
   youtube?: string;
   vimeo?: string;
   btag?: string;

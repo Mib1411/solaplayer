@@ -4,8 +4,22 @@
  */
 
 import { useCallback, useEffect } from 'react';
+import { usePlayer } from '../../PlayerProvider';
+
+export interface AccessibilityActions {
+  announceToScreenReader?: (message: string, priority?: 'polite' | 'assertive') => void;
+  manageFocus?: (selector: string) => void;
+  skipToContent?: () => void;
+  focusPlayer?: () => void;
+  handlePlayerKeyboard?: () => any;
+  enabled?: boolean;
+  playerMode?: 'base' | 'extended';
+}
 
 interface UseAccessibilityProps {
+  playerMode?: 'base' | 'extended';
+  enabled?: boolean;
+  videoRef?: React.RefObject<HTMLVideoElement>;
   onSpacePress?: () => void;
   onLeftArrow?: () => void;
   onRightArrow?: () => void;
@@ -17,11 +31,13 @@ interface UseAccessibilityProps {
   onF?: () => void;
   onC?: () => void;
   onT?: () => void;
-  enabled?: boolean;
   preventDefaultKeys?: string[];
 }
 
 export const useAccessibility = ({
+  playerMode = 'base',
+  enabled = true,
+  videoRef,
   onSpacePress,
   onLeftArrow,
   onRightArrow,
@@ -33,12 +49,23 @@ export const useAccessibility = ({
   onF,
   onC,
   onT,
-  enabled = true,
   preventDefaultKeys = ['Space', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown']
-}: UseAccessibilityProps) => {
+}: UseAccessibilityProps): AccessibilityActions => {
+  
+  // ✅ CONTEXT NUTZEN:
+  const { videoRef: contextVideoRef } = usePlayer();
+  
+  // ✅ USE CONTEXT VIDEO REF IF NO LOCAL ONE PROVIDED:
+  const actualVideoRef = videoRef || contextVideoRef;
   
   const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (!enabled) return;
+    
+    // Don't handle keys if user is typing in an input
+    const target = event.target as HTMLElement;
+    if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable) {
+      return;
+    }
     
     // Prevent default for specified keys
     if (preventDefaultKeys.includes(event.code)) {
@@ -122,7 +149,9 @@ export const useAccessibility = ({
     
     // Remove after announcement
     setTimeout(() => {
-      document.body.removeChild(announcement);
+      if (document.body.contains(announcement)) {
+        document.body.removeChild(announcement);
+      }
     }, 1000);
   }, []);
 
@@ -143,9 +172,44 @@ export const useAccessibility = ({
     }
   }, []);
 
+  // Focus Player Helper
+  const focusPlayer = useCallback(() => {
+    if (actualVideoRef?.current) {
+      actualVideoRef.current.focus();
+    } else {
+      const playerElement = document.querySelector('.wcag-player-container') as HTMLElement;
+      if (playerElement) {
+        playerElement.focus();
+      }
+    }
+  }, [actualVideoRef]);
+
+  // Keyboard Navigation Helpers
+  const handlePlayerKeyboard = useCallback(() => {
+    return {
+      playPause: onSpacePress,
+      seekBackward: onLeftArrow,
+      seekForward: onRightArrow,
+      volumeUp: onUpArrow,
+      volumeDown: onDownArrow,
+      toggleMute: onM,
+      toggleFullscreen: onF,
+      toggleCaptions: onC,
+      toggleTranscript: onT,
+      closeModals: onEscape
+    };
+  }, [onSpacePress, onLeftArrow, onRightArrow, onUpArrow, onDownArrow, onM, onF, onC, onT, onEscape]);
+
+  // ✅ CONDITIONAL RETURN:
+  if (!enabled) return {};
+
   return {
     announceToScreenReader,
     manageFocus,
-    skipToContent
+    skipToContent,
+    focusPlayer,
+    handlePlayerKeyboard,
+    enabled,
+    playerMode
   };
 };

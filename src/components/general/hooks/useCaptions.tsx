@@ -1,85 +1,134 @@
-import { useCallback, useEffect, useState } from 'react';
-import { usePlayer } from '../../PlayerProvider';
+import { useCallback, useState, useEffect } from 'react';
 import { CONFIG } from '../config/playerConfig';
-import { TranscriptCue } from '@/types/player';
+import { CaptionCue } from '../../../types/player';
+import { usePlayer } from '../../PlayerProvider'; // ✅ CONTEXT NUTZEN
 
 export interface CaptionsActions {
   handleToggleCC?: () => void;
   showCC?: boolean;
   hasCC?: boolean;
-  currentCue?: TranscriptCue | null;
-  currentCueIndex?: number;
+  captionsText?: string;
+  currentCue?: CaptionCue | null;
   currentCueIdx?: number;
-  setCurrentCueIdx?: (idx: number) => void;
+  allCues?: CaptionCue[];
+  goToNextCue?: () => void;
+  goToPrevCue?: () => void;
+  goToCue?: (index: number) => void;
+  updateCurrentCue?: (currentTime: number) => void;
+  searchInCaptions?: (query: string) => CaptionCue[];
+  fontSize?: number;
+  setFontSize?: (size: number) => void;
+  captionStyle?: 'default' | 'black' | 'white' | 'yellow';
+  setCaptionStyle?: (style: string) => void;
 }
 
 export const useCaptions = (
-  captionsUrl?: string,
   playerMode: 'base' | 'extended' = 'base'
 ): CaptionsActions => {
   
-  const { parsedContent, loadCaptions, mediaPlayer, ui } = usePlayer();
+  // ✅ CONTEXT NUTZEN:
+  const { parsedContent, ui, htmlPlayer } = usePlayer();
   
-  // ✅ CONFIG CHECK:
-  const captionsConfig = CONFIG.features.captions[playerMode];
-  const isEnabled = captionsConfig.enabled && !!captionsUrl;
+  // ✅ LOKALE STATES:
+  const [captionsText, setCaptionsText] = useState('');
+  const [currentCue, setCurrentCue] = useState<CaptionCue | null>(null);
+  const [currentCueIdx, setCurrentCueIdx] = useState<number>(-1);
+  const [fontSize, setFontSize] = useState(16);
+  const [captionStyle, setCaptionStyle] = useState<'default' | 'black' | 'white' | 'yellow'>('default');
 
-  const [currentCueIdx, setCurrentCueIdx] = useState(-1);
+  // ✅ CONFIG CHECKS:
+  const captionsConfig = CONFIG.features.captions?.[playerMode] || { enabled: false };
 
-  if (!isEnabled) {
-    return {};
-  }
+  // ✅ GET DATA FROM CONTEXT:
+  const allCues = parsedContent.captions || [];
+  const hasCC = allCues.length > 0;
 
-  // ✅ LOAD CAPTIONS:
-  useEffect(() => {
-    if (!captionsUrl) return;
-    
-    async function preloadCaptions() {
-      try {
-        await loadCaptions(captionsUrl!);
-      } catch (error) {
-        console.error('Error loading captions:', error);
-      }
-    }
-    
-    preloadCaptions();
-  }, [captionsUrl, loadCaptions]);
-
-  // ✅ FIND CURRENT CUE:
-  const currentCueIndex = parsedContent.captions?.findIndex((cue, idx) => {
-    const nextCue = parsedContent.captions![idx + 1];
-    return mediaPlayer.currentTime >= cue.startTime && 
-           (!nextCue || mediaPlayer.currentTime < nextCue.startTime);
-  }) ?? -1;
-
-  const currentCue = currentCueIndex >= 0 ? parsedContent.captions![currentCueIndex] : null;
-
-  // ✅ UPDATE LOCAL INDEX:
-  useEffect(() => {
-    if (currentCueIndex !== currentCueIdx) {
-      setCurrentCueIdx(currentCueIndex);
-    }
-  }, [currentCueIndex, currentCueIdx]);
-
+  // ✅ TOGGLE CC (UPDATES CONTEXT):
   const handleToggleCC = useCallback(() => {
+    if (!captionsConfig.enabled) return;
     ui.setShowCC(!ui.showCC);
-  }, [ui]);
+  }, [captionsConfig.enabled, ui]);
+
+  // ✅ CUE NAVIGATION:
+  const goToNextCue = useCallback(() => {
+    if (!captionsConfig.enabled || currentCueIdx >= allCues.length - 1) return;
+    
+    const nextIdx = currentCueIdx + 1;
+    setCurrentCueIdx(nextIdx);
+    setCurrentCue(allCues[nextIdx]);
+    return allCues[nextIdx].startTime;
+  }, [captionsConfig.enabled, currentCueIdx, allCues]);
+
+  const goToPrevCue = useCallback(() => {
+    if (!captionsConfig.enabled || currentCueIdx <= 0) return;
+    
+    const prevIdx = currentCueIdx - 1;
+    setCurrentCueIdx(prevIdx);
+    setCurrentCue(allCues[prevIdx]);
+    return allCues[prevIdx].startTime;
+  }, [captionsConfig.enabled, currentCueIdx, allCues]);
+
+  const goToCue = useCallback((index: number) => {
+    if (!captionsConfig.enabled || index < 0 || index >= allCues.length) return;
+    
+    setCurrentCueIdx(index);
+    setCurrentCue(allCues[index]);
+    return allCues[index].startTime;
+  }, [captionsConfig.enabled, allCues]);
+
+  // ✅ TIME UPDATE - FIND CURRENT CUE:
+  const updateCurrentCue = useCallback((currentTime: number) => {
+    if (!captionsConfig.enabled || allCues.length === 0) return;
+    
+    const cueIndex = allCues.findIndex(cue => 
+      currentTime >= cue.startTime && currentTime <= cue.endTime
+    );
+    
+    if (cueIndex !== -1 && cueIndex !== currentCueIdx) {
+      setCurrentCueIdx(cueIndex);
+      setCurrentCue(allCues[cueIndex]);
+      setCaptionsText(allCues[cueIndex].text);
+    } else if (cueIndex === -1 && currentCue !== null) {
+      setCurrentCue(null);
+      setCurrentCueIdx(-1);
+      setCaptionsText('');
+    }
+  }, [captionsConfig.enabled, allCues, currentCueIdx, currentCue]);
+
+  // ✅ AUTO-UPDATE ON TIME CHANGE:
+  useEffect(() => {
+    updateCurrentCue(htmlPlayer.currentTime);
+  }, [htmlPlayer.currentTime, updateCurrentCue]);
+
+  // ✅ SEARCH IN CAPTIONS:
+  const searchInCaptions = useCallback((query: string): CaptionCue[] => {
+    if (!captionsConfig.enabled || !query) return [];
+    
+    return allCues.filter(cue => 
+      cue.text.toLowerCase().includes(query.toLowerCase())
+    );
+  }, [captionsConfig.enabled, allCues]);
 
   // ✅ CONDITIONAL RETURN:
   const result: CaptionsActions = {};
-  const components = captionsConfig.components || {};
 
-  if (components.CaptionsButton) {
+  if (captionsConfig.enabled) {
     result.handleToggleCC = handleToggleCC;
-    result.showCC = ui.showCC;
-  }
-
-  if (components.CaptionsOverlay) {
-    result.hasCC = (parsedContent.captions?.length ?? 0) > 0;
+    result.showCC = ui.showCC; // ✅ FROM CONTEXT
+    result.hasCC = hasCC;
+    result.captionsText = captionsText;
     result.currentCue = currentCue;
-    result.currentCueIndex = currentCueIndex;
     result.currentCueIdx = currentCueIdx;
-    result.setCurrentCueIdx = setCurrentCueIdx;
+    result.allCues = allCues;
+    result.goToNextCue = goToNextCue;
+    result.goToPrevCue = goToPrevCue;
+    result.goToCue = goToCue;
+    result.updateCurrentCue = updateCurrentCue;
+    result.searchInCaptions = searchInCaptions;
+    result.fontSize = fontSize;
+    result.setFontSize = setFontSize;
+    result.captionStyle = captionStyle;
+  
   }
 
   return result;

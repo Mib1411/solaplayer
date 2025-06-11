@@ -1,222 +1,171 @@
 "use client"
 
-import React, { useMemo, useEffect, useRef, useState } from 'react';
-import { RenderArea } from '../components/general/RenderArea';
+import React, { useMemo, useEffect, useRef } from 'react';
+import { RenderArea } from './general/RenderArea';
 import { useScreenReaderAnnouncements } from '../hooks/useScreenReaderAnnouncements';
-import { useVideoPlayer } from './general/hooks/useVideoPlayer';
 import { PlayIcon } from '../utils/icons';
 import { WcagPlayerProps } from '../types/player';
 import { ARIA_LABELS, CSS_CLASSES, PLAYER_LABELS } from '../utils/constants';
-import { extractBundestagId, extractBundestagVideo, extractVimeoId, extractYouTubeId } from '../utils/videoExtractors';
 import { PlayerProvider, usePlayer } from './PlayerProvider';
-import { YouTubePlayerWrapper } from './general/players/youtubePlayer'; // ✅ PLAYER FOLDER
-import { VimeoPlayerWrapper } from './general/players/vimeoPlayer';     // ✅ PLAYER FOLDER
+import { CONFIG } from './general/config/playerConfig';
+
+// ✅ HOOKS IMPORTIEREN:
+import { useCaptions } from './general/hooks/useCaptions';
+import { useDescriptions } from './general/hooks/useDescriptions';
+import { useChapters } from './general/hooks/useChapters';
+import { usePlayerBasics } from './general/hooks/usePlayerBasics';
+import { usePlayerExtensions } from './general/hooks/usePlayerExtensions';
+import { useAccessibility } from './general/hooks/useAccessibility';
+import { useVideoSources } from './general/hooks/useVideoSources';
+
 import '../styles/player-base.css';
 import Image from 'next/image';
 
-
-// Inner Component that uses the Provider context
 const WcagPlayerInner: React.FC<WcagPlayerProps> = ({ 
   mp4, webm, youtube, vimeo, btag, poster, captionsUrl, descriptionsUrl, chaptersUrl, playerMode = 'base', link, onVideoOpen, videoId
 }) => {
   const videoRef = useRef<HTMLVideoElement>(null!);
   const youtubeContainerRef = useRef<HTMLDivElement>(null!);
   const vimeoContainerRef = useRef<HTMLDivElement>(null!);
-  const [showPopup, setShowPopup] = useState(false);
   
-  // ✅ NUTZE NEUE HOOK STRUCTURE:
+  // ✅ CONTEXT NUTZEN:
   const { 
-    mediaPlayer,
-    playerBasicsActions,    // ✅ SEPARATE!
-    captionsActions,
-    descriptionsActions,
-    chaptersActions,
-    extensionsActions,
-    accessibilityActions
+    htmlPlayer,
+    ui,
+    availableContent,
+    setVideoRef,
+    setPlayerType,
+    setAvailableContent
   } = usePlayer();
   
-  // ✅ videoRef an Provider weiterleiten:
+  // ✅ RICHTIGE CONFIG CHECKS NACH TATSÄCHLICHER STRUKTUR:
+  const playOnThumbnailSetting = CONFIG.settings.playOnThumbnail[playerMode];
+  
+  // ✅ HOOKS AUFRUFEN:
+  const basicsActions = usePlayerBasics(playerMode);
+  const captionsActions = useCaptions(playerMode);
+  const descriptionsActions = useDescriptions(playerMode);
+  const chaptersActions = useChapters(playerMode);
+  const extensionsActions = usePlayerExtensions(playerMode);
+  const videoSources = useVideoSources();
+
+  // ✅ AVAILABLE CONTENT RICHTIG SETZEN:
+  useEffect(() => {
+    const content = {
+      hasCaptions: !!captionsUrl,
+      hasChapters: !!chaptersUrl,
+      hasDescriptions: !!descriptionsUrl,
+      hasPoster: !!poster, // ✅ NUR ÜBERGEBENES POSTER
+      hasQualities: false, // ✅ HINZUFÜGEN - wird von useVideoSources überschrieben
+      
+      // URLs nur wenn vorhanden:
+      ...(captionsUrl && { captionsUrl }),
+      ...(chaptersUrl && { chaptersUrl }),
+      ...(descriptionsUrl && { descriptionsUrl }),
+      ...(poster && { posterUrl: poster }),
+      
+      // ✅ SOURCES ARRAY HINZUFÜGEN:
+      sources: [] // ✅ HINZUFÜGEN - wird von useVideoSources gefüllt
+    };
+    
+    setAvailableContent(content);
+  }, [captionsUrl, descriptionsUrl, chaptersUrl, poster, setAvailableContent]);
+
+  // ✅ ACCESSIBILITY HOOK:
+  const accessibilityActions = useAccessibility({
+    playerMode,
+    enabled: true,
+    videoRef,
+    onSpacePress: basicsActions.handlePlayPause,
+    onLeftArrow: () => basicsActions.handleSeekBackward?.(10),
+    onRightArrow: () => basicsActions.handleSeekForward?.(10),
+    onUpArrow: basicsActions.handleVolumeUp,
+    onDownArrow: basicsActions.handleVolumeDown,
+    onM: basicsActions.handleMute,
+    onF: extensionsActions.handleToggleFullscreen,
+    onC: captionsActions.handleToggleCC,
+    onT: descriptionsActions.handleToggleTranscript,
+    onEscape: extensionsActions.handleCloseModals
+  });
+  
+  // ✅ VIDEO REF AN PROVIDER WEITERLEITEN:
   useEffect(() => {
     if (videoRef.current) {
       setVideoRef(videoRef);
     }
-  }, [videoRef.current, setVideoRef]);
+  }, [setVideoRef]);
 
-  const videoPlayer = useVideoPlayer();
+  // ✅ VIDEO SOURCE SETUP - MIT CONFIG CHECKS UND KORREKTEN PLAYER TYPES:
+  useEffect(() => {
+    if (mp4 && CONFIG.videoTypes.mp4) {
+      setPlayerType('html5'); // ✅ NICHT 'html5' SONDERN 'html'
+      videoSources.processVideoSources?.(mp4, 'mp4');
+      
+    } else if (webm && CONFIG.videoTypes.webm) {
+      setPlayerType('html5'); // ✅ NICHT 'html5' SONDERN 'html'
+      videoSources.processVideoSources?.(webm, 'webm');
+      
+    } else if (youtube && CONFIG.videoTypes.youtube) {
+      setPlayerType('youtube'); // ✅ KORREKT
+      videoSources.processVideoSources?.(youtube, 'youtube');
+      
+    } else if (vimeo && CONFIG.videoTypes.vimeo) {
+      setPlayerType('vimeo'); // ✅ KORREKT
+      videoSources.processVideoSources?.(vimeo, 'vimeo');
+      
+    } else if (btag && CONFIG.videoTypes.bundestag) {
+      setPlayerType('html5'); // ✅ BUNDESTAG → HTML
+      videoSources.processVideoSources?.(btag, 'bundestag');
+      
+    } else {
+      // ✅ FALLBACK: KEIN UNTERSTÜTZTER VIDEO TYP
+      console.warn('No supported video type provided or video type disabled in config');
+      htmlPlayer.setIsLoading(false);
+      return;
+    }
 
-  // ✅ ENHANCED PLAYER CONTROLS - KOMBINIERT ALLE HOOKS:
+    htmlPlayer.setIsLoading(false);
+  }, [mp4, webm, youtube, vimeo, btag, videoSources, htmlPlayer, setPlayerType]);
+
+  const { announceChange } = useScreenReaderAnnouncements();
+
+  // ✅ PLAYER CONTROLS KOMBINIEREN:
   const playerControls = useMemo(() => ({
-    // ✅ MEDIA PLAYER (nur global states + seek):
-    ...mediaPlayer,
-    
-    // ✅ PLAYER BASICS (alle handler):
-    ...playerBasicsActions,
-    
-    // ✅ FEATURES:
+    ...htmlPlayer,
+    ...basicsActions,
     ...captionsActions,
     ...descriptionsActions,
     ...chaptersActions,
     ...extensionsActions,
     ...accessibilityActions,
+  }), [htmlPlayer, basicsActions, captionsActions, descriptionsActions, chaptersActions, extensionsActions, accessibilityActions]);
 
-  }), [mediaPlayer, playerBasicsActions, captionsActions, descriptionsActions, chaptersActions, extensionsActions, accessibilityActions]);
-
-  // Video Source Setup mit PLAYER TYPE DETECTION
-  useEffect(() => {
-    console.log('🔍 WcagPlayer Props:', {
-      mp4, youtube, vimeo, btag,
-      captionsUrl, descriptionsUrl, chaptersUrl
-    });
-    
-    if (mp4) {
-      setPlayerType('html5');
-      videoSources.setPlayerType('video');
-      videoSources.setVideoSrc(typeof mp4 === 'string' ? mp4 : mp4[0]);
-      
-    } else if (youtube) {
-      setPlayerType('youtube');
-      videoSources.setPlayerType('youtube');
-      const youtubeId = extractYouTubeId(youtube);
-      if (youtubeId) {
-        videoSources.setVideoSrc(youtubeId);
-        videoSources.generateThumbnail('youtube', youtubeId);
-
-        // ✅ INITIALIZE YOUTUBE PLAYER:
-        setTimeout(() => {
-          const container = youtubeContainerRef.current;
-          if (container) {
-            container.id = `youtube-player-${Date.now()}`;
-            const ytPlayer = new YouTubePlayerWrapper(container.id, youtubeId);
-            
-            ytPlayer.init().then(() => {
-              setYoutubePlayer(ytPlayer);
-              
-              // Connect events
-              ytPlayer.on('play', () => mediaPlayer.setIsPlaying(true));
-              ytPlayer.on('pause', () => mediaPlayer.setIsPlaying(false));
-              ytPlayer.on('timeupdate', (data: any) => {
-                mediaPlayer.setCurrentTime(data.currentTime);
-                if (data.duration) mediaPlayer.setDuration(data.duration);
-              });
-            }).catch(console.error);
-          }
-        }, 100);
-      }
-      
-    } else if (vimeo) {
-      setPlayerType('vimeo');
-      videoSources.setPlayerType('vimeo');
-      const vimeoId = extractVimeoId(vimeo);
-      if (vimeoId) {
-        videoSources.setVideoSrc(vimeoId);
-        videoSources.generateThumbnail('vimeo', vimeoId);
-
-        // ✅ INITIALIZE VIMEO PLAYER:
-        setTimeout(() => {
-          const container = vimeoContainerRef.current;
-          if (container) {
-            container.id = `vimeo-player-${Date.now()}`;
-            const vmPlayer = new VimeoPlayerWrapper(container.id, vimeoId);
-            
-            vmPlayer.init().then(() => {
-              setVimeoPlayer(vmPlayer);
-              
-              // Connect events
-              vmPlayer.on('play', () => mediaPlayer.setIsPlaying(true));
-              vmPlayer.on('pause', () => mediaPlayer.setIsPlaying(false));
-              vmPlayer.on('timeupdate', (data: any) => {
-                mediaPlayer.setCurrentTime(data.currentTime);
-                if (data.duration) mediaPlayer.setDuration(data.duration);
-              });
-            }).catch(console.error);
-          }
-        }, 100);
-      }
-      
-    } else if (btag) {
-      setPlayerType('html5');
-      const bundestagId = extractBundestagId(btag);
-      if (bundestagId) {
-        extractBundestagVideo(btag).then(sources => {
-          videoSources.setVideoSources(sources);
-          if (sources.mp4?.[0]) {
-            videoSources.setVideoSrc(sources.mp4[0].url);
-          }
-        }).catch(console.error);
-      }
-    }
-
-    mediaPlayer.setIsLoading(false);
-  }, [mp4, youtube, vimeo, btag, videoSources, mediaPlayer, setPlayerType, setYoutubePlayer, setVimeoPlayer]);
-
-  const { announceChange } = useScreenReaderAnnouncements();
-
-  const handleContainerClick = () => {
-    if (!mediaPlayer.isPlaying && !mediaPlayer.hasStartedOnce) {
-      playerControls.handlePlay?.();
-      mediaPlayer.setControlsVisible(true);
-      mediaPlayer.setHasStartedOnce(true);
-    }
-  };
-
-  useEffect(() => {
-    if (playerMode === 'base') {
-      mediaPlayer.setControlsVisible(true);
-    } else {
-      mediaPlayer.setControlsVisible(mediaPlayer.hasStartedOnce);
-    }
-  }, [playerMode, mediaPlayer]);
-
-  const handleFullPlayerClick = () => {
-    if (link) {
-      window.open(link, '_self');
-    } else {
-      setShowPopup(true);
-    }
-  };
-
-  // ✅ availableContent MIT NEUEN HOOKS:
-  const availableContent = useMemo(() => ({
-    captionsUrl: captionsUrl,
-    descriptionsUrl: descriptionsUrl, 
-    chaptersUrl: chaptersUrl,
-    hasCC: captionsActions.hasCC || false,
-    hasTranscript: descriptionsActions.hasTranscript || false,
-    hasChapters: chaptersActions.hasChapters || false,
-    hasAudioDesc: descriptionsActions.hasAudioDesc || false
-  }), [captionsUrl, descriptionsUrl, chaptersUrl, captionsActions, descriptionsActions, chaptersActions]);
-
-  // ✅ playerState MIT NEUEN HOOKS:
+  // ✅ PLAYER STATE:
   const playerState = useMemo(() => ({
-    // Media State
-    isPlaying: mediaPlayer.isPlaying,
-    currentTime: mediaPlayer.currentTime,
-    duration: mediaPlayer.duration,
-    volume: mediaPlayer.volume,
-    isMuted: mediaPlayer.isMuted,
-    playbackRate: mediaPlayer.playbackRate,
-    isLoading: mediaPlayer.isLoading,
-    hasStartedOnce: mediaPlayer.hasStartedOnce,
-
-    // UI State aus NEUEN HOOKS:
+    isPlaying: htmlPlayer.isPlaying,
+    currentTime: htmlPlayer.currentTime,
+    duration: htmlPlayer.duration,
+    isLoading: htmlPlayer.isLoading,
+    volume: basicsActions.volume,
+    isMuted: basicsActions.isMuted,
+    playbackRate: basicsActions.playbackRate,
     ui: {
-      showTranscript: descriptionsActions.showTranscript || false,
-      showCC: captionsActions.showCC || false,
-      showChapters: chaptersActions.showChapters || false,
-      settingsOpen: extensionsActions.settingsOpen || false,
-      infoOpen: extensionsActions.infoOpen || false,
-      audioDescActive: descriptionsActions.audioDescActive || false,
-      controlsVisible: basicsActions.controlsVisible,
+      hasStartedOnce: ui.hasStartedOnce,
+      controlsVisible: ui.controlsVisible,
+      showTranscript: ui.showTranscript,
+      showCC: ui.showCC,
+      showChapters: ui.showChapters,
+      settingsOpen: ui.settingsOpen,
+      infoOpen: ui.infoOpen,
+      audioDescActive: ui.audioDescActive,
     },
-    
-    // Video Sources
     videoSources: {
       playerType: videoSources.playerType,
       videoSrc: videoSources.videoSrc,
       thumbnail: videoSources.thumbnail,
       availableQualities: videoSources.availableQualities
     }
-  }), [mediaPlayer, basicsActions, videoSources, captionsActions, descriptionsActions, chaptersActions, extensionsActions]);
+  }), [htmlPlayer, basicsActions, ui, videoSources]);
 
   return (
     <>
@@ -224,7 +173,6 @@ const WcagPlayerInner: React.FC<WcagPlayerProps> = ({
         role={ARIA_LABELS.APPLICATION}
         aria-label={PLAYER_LABELS.VIDEO_PLAYER}
         className={`wcag-player-container player-mode-${playerMode}`}
-        onClick={handleContainerClick}
       >
         <div id="player-instructions" className={CSS_CLASSES.SCREEN_READER_ONLY}>
           {PLAYER_LABELS.KEYBOARD_INSTRUCTIONS}
@@ -249,17 +197,31 @@ const WcagPlayerInner: React.FC<WcagPlayerProps> = ({
           <div className="player-area">
             
             {/* VIDEO ELEMENT */}
-            {videoSources.playerType === 'video' && videoSources.videoSrc && (
+            {videoSources.playerType === 'html5' && availableContent?.sources && (
               <video
                 ref={videoRef}
-                src={videoSources.videoSrc}
                 poster={poster}
                 className="video-element"
                 controls={false}
                 playsInline
                 autoPlay={false}
-                muted={mediaPlayer.isMuted}
-              />
+                muted={basicsActions.isMuted}
+              >
+                {/* ✅ SOURCES AUS availableContent.sources: */}
+                {availableContent.sources.map((source, index) => (
+                  <source 
+                    key={index}
+                    src={source.url} 
+                    type={`video/${source.url.split('.').pop()}`}
+                    data-quality={source.quality}
+                    data-width={source.width}
+                    data-height={source.height}
+                  />
+                ))}
+                
+                {/* ✅ FALLBACK: */}
+                Ihr Browser unterstützt das Video-Element nicht.
+              </video>
             )}
 
             {/* YOUTUBE CONTAINER */}
@@ -276,68 +238,94 @@ const WcagPlayerInner: React.FC<WcagPlayerProps> = ({
             <div className="overlay-area">
               
               {/* POSTER AREA */}
-              {!mediaPlayer.hasStartedOnce && !mediaPlayer.isLoading && (
+              {!ui.hasStartedOnce && !htmlPlayer.isLoading && (
                 <div className="poster-area">
-                  {(poster || videoSources.thumbnail) && (
+                  
+                  {/* ✅ POSTER: NUR ÜBERGEBENES IMAGE */}
+                  {poster && (
                     <Image 
-                      src={poster || videoSources.thumbnail || ''} 
-                      alt="Video Thumbnail"
+                      src={poster} 
+                      alt="Video Poster"
                       className="poster-image"
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       priority
                     />
                   )}
-                  <div className="play-button-large" onClick={handleContainerClick}>
-                    <PlayIcon size={48} />
-                  </div>
+                  
+                  {/* ✅ YOUTUBE/VIMEO THUMBNAIL: WENN KEIN POSTER */}
+                  {!poster && videoSources.thumbnail && (videoSources.playerType === 'youtube' || videoSources.playerType === 'vimeo') && (
+                    <Image 
+                      src={videoSources.thumbnail} 
+                      alt="Video Thumbnail"
+                      className="thumbnail-image"
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  )}
+                  
+                  {/* ✅ HTML BLURRY OVERLAY: WENN KEIN POSTER */}
+                  {!poster && videoSources.playerType === 'html5' && ( // ✅ 'video' → 'html'
+                    <div className="blurry-overlay" />
+                  )}
+                  
+                  {/* ✅ PLAY BUTTON AUS SETTING */}
+                  {playOnThumbnailSetting && (
+                    <button 
+                      className="play-button-large"
+                      onClick={basicsActions.handlePlay}
+                      aria-label="Video abspielen"
+                    >
+                      <PlayIcon size={48} />
+                    </button>
+                  )}
                 </div>
               )}
 
               {/* LOADING OVERLAY */}
-              {mediaPlayer.isLoading && (
+              {htmlPlayer.isLoading && (
                 <div className="loading-overlay">
                   <div>Lädt...</div>
                 </div>
               )}
 
               {/* CONTROLS AREA */}
-                <div className={`controls-area ${mediaPlayer.controlsVisible ? 'controls-visible' : 'controls-hidden'}`}>
-                  <div className="controls-top">
+              <div className={`controls-area ${ui.controlsVisible ? 'controls-visible' : 'controls-hidden'}`}>
+                <div className="controls-top">
+                  <RenderArea
+                    playerMode={playerMode}
+                    area="controls"
+                    subArea="top"
+                    playerState={playerState}
+                    playerControls={playerControls}
+                    availableContent={availableContent}
+                  />
+                </div>
+
+                <div className="controls-bottom">
+                  <div className="controls-left">
                     <RenderArea
                       playerMode={playerMode}
                       area="controls"
-                      subArea="top"
+                      subArea="left"
                       playerState={playerState}
                       playerControls={playerControls}
                       availableContent={availableContent}
                     />
                   </div>
-
-                  <div className="controls-bottom">
-                    <div className="controls-left">
-                      <RenderArea
-                        playerMode={playerMode}
-                        area="controls"
-                        subArea="left"
-                        playerState={playerState}
-                        playerControls={playerControls}
-                        availableContent={availableContent}
-                      />
-                    </div>
-                
-                    <div className="controls-right">
-                      <RenderArea
-                        playerMode={playerMode}
-                        area="controls"
-                        subArea="right"
-                        playerState={playerState}
-                        playerControls={playerControls}
-                        availableContent={availableContent}
-                      />
-                    </div>
+              
+                  <div className="controls-right">
+                    <RenderArea
+                      playerMode={playerMode}
+                      area="controls"
+                      subArea="right"
+                      playerState={playerState}
+                      playerControls={playerControls}
+                      availableContent={availableContent}
+                    />
                   </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
@@ -358,9 +346,8 @@ const WcagPlayerInner: React.FC<WcagPlayerProps> = ({
       </div>
 
       {/* MODAL OVERLAY */}
-      {(showPopup || playerState.ui.settingsOpen || playerState.ui.infoOpen) && (
+      {(ui.settingsOpen || ui.infoOpen) && (
         <div className="modal-overlay" onClick={() => {
-          setShowPopup(false);
           extensionsActions.handleCloseModals?.();
         }}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
@@ -383,9 +370,6 @@ export const WcagPlayer: React.FC<WcagPlayerProps> = (props) => {
   return (
     <PlayerProvider 
       playerMode={props.playerMode}
-      captionsUrl={props.captionsUrl}
-      descriptionsUrl={props.descriptionsUrl}
-      chaptersUrl={props.chaptersUrl}
     >
       <WcagPlayerInner {...props} />
     </PlayerProvider>

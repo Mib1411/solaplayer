@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { usePlayer } from '../../PlayerProvider';
 import { CONFIG } from '../config/playerConfig';
 
@@ -22,25 +22,24 @@ export const usePlayerExtensions = (
   
   const { ui } = usePlayer();
   
-  // ✅ CONFIG CHECKS:
-  const fullscreenConfig = CONFIG.features.fullscreen[playerMode];
-  const pipConfig = CONFIG.features.pip[playerMode];
-  const infoConfig = CONFIG.features.info[playerMode];
-  const settingsConfig = CONFIG.features.settings[playerMode];
-  
+  // ✅ LOKALE STATES:
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isPiPActive, setIsPiPActive] = useState(false);
 
-  // ✅ HANDLERS:
+  // ✅ CONFIG CHECKS:
+  const fullscreenConfig = CONFIG.features.fullscreen?.[playerMode] || { enabled: false };
+  const pipConfig = CONFIG.features.pip?.[playerMode] || { enabled: false };
+  const infoConfig = CONFIG.features.info?.[playerMode] || { enabled: false };
+  const settingsConfig = CONFIG.features.settings?.[playerMode] || { enabled: false };
+
   const handleToggleFullscreen = useCallback(() => {
     if (!fullscreenConfig.enabled) return;
     
     if (!document.fullscreenElement) {
-      videoRef?.current?.requestFullscreen?.();
-      setIsFullscreen(true);
+      const element = videoRef?.current || document.documentElement;
+      element.requestFullscreen?.();
     } else {
       document.exitFullscreen?.();
-      setIsFullscreen(false);
     }
   }, [videoRef, fullscreenConfig.enabled]);
 
@@ -55,13 +54,11 @@ export const usePlayerExtensions = (
     try {
       if (document.pictureInPictureElement) {
         await document.exitPictureInPicture();
-        setIsPiPActive(false);
       } else {
         await videoRef.current.requestPictureInPicture();
-        setIsPiPActive(true);
       }
     } catch (error) {
-      console.warn('PiP not supported or failed:', error);
+      console.error('PiP error:', error);
     }
   }, [videoRef, pipConfig.enabled, isPiPSupported]);
 
@@ -81,6 +78,31 @@ export const usePlayerExtensions = (
     ui.setInfoOpen(false);
     ui.setSettingsOpen(false);
   }, [ui]);
+
+  // Listen for fullscreen changes
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener('fullscreenchange', handleFullscreenChange);
+    return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
+  }, []);
+
+  // Listen for PiP changes
+  useEffect(() => {
+    const handlePiPChange = () => {
+      setIsPiPActive(!!document.pictureInPictureElement);
+    };
+
+    document.addEventListener('enterpictureinpicture', handlePiPChange);
+    document.addEventListener('leavepictureinpicture', handlePiPChange);
+    
+    return () => {
+      document.removeEventListener('enterpictureinpicture', handlePiPChange);
+      document.removeEventListener('leavepictureinpicture', handlePiPChange);
+    };
+  }, []);
 
   // ✅ CONDITIONAL RETURN:
   const result: PlayerExtensionsActions = {};

@@ -1,154 +1,174 @@
-import { useCallback, useEffect, useState, useRef } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { usePlayer } from '../../PlayerProvider';
 import { CONFIG } from '../config/playerConfig';
 
+interface TranscriptCue {
+  id: string;
+  startTime: number;
+  endTime: number;
+  text: string;
+  speaker?: string;
+  type?: 'speech' | 'sound' | 'music' | 'description';
+}
+
 export interface DescriptionsActions {
-  // Transcript - nur wenn enabled
   handleToggleTranscript?: () => void;
+  handleToggleAudioDesc?: () => void;
   showTranscript?: boolean;
   hasTranscript?: boolean;
-  
-  // Audio Description - nur wenn enabled
-  handleToggleAudioDesc?: () => void;
-  audioDescActive?: boolean;
   hasAudioDesc?: boolean;
-  speak?: (text: string) => void;
-  stop?: () => void;
-  pause?: () => void;
-  resume?: () => void;
-  
-  // State
-  currentDescription?: any;
-  isSupported?: boolean;
-  isLoading?: boolean;
-  error?: string | null;
+  audioDescActive?: boolean;
+  transcriptText?: string;
+  currentTranscriptCue?: TranscriptCue | null;
+  currentTranscriptIdx?: number;
+  allTranscriptCues?: TranscriptCue[];
+  goToNextTranscriptCue?: () => void;
+  goToPrevTranscriptCue?: () => void;
+  goToTranscriptCue?: (index: number) => void;
+  updateCurrentTranscriptCue?: (currentTime: number) => void;
+  searchInTranscript?: (query: string) => TranscriptCue[];
+  fontSize?: number;
+  setFontSize?: (size: number) => void;
+  autoScroll?: boolean;
+  setAutoScroll?: (scroll: boolean) => void;
+  showSpeakers?: boolean;
+  setShowSpeakers?: (show: boolean) => void;
+  showTimestamps?: boolean;
+  setShowTimestamps?: (show: boolean) => void;
+  audioDescVolume?: number;
+  setAudioDescVolume?: (volume: number) => void;
 }
 
 export const useDescriptions = (
-  descriptionsUrl?: string,
   playerMode: 'base' | 'extended' = 'base'
 ): DescriptionsActions => {
   
-  const { parsedContent, loadDescriptions, mediaPlayer, ui } = usePlayer();
+  // ✅ CONTEXT NUTZEN:
+  const { parsedContent, ui, htmlPlayer } = usePlayer();
   
+  // ✅ LOKALE STATES:
+  const [transcriptText, setTranscriptText] = useState('');
+  const [currentTranscriptCue, setCurrentTranscriptCue] = useState<TranscriptCue | null>(null);
+  const [currentTranscriptIdx, setCurrentTranscriptIdx] = useState<number>(-1);
+  const [fontSize, setFontSize] = useState(14);
+  const [autoScroll, setAutoScroll] = useState(true);
+  const [showSpeakers, setShowSpeakers] = useState(true);
+  const [showTimestamps, setShowTimestamps] = useState(false);
+  const [audioDescVolume, setAudioDescVolume] = useState(0.8);
+
   // ✅ CONFIG CHECKS:
-  const transcriptConfig = CONFIG.features.transcript[playerMode];
-  const audioDescConfig = CONFIG.features.audioDescription[playerMode];
-  
-  const isTranscriptEnabled = transcriptConfig.enabled && !!descriptionsUrl;
-  const isAudioDescEnabled = audioDescConfig.enabled && !!descriptionsUrl;
+  const transcriptConfig = CONFIG.features.transcript?.[playerMode] || { enabled: false };
+  const audioDescConfig = CONFIG.features.audioDescription?.[playerMode] || { enabled: false };
 
-  // ✅ EARLY RETURN WENN BEIDE DISABLED:
-  if (!isTranscriptEnabled && !isAudioDescEnabled) {
-    return {};
-  }
+  // ✅ GET DATA FROM CONTEXT:
+  const allTranscriptCues = parsedContent.transcript || [];
+  const hasTranscript = allTranscriptCues.length > 0;
+  const hasAudioDesc = (parsedContent.descriptions || []).length > 0;
 
-  // ✅ TTS STATE:
-  const [isSupported, setIsSupported] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [currentDescription, setCurrentDescription] = useState<any>(null);
-  
-  const synthRef = useRef<SpeechSynthesis | null>(null);
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
-
-  // ✅ LOAD DESCRIPTIONS:
-  useEffect(() => {
-    if (!descriptionsUrl) return;
-    
-    async function preloadDescriptions() {
-      try {
-        setIsLoading(true);
-        await loadDescriptions(descriptionsUrl!);
-        setIsLoading(false);
-      } catch (error) {
-        setError('Fehler beim Laden der Audiodeskription');
-        setIsLoading(false);
-      }
-    }
-    
-    preloadDescriptions();
-  }, [descriptionsUrl, loadDescriptions]);
-
-  // ✅ TTS SETUP:
-  useEffect(() => {
-    if (!isAudioDescEnabled) return;
-    
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      synthRef.current = window.speechSynthesis;
-      setIsSupported(true);
-    }
-  }, [isAudioDescEnabled]);
-
-  // ✅ TTS FUNCTIONS:
-  const speak = useCallback((text: string) => {
-    if (!isSupported || !synthRef.current) return;
-    
-    synthRef.current.cancel();
-    
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 1;
-    utterance.pitch = 1;
-    utterance.volume = 1;
-    
-    utteranceRef.current = utterance;
-    synthRef.current.speak(utterance);
-  }, [isSupported]);
-
-  const stop = useCallback(() => {
-    if (!isSupported || !synthRef.current) return;
-    synthRef.current.cancel();
-    utteranceRef.current = null;
-  }, [isSupported]);
-
-  const pause = useCallback(() => {
-    if (!isSupported || !synthRef.current) return;
-    synthRef.current.pause();
-  }, [isSupported]);
-
-  const resume = useCallback(() => {
-    if (!isSupported || !synthRef.current) return;
-    synthRef.current.resume();
-  }, [isSupported]);
-
-  // ✅ HANDLERS:
+  // ✅ TOGGLE FUNCTIONS (UPDATES CONTEXT):
   const handleToggleTranscript = useCallback(() => {
-    if (!isTranscriptEnabled) return;
+    if (!transcriptConfig.enabled) return;
     ui.setShowTranscript(!ui.showTranscript);
-  }, [ui, isTranscriptEnabled]);
+  }, [transcriptConfig.enabled, ui]);
 
   const handleToggleAudioDesc = useCallback(() => {
-    if (!isAudioDescEnabled) return;
+    if (!audioDescConfig.enabled) return;
+    ui.setAudioDescActive(!ui.audioDescActive);
+  }, [audioDescConfig.enabled, ui]);
+
+  // ✅ CUE NAVIGATION:
+  const goToNextTranscriptCue = useCallback(() => {
+    if (!transcriptConfig.enabled || currentTranscriptIdx >= allTranscriptCues.length - 1) return;
     
-    if (!ui.audioDescActive) {
-      ui.setAudioDescActive(true);
-    } else {
-      stop();
-      ui.setAudioDescActive(false);
+    const nextIdx = currentTranscriptIdx + 1;
+    setCurrentTranscriptIdx(nextIdx);
+    setCurrentTranscriptCue(allTranscriptCues[nextIdx]);
+    return allTranscriptCues[nextIdx].startTime;
+  }, [transcriptConfig.enabled, currentTranscriptIdx, allTranscriptCues]);
+
+  const goToPrevTranscriptCue = useCallback(() => {
+    if (!transcriptConfig.enabled || currentTranscriptIdx <= 0) return;
+    
+    const prevIdx = currentTranscriptIdx - 1;
+    setCurrentTranscriptIdx(prevIdx);
+    setCurrentTranscriptCue(allTranscriptCues[prevIdx]);
+    return allTranscriptCues[prevIdx].startTime;
+  }, [transcriptConfig.enabled, currentTranscriptIdx, allTranscriptCues]);
+
+  const goToTranscriptCue = useCallback((index: number) => {
+    if (!transcriptConfig.enabled || index < 0 || index >= allTranscriptCues.length) return;
+    
+    setCurrentTranscriptIdx(index);
+    setCurrentTranscriptCue(allTranscriptCues[index]);
+    return allTranscriptCues[index].startTime;
+  }, [transcriptConfig.enabled, allTranscriptCues]);
+
+  // ✅ TIME UPDATE:
+  const updateCurrentTranscriptCue = useCallback((currentTime: number) => {
+    if (!transcriptConfig.enabled || allTranscriptCues.length === 0) return;
+    
+    const cueIndex = allTranscriptCues.findIndex(cue => 
+      currentTime >= cue.startTime && currentTime <= cue.endTime
+    );
+    
+    if (cueIndex !== -1 && cueIndex !== currentTranscriptIdx) {
+      setCurrentTranscriptIdx(cueIndex);
+      setCurrentTranscriptCue(allTranscriptCues[cueIndex]);
+      setTranscriptText(allTranscriptCues[cueIndex].text);
+    } else if (cueIndex === -1 && currentTranscriptCue !== null) {
+      setCurrentTranscriptCue(null);
+      setCurrentTranscriptIdx(-1);
+      setTranscriptText('');
     }
-  }, [ui, isAudioDescEnabled, stop]);
+  }, [transcriptConfig.enabled, allTranscriptCues, currentTranscriptIdx, currentTranscriptCue]);
+
+  // ✅ AUTO-UPDATE ON TIME CHANGE:
+  useEffect(() => {
+    updateCurrentTranscriptCue(htmlPlayer.currentTime);
+  }, [htmlPlayer.currentTime, updateCurrentTranscriptCue]);
+
+  // ✅ SEARCH IN TRANSCRIPT:
+  const searchInTranscript = useCallback((query: string): TranscriptCue[] => {
+    if (!transcriptConfig.enabled || !query) return [];
+    
+    return allTranscriptCues.filter(cue => 
+      cue.text.toLowerCase().includes(query.toLowerCase()) ||
+      (cue.speaker && cue.speaker.toLowerCase().includes(query.toLowerCase()))
+    );
+  }, [transcriptConfig.enabled, allTranscriptCues]);
 
   // ✅ CONDITIONAL RETURN:
   const result: DescriptionsActions = {};
 
-  if (isTranscriptEnabled) {
+  if (transcriptConfig.enabled) {
     result.handleToggleTranscript = handleToggleTranscript;
-    result.showTranscript = ui.showTranscript;
-    result.hasTranscript = (parsedContent.descriptions?.length ?? 0) > 0;
+    result.showTranscript = ui.showTranscript; // ✅ FROM CONTEXT
+    result.hasTranscript = hasTranscript;
+    result.transcriptText = transcriptText;
+    result.currentTranscriptCue = currentTranscriptCue;
+    result.currentTranscriptIdx = currentTranscriptIdx;
+    result.allTranscriptCues = allTranscriptCues;
+    result.goToNextTranscriptCue = goToNextTranscriptCue;
+    result.goToPrevTranscriptCue = goToPrevTranscriptCue;
+    result.goToTranscriptCue = goToTranscriptCue;
+    result.updateCurrentTranscriptCue = updateCurrentTranscriptCue;
+    result.searchInTranscript = searchInTranscript;
+    result.fontSize = fontSize;
+    result.setFontSize = setFontSize;
+    result.autoScroll = autoScroll;
+    result.setAutoScroll = setAutoScroll;
+    result.showSpeakers = showSpeakers;
+    result.setShowSpeakers = setShowSpeakers;
+    result.showTimestamps = showTimestamps;
+    result.setShowTimestamps = setShowTimestamps;
   }
 
-  if (isAudioDescEnabled) {
+  if (audioDescConfig.enabled) {
     result.handleToggleAudioDesc = handleToggleAudioDesc;
-    result.audioDescActive = ui.audioDescActive;
-    result.hasAudioDesc = (parsedContent.descriptions?.length ?? 0) > 0;
-    result.speak = speak;
-    result.stop = stop;
-    result.pause = pause;
-    result.resume = resume;
-    result.currentDescription = currentDescription;
-    result.isSupported = isSupported;
-    result.isLoading = isLoading;
-    result.error = error;
+    result.hasAudioDesc = hasAudioDesc;
+    result.audioDescActive = ui.audioDescActive; // ✅ FROM CONTEXT
+    result.audioDescVolume = audioDescVolume;
+    result.setAudioDescVolume = setAudioDescVolume;
   }
 
   return result;

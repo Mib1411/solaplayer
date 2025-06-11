@@ -19,7 +19,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
     currentTime: playerState?.currentTime,
     duration: playerState?.duration,
     bufferedTime: playerState?.bufferedTime,
-    mediaPlayer: playerState?.mediaPlayer,
+    htmlPlayer: playerState?.htmlPlayer,
     playerStateKeys: playerState ? Object.keys(playerState) : 'undefined'
   });
 
@@ -30,9 +30,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   }
 
   // ✅ RICHTIGE WERTE HOLEN:
-  const currentTime = playerState?.mediaPlayer?.currentTime || playerState?.currentTime || 0;
-  const duration = playerState?.mediaPlayer?.duration || playerState?.duration || 1;
-  const buffered = playerState?.mediaPlayer?.bufferedTime || playerState?.bufferedTime || 0;
+  const currentTime = playerState?.htmlPlayer?.currentTime || playerState?.currentTime || 0;
+  const duration = playerState?.htmlPlayer?.duration || playerState?.duration || 1;
+  const buffered = playerState?.htmlPlayer?.bufferedTime || playerState?.bufferedTime || 0;
   
   console.log('📊 ProgressBar Values:', { currentTime, duration, buffered });
   

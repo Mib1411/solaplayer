@@ -1,59 +1,56 @@
 /**
- * Player Context Provider - Zentrales State Management
+ * Player Context Provider - NUR Context bereitstellen
  * Single Responsibility: Context Provider für Player State
  */
 
 import React, { createContext, useContext, useState, useCallback, useEffect } from 'react';
-import { useVideoSources } from './general/hooks/useVideoSources';
-import { usePlayerBasics } from './general/hooks/usePlayerBasics';
-import { useCaptions } from './general/hooks/useCaptions';
-import { useDescriptions } from './general/hooks/useDescriptions';
-import { useChapters } from './general/hooks/useChapters';
-import { usePlayerExtensions } from './general/hooks/usePlayerExtensions';
-import { useAccessibility } from './general/hooks/useAccessibility';
-import { Chapter, TranscriptCue } from '../types/player';
+import { Chapter, TranscriptCue, CaptionCue, ParsedContent } from '../types/player';
 import { loadChapters, loadCaptions, loadDescriptions, loadTranscript } from '../utils/vtt-parser';
 
-// ✅ PARSED CONTENT MIT TRANSCRIPT:
-interface ParsedContent {
-  chapters: Chapter[];
-  captions: TranscriptCue[];
-  descriptions: TranscriptCue[];
-  transcript: TranscriptCue[]; // ✅ HINZUGEFÜGT
+// ✅ AVAILABLE CONTENT INTERFACE HINZUFÜGEN:
+export interface AvailableContent {
+  hasChapters: boolean;
+  hasCaptions: boolean;
+  hasDescriptions: boolean;
+  hasPoster: boolean; 
+  hasQualities: boolean;
+  chaptersUrl?: string;
+  captionsUrl?: string;
+  descriptionsUrl?: string;
+  posterUrl?: string; // Optional, falls Poster-URL verfügbar ist
+  sources?: Array<{
+    url: string;
+    quality: string;
+    width: number;
+    height: number;
+  }>;
 }
 
-// ✅ SIMPLIFIED CONTEXT - NUR NEUE HOOKS:
+// ✅ CONTEXT NUR FÜR SHARED STATE:
 export interface PlayerContextType {
-  mediaPlayer: {
-    // ✅ NUR GLOBALE STATES:
+  htmlPlayer: {
     currentTime: number;
     duration: number;
     isPlaying: boolean;
-    hasStartedOnce: boolean;
-    controlsVisible: boolean;
     isLoading: boolean;
     isSeeking: boolean;
     bufferedTime: number;
-    
-    // ✅ SETTERS:
     setCurrentTime: (value: number) => void;
     setDuration: (value: number) => void;
     setIsPlaying: (value: boolean) => void;
-    setHasStartedOnce: (value: boolean) => void;
-    setControlsVisible: (value: boolean) => void;
     setIsLoading: (value: boolean) => void;
     setIsSeeking: (value: boolean) => void;
     setBufferedTime: (value: number) => void;
-    
-    // ✅ SEEK FUNCTION:
     seekTo: (time: number) => void;
   };
   
-  videoSources: any;
   parsedContent: ParsedContent;
   setParsedContent: React.Dispatch<React.SetStateAction<ParsedContent>>;
   
-  // ✅ UI STATE:
+  // ✅ AVAILABLE CONTENT HINZUFÜGEN:
+  availableContent: AvailableContent;
+  setAvailableContent: React.Dispatch<React.SetStateAction<AvailableContent>>;
+  
   ui: {
     showTranscript: boolean;
     showCC: boolean;
@@ -61,6 +58,10 @@ export interface PlayerContextType {
     settingsOpen: boolean;
     infoOpen: boolean;
     audioDescActive: boolean;
+    hasStartedOnce: boolean;
+    controlsVisible: boolean;
+    setHasStartedOnce: (value: boolean) => void;
+    setControlsVisible: (value: boolean) => void;
     setShowTranscript: (value: boolean) => void;
     setShowCC: (value: boolean) => void;
     setShowChapters: (value: boolean) => void;
@@ -69,48 +70,46 @@ export interface PlayerContextType {
     setAudioDescActive: (value: boolean) => void;
   };
   
-  // ✅ HOOK ACTIONS - NICHT MEDIA PLAYER:
-  playerBasicsActions: any;
-  captionsActions: any;
-  descriptionsActions: any;
-  chaptersActions: any;
-  extensionsActions: any;
-  accessibilityActions: any;
+  // ✅ PLAYER REFS - KORRIGIERTE TYPES:
+  videoRef?: React.RefObject<HTMLVideoElement>;
+  playerType: 'html5' | 'youtube' | 'vimeo'; // ✅ 'html5' → 'html5'
+  youtubePlayer?: any;
+  vimeoPlayer?: any;
+  setVideoRef: (ref: React.RefObject<HTMLVideoElement>) => void;
+  setPlayerType: (type: 'html5' | 'youtube' | 'vimeo') => void; // ✅ 'html5' → 'html5'
+  setYoutubePlayer: (player: any) => void;
+  setVimeoPlayer: (player: any) => void;
   
   // Loading functions
   loadChapters: (url: string) => Promise<Chapter[]>;
-  loadCaptions: (url: string) => Promise<TranscriptCue[]>;
+  loadCaptions: (url: string) => Promise<CaptionCue[]>;
   loadDescriptions: (url: string) => Promise<TranscriptCue[]>;
   loadTranscript: (captionsUrl?: string, descriptionsUrl?: string) => Promise<TranscriptCue[]>;
-  
-  // Setters
-  setVideoRef: (ref: React.RefObject<HTMLVideoElement>) => void;
-  setPlayerType: (type: 'html5' | 'youtube' | 'vimeo') => void;
-  setYoutubePlayer: (player: any) => void;
-  setVimeoPlayer: (player: any) => void;
+}
+
+// ✅ PROPS KORRIGIEREN:
+interface PlayerProviderProps {
+  children: React.ReactNode;
+  playerMode?: 'base' | 'extended';
+  // ✅ DIESE PROPS WERDEN NICHT VOM PROVIDER VERWALTET SONDERN VON WCAGPLAYER:
+  // captionsUrl?, descriptionsUrl?, chaptersUrl?, qualities? ENTFERNEN
 }
 
 const PlayerContext = createContext<PlayerContextType | undefined>(undefined);
 
-interface PlayerProviderProps {
-  children: React.ReactNode;
-  playerMode?: 'base' | 'extended';
-  captionsUrl?: string;
-  descriptionsUrl?: string;
-  chaptersUrl?: string;
-}
-
 export const PlayerProvider: React.FC<PlayerProviderProps> = ({
-  children, playerMode = 'base', captionsUrl, descriptionsUrl, chaptersUrl
+  children, 
+  playerMode = 'base'
+  // ✅ ALLE ANDEREN PROPS ENTFERNT
 }) => {
   
-  // ✅ PLAYER TYPE STATE:
+  // ✅ PLAYER STATE:
   const [videoRef, setVideoRef] = useState<React.RefObject<HTMLVideoElement> | undefined>(undefined);
-  const [playerType, setPlayerType] = useState<'html5' | 'youtube' | 'vimeo'>('html5');
+  const [playerType, setPlayerType] = useState<'html5' | 'youtube' | 'vimeo'>('html5'); // ✅ 'html5' → 'html5'
   const [youtubePlayer, setYoutubePlayer] = useState<any>(null);
   const [vimeoPlayer, setVimeoPlayer] = useState<any>(null);
   
-  // ✅ GLOBALE STATES (ENTFERNE duration):
+  // ✅ MEDIA PLAYER STATES:
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -128,7 +127,7 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
   const [infoOpen, setInfoOpen] = useState(false);
   const [audioDescActive, setAudioDescActive] = useState(false);
   
-  // ✅ PARSED CONTENT MIT TRANSCRIPT:
+  // ✅ ZENTRALE PARSED CONTENT:
   const [parsedContent, setParsedContent] = useState<ParsedContent>({
     chapters: [],
     captions: [],
@@ -136,9 +135,19 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
     transcript: []
   });
 
+  // ✅ AVAILABLE CONTENT INITIAL STATE - LEER:
+  const [availableContent, setAvailableContent] = useState<AvailableContent>({
+    hasChapters: false,
+    hasCaptions: false,
+    hasDescriptions: false,
+    hasPoster: false,
+    hasQualities: false,
+    sources: [] // ✅ LEERES ARRAY INITIAL
+  });
+
   // ✅ SEEK FUNCTION:
   const seekTo = useCallback((time: number) => {
-    if (playerType === 'html5' && videoRef?.current) {
+    if (playerType === 'html5' && videoRef?.current) { // ✅ 'html5' → 'html5'
       setIsSeeking(true);
       const video = videoRef.current;
       video.currentTime = time;
@@ -150,12 +159,16 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
       };
       
       video.addEventListener('seeked', handleSeeked);
+    } else if (playerType === 'youtube' && youtubePlayer) {
+      youtubePlayer.seekTo(time);
+    } else if (playerType === 'vimeo' && vimeoPlayer) {
+      vimeoPlayer.setCurrentTime(time);
     }
-  }, [playerType, videoRef]);
+  }, [playerType, videoRef, youtubePlayer, vimeoPlayer]);
 
   // ✅ HTML5 EVENT LISTENERS:
   useEffect(() => {
-    if (playerType !== 'html5' || !videoRef?.current) return;
+    if (playerType !== 'html5' || !videoRef?.current) return; // ✅ 'html5' → 'html5'
 
     const video = videoRef.current;
     
@@ -200,16 +213,7 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
     };
   }, [videoRef, playerType, isSeeking]);
 
-  // ✅ HOOKS:
-  const videoSources = useVideoSources();
-  const playerBasicsActions = usePlayerBasics(videoRef, youtubePlayer, vimeoPlayer, playerType, playerMode);
-  const captionsActions = useCaptions(captionsUrl, playerMode);
-  const descriptionsActions = useDescriptions(descriptionsUrl, playerMode);
-  const chaptersActions = useChapters(chaptersUrl, playerMode);
-  const extensionsActions = usePlayerExtensions(playerMode, videoRef);
-  const accessibilityActions = useAccessibility({ playerMode, enabled: true });
-
-  // ✅ LOADING FUNCTIONS:
+  // ✅ LOADING FUNCTIONS BLEIBEN GLEICH...
   const loadChaptersCallback = useCallback(async (url: string): Promise<Chapter[]> => {
     try {
       const chapters = await loadChapters(url, parsedContent, setParsedContent);
@@ -220,7 +224,7 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
     }
   }, [parsedContent]);
 
-  const loadCaptionsCallback = useCallback(async (url: string): Promise<TranscriptCue[]> => {
+  const loadCaptionsCallback = useCallback(async (url: string): Promise<CaptionCue[]> => {
     try {
       const captions = await loadCaptions(url, parsedContent, setParsedContent);
       return captions;
@@ -250,22 +254,24 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
     }
   }, [parsedContent]);
 
+  // ✅ CONTEXT VALUE:
   const contextValue: PlayerContextType = {
-    mediaPlayer: {
+    htmlPlayer: {
       currentTime, setCurrentTime,
       duration, setDuration,
       isPlaying, setIsPlaying,
-      hasStartedOnce, setHasStartedOnce,
-      controlsVisible, setControlsVisible,
       isLoading, setIsLoading,
       isSeeking, setIsSeeking,
       bufferedTime, setBufferedTime,
       seekTo,
     },
     
-    videoSources,
     parsedContent,
     setParsedContent,
+    
+    // ✅ AVAILABLE CONTENT HINZUFÜGEN:
+    availableContent,
+    setAvailableContent, // ✅ JETZT VERFÜGBAR!
     
     ui: {
       showTranscript, setShowTranscript,
@@ -274,23 +280,25 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
       settingsOpen, setSettingsOpen,
       infoOpen, setInfoOpen,
       audioDescActive, setAudioDescActive,
+      hasStartedOnce: hasStartedOnce,
+      setHasStartedOnce: setHasStartedOnce,
+      controlsVisible: controlsVisible,
+      setControlsVisible: setControlsVisible,
     },
     
-    playerBasicsActions,
-    captionsActions,
-    descriptionsActions,
-    chaptersActions,
-    extensionsActions,
-    accessibilityActions,
+    videoRef,
+    playerType,
+    youtubePlayer,
+    vimeoPlayer,
+    setVideoRef,
+    setPlayerType,
+    setYoutubePlayer,
+    setVimeoPlayer,
     
     loadChapters: loadChaptersCallback,
     loadCaptions: loadCaptionsCallback,
     loadDescriptions: loadDescriptionsCallback,
     loadTranscript: loadTranscriptCallback,
-    setVideoRef,
-    setPlayerType,
-    setYoutubePlayer,
-    setVimeoPlayer,
   };
 
   return (

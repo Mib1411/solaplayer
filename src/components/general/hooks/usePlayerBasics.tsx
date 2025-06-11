@@ -1,61 +1,56 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { usePlayer } from '../../PlayerProvider';
 import { CONFIG } from '../config/playerConfig';
 
 export interface PlayerBasicsActions {
   handlePlay?: () => void;
   handlePause?: () => void;
-  handleTogglePlay?: () => void;
+  handlePlayPause?: () => void;
   handleSeek?: (time: number) => void;
-  handleSkipForward?: (seconds?: number) => void;
-  handleSkipBackward?: (seconds?: number) => void;
+  handleSeekForward?: (seconds?: number) => void;
+  handleSeekBackward?: (seconds?: number) => void;
   handleReturnToStart?: () => void;
   handleVolumeChange?: (volume: number) => void;
-  handleToggleMute?: () => void;
+  handleVolumeUp?: () => void;
+  handleVolumeDown?: () => void;
+  handleMute?: () => void;
   handleSpeedChange?: (rate: number) => void;
   
-  // ✅ LOKALE STATES:
+  // States
   volume?: number;
-  setVolume?: (value: number) => void;
   isMuted?: boolean;
-  setIsMuted?: (value: boolean) => void;
   playbackRate?: number;
-  setPlaybackRate?: (value: number) => void;
-  duration?: number;
-  setDuration?: (value: number) => void;
+  controlsVisible?: boolean;
 }
 
 export const usePlayerBasics = (
-  videoRef?: React.RefObject<HTMLVideoElement>,
-  youtubePlayer?: any,
-  vimeoPlayer?: any,
-  playerType?: 'html5' | 'youtube' | 'vimeo',
   playerMode: 'base' | 'extended' = 'base'
 ): PlayerBasicsActions => {
   
-  // ✅ NUTZE CONTEXT FÜR GLOBALE STATES:
+  // ✅ CONTEXT NUTZEN:
   const { 
-    mediaPlayer: { 
-      currentTime, isPlaying, hasStartedOnce, controlsVisible,
-      setIsPlaying, setHasStartedOnce, setControlsVisible, seekTo
-    } 
+    htmlPlayer, 
+    ui, 
+    videoRef, 
+    playerType, 
+    youtubePlayer, 
+    vimeoPlayer 
   } = usePlayer();
-
+  
   // ✅ LOKALE STATES:
-  const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
 
   // ✅ CONFIG CHECKS:
-  const playPauseConfig = CONFIG.features.playPause?.[playerMode] || { enabled: false };
-  const seekConfig = CONFIG.features.progressBar?.[playerMode] || { enabled: false };
-  const volumeConfig = CONFIG.features.volume?.[playerMode] || { enabled: false };
-  const muteConfig = CONFIG.features.mute?.[playerMode] || { enabled: false };
-  const speedConfig = CONFIG.features.speed?.[playerMode] || { enabled: false };
-  const skipForwardConfig = CONFIG.features.skipForward?.[playerMode] || { enabled: false };
-  const skipBackwardConfig = CONFIG.features.skipBackward?.[playerMode] || { enabled: false };
-  const returnToStartConfig = CONFIG.features.returnToStart?.[playerMode] || { enabled: false };
+  const playPauseConfig = CONFIG.features.playPause[playerMode] || { enabled: false };
+  const seekConfig = CONFIG.features.progressBar[playerMode] || { enabled: false };
+  const volumeConfig = CONFIG.features.volume[playerMode] || { enabled: false };
+  const muteConfig = CONFIG.features.mute[playerMode] || { enabled: false };
+  const speedConfig = CONFIG.features.speed[playerMode] || { enabled: false };
+  const skipForwardConfig = CONFIG.features.skipForward[playerMode] || { enabled: false };
+  const skipBackwardConfig = CONFIG.features.skipBackward[playerMode] || { enabled: false };
+  const returnToStartConfig = CONFIG.features.returnToStart[playerMode] || { enabled: false };
 
   // ✅ HANDLERS:
   const handlePlay = useCallback(() => {
@@ -68,31 +63,34 @@ export const usePlayerBasics = (
     } else if (playerType === 'html5' && videoRef?.current) {
       videoRef.current.play();
     }
-    setIsPlaying(true);
-    setHasStartedOnce(true);
-  }, [playerType, youtubePlayer, vimeoPlayer, videoRef, setIsPlaying, setHasStartedOnce, playPauseConfig.enabled]);
+    
+    htmlPlayer.setIsPlaying(true);
+    ui.setHasStartedOnce(true);
+  }, [playerType, youtubePlayer, vimeoPlayer, videoRef, htmlPlayer, ui, playPauseConfig.enabled]);
 
   const handlePause = useCallback(() => {
     if (!playPauseConfig.enabled) return;
     
     if (playerType === 'youtube' && youtubePlayer) {
-      youtubePlayer.pause();    
+      youtubePlayer.pause();
     } else if (playerType === 'vimeo' && vimeoPlayer) {
       vimeoPlayer.pause();     
     } else if (playerType === 'html5' && videoRef?.current) {
       videoRef.current.pause();
     }
-    setIsPlaying(false);
-  }, [playerType, youtubePlayer, vimeoPlayer, videoRef, setIsPlaying, playPauseConfig.enabled]);
+    
+    htmlPlayer.setIsPlaying(false);
+  }, [playerType, youtubePlayer, vimeoPlayer, videoRef, htmlPlayer, playPauseConfig.enabled]);
 
-  const handleTogglePlay = useCallback(() => {
+  const handlePlayPause = useCallback(() => {
     if (!playPauseConfig.enabled) return;
-    if (isPlaying) {
+    
+    if (htmlPlayer.isPlaying) {
       handlePause();
     } else {
       handlePlay();
     }
-  }, [isPlaying, handlePlay, handlePause, playPauseConfig.enabled]);
+  }, [htmlPlayer.isPlaying, handlePlay, handlePause, playPauseConfig.enabled]);
 
   const handleSeek = useCallback((time: number) => {
     if (!seekConfig.enabled) return;
@@ -102,21 +100,21 @@ export const usePlayerBasics = (
     } else if (playerType === 'vimeo' && vimeoPlayer) {
       vimeoPlayer.seekTo(time);
     } else if (playerType === 'html5') {
-      seekTo(time);
+      htmlPlayer.seekTo(time);
     }
-  }, [playerType, youtubePlayer, vimeoPlayer, seekTo, seekConfig.enabled]);
+  }, [playerType, youtubePlayer, vimeoPlayer, htmlPlayer, seekConfig.enabled]);
 
-  const handleSkipForward = useCallback((seconds = 10) => {
+  const handleSeekForward = useCallback((seconds = 10) => {
     if (!skipForwardConfig.enabled) return;
-    const newTime = Math.min(currentTime + seconds, duration);
+    const newTime = htmlPlayer.currentTime + seconds;
     handleSeek(newTime);
-  }, [currentTime, duration, handleSeek, skipForwardConfig.enabled]);
+  }, [htmlPlayer.currentTime, handleSeek, skipForwardConfig.enabled]);
 
-  const handleSkipBackward = useCallback((seconds = 10) => {
+  const handleSeekBackward = useCallback((seconds = 10) => {
     if (!skipBackwardConfig.enabled) return;
-    const newTime = Math.max(currentTime - seconds, 0);
+    const newTime = Math.max(htmlPlayer.currentTime - seconds, 0);
     handleSeek(newTime);
-  }, [currentTime, handleSeek, skipBackwardConfig.enabled]);
+  }, [htmlPlayer.currentTime, handleSeek, skipBackwardConfig.enabled]);
 
   const handleReturnToStart = useCallback(() => {
     if (!returnToStartConfig.enabled) return;
@@ -126,17 +124,31 @@ export const usePlayerBasics = (
   const handleVolumeChange = useCallback((newVolume: number) => {
     if (!volumeConfig.enabled) return;
     
+    const clampedVolume = Math.max(0, Math.min(1, newVolume));
+    
     if (playerType === 'youtube' && youtubePlayer) {
-      youtubePlayer.setVolume(newVolume * 100);
+      youtubePlayer.setVolume(clampedVolume * 100);
     } else if (playerType === 'vimeo' && vimeoPlayer) {
-      vimeoPlayer.setVolume(newVolume);
+      vimeoPlayer.setVolume(clampedVolume);
     } else if (playerType === 'html5' && videoRef?.current) {
-      videoRef.current.volume = newVolume;
+      videoRef.current.volume = clampedVolume;
     }
-    setVolume(newVolume);
+    setVolume(clampedVolume);
   }, [playerType, youtubePlayer, vimeoPlayer, videoRef, volumeConfig.enabled]);
 
-  const handleToggleMute = useCallback(() => {
+  const handleVolumeUp = useCallback(() => {
+    if (!volumeConfig.enabled) return;
+    const newVolume = Math.min(volume + 0.1, 1);
+    handleVolumeChange(newVolume);
+  }, [volume, handleVolumeChange, volumeConfig.enabled]);
+
+  const handleVolumeDown = useCallback(() => {
+    if (!volumeConfig.enabled) return;
+    const newVolume = Math.max(volume - 0.1, 0);
+    handleVolumeChange(newVolume);
+  }, [volume, handleVolumeChange, volumeConfig.enabled]);
+
+  const handleMute = useCallback(() => {
     if (!muteConfig.enabled) return;
 
     const newMuted = !isMuted;
@@ -145,7 +157,7 @@ export const usePlayerBasics = (
       if (newMuted) {
         youtubePlayer.mute();
       } else {
-        youtubePlayer.unMute();
+        youtubePlayer.unmute();
       }
     } else if (playerType === 'vimeo' && vimeoPlayer) {
       vimeoPlayer.setMuted(newMuted);
@@ -174,7 +186,7 @@ export const usePlayerBasics = (
   if (playPauseConfig.enabled) {
     result.handlePlay = handlePlay;
     result.handlePause = handlePause;
-    result.handleTogglePlay = handleTogglePlay;
+    result.handlePlayPause = handlePlayPause;
   }
 
   if (seekConfig.enabled) {
@@ -182,11 +194,11 @@ export const usePlayerBasics = (
   }
 
   if (skipForwardConfig.enabled) {
-    result.handleSkipForward = handleSkipForward;
+    result.handleSeekForward = handleSeekForward;
   }
 
   if (skipBackwardConfig.enabled) {
-    result.handleSkipBackward = handleSkipBackward;
+    result.handleSeekBackward = handleSeekBackward;
   }
 
   if (returnToStartConfig.enabled) {
@@ -195,25 +207,22 @@ export const usePlayerBasics = (
 
   if (volumeConfig.enabled) {
     result.handleVolumeChange = handleVolumeChange;
+    result.handleVolumeUp = handleVolumeUp;
+    result.handleVolumeDown = handleVolumeDown;
     result.volume = volume;
-    result.setVolume = setVolume;
   }
 
   if (muteConfig.enabled) {
-    result.handleToggleMute = handleToggleMute;
+    result.handleMute = handleMute;
     result.isMuted = isMuted;
-    result.setIsMuted = setIsMuted;
   }
 
   if (speedConfig.enabled) {
     result.handleSpeedChange = handleSpeedChange;
     result.playbackRate = playbackRate;
-    result.setPlaybackRate = setPlaybackRate;
   }
 
-  // ✅ DURATION IMMER:
-  result.duration = duration;
-  result.setDuration = setDuration;
+  result.controlsVisible = ui.controlsVisible;
 
   return result;
 };
