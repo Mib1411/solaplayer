@@ -1,8 +1,6 @@
 import Link from 'next/link';
-import FullPlayer from '../../../components/FullPlayer';
 
-import MinimalPlayer from '@/components/MinimalPlayer';
-
+import { WcagPlayer } from '@/components/WcagPlayer';
 export default function BundestagVideoTest() {
   return (
     <div style={{ maxWidth: 1200, margin: '0 auto', padding: 24 }}>
@@ -27,22 +25,15 @@ export default function BundestagVideoTest() {
         </p>
       </header>
 <div style={{ marginBottom: 32, marginTop: 160 }}>
-        <MinimalPlayer
+        <WcagPlayer
             btag="https://dbtg.tv/cvid/7631959"
-            link="/test/bundestag"
+            captionsUrl="/videos/sample_captions.vtt"
+            descriptionsUrl="/videos/sample_description.vtt"
+            playerMode="base"
             poster='/videos/poster.jpg'
+            link='/test/bundestag/full'
             autoplay={false}
             muted={false}
-        />
-        </div>
-      <div style={{ marginBottom: 32 }}>
-        <FullPlayer
-          btag="https://dbtg.tv/cvid/7631959"
-          captions="/videos/sample_captions.vtt"
-          description="/videos/sample_description.vtt"
-          poster='/videos/poster.jpg'
-          autoplay={false}
-          muted={false}
         />
       </div>
 

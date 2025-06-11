@@ -1,10 +1,8 @@
 import Link from 'next/link';
-import MinimalPlayer from '../../../components/MinimalPlayer'; // DEFAULT IMPORT
-import FullPlayer from '../../../components/FullPlayer'; // DEFAULT IMPORT
-
+import { WcagPlayer } from '@/components/WcagPlayer';
 export default function LocalVideoTest() {
   return (
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: 24 }}>
+    <div>
       <header style={{ marginBottom: 32 }}>
         <Link 
           href="/" 
@@ -25,26 +23,28 @@ export default function LocalVideoTest() {
           Test des Video Players mit lokalem MP4 Video, Untertiteln und Audiodeskription
         </p>
       </header>
-
-      <MinimalPlayer
-        mp4="/videos/sample.mp4"
-        link="/test/local"
-        poster="/videos/poster.jpg"
-        autoplay={false}
-        muted={false}
-      />
-
-      <div style={{ marginBottom: 32, marginTop: 160 }}>
-        <FullPlayer
+      <div style={{ maxWidth: '800px', margin: 'auto', padding: '24px' }}>
+        <WcagPlayer
           mp4="/videos/sample.mp4"
-          captions="/videos/sample_captions.vtt"
-          description="/videos/sample_description.vtt"
+          link="/test/local"
           poster="/videos/poster.jpg"
-          chapters="/videos/sample_chapters.vtt"
           autoplay={false}
           muted={false}
         />
       </div>
-    </div>
+
+    <div style={{ maxWidth: '1200px', margin: 'auto', padding: '24px' }}>
+        <WcagPlayer
+          playerMode="extended"
+          mp4="/videos/sample.mp4"
+          captionsUrl="/videos/sample_captions.vtt"
+          descriptionsUrl="/videos/sample_description.vtt"
+          poster="/videos/poster.jpg"
+          chaptersUrl="/videos/sample_chapters.vtt"
+          autoplay={false}
+          muted={false}
+        />
+      </div>
+      </div>
   );
 }

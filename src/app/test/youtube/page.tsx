@@ -1,6 +1,5 @@
 import Link from 'next/link';
-import FullPlayer from '../../../components/FullPlayer';
-import MinimalPlayer from '@/components/MinimalPlayer';
+import { WcagPlayer } from '@/components/WcagPlayer';
 
 export default function YouTubeVideoTest() {
   return (
@@ -24,22 +23,23 @@ export default function YouTubeVideoTest() {
         <p style={{ color: '#666', fontSize: 18 }}>
           Test des Video Players mit eingebettetem YouTube Video
         </p>
-      </header>
-      <div style={{ marginBottom: 32, marginTop: 160 }}>
-        <MinimalPlayer
-            youtube="https://www.youtube.com/watch?v=ir9JzC5N2-g"
-            link="/test/youtube"
-            autoplay={false}
-            muted={false}
+      </header>      <div style={{ marginBottom: 32, marginTop: 160 }}>
+        <WcagPlayer
+          playerMode='base'
+          youtube="https://www.youtube.com/watch?v=ir9JzC5N2-g"
+          link="/test/youtube/full"
+          autoplay={false}
+          muted={false}
         />
       </div>
 
       <div style={{ marginBottom: 32 }}>
-        <FullPlayer
+        <WcagPlayer
+          playerMode='extended'
           youtube="https://www.youtube.com/watch?v=ir9JzC5N2-g"
-          captions="/videos/captions.vtt"
-          description="/videos/description.vtt"
-          chapters="/videos/chapters.vtt"
+          captionsUrl="/videos/captions.vtt"
+          descriptionsUrl="/videos/description.vtt"
+          chaptersUrl="/videos/chapters.vtt"
           autoplay={false}
           muted={false}
         />

@@ -1,0 +1,69 @@
+/**
+ * Base Button Styles
+ * 
+ * @author WCAG Player Team
+ * @version 2.0.0
+ */
+
+
+/* Button Styles - extrahiert aus player-controls.css */
+
+.button {
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  color: white;
+  width: var(--button-size);
+  height: var(--button-size);
+}
+
+.button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.button:focus {
+  outline: none;
+  border-color: #007acc;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.button--state.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #007acc;
+  border-color: #007acc;
+}
+
+/* State: Background becomes primary when active */
+.button--state.button--active {
+  background: var(--color-primary, #007bff);
+  color: white;
+}
+
+.button--state.button--active:hover {
+  background: var(--color-primary-dark, #0056b3);
+}
+
+/* Dropdown: Primary background while dropdown is open */
+.button--dropdown.button--active {
+  background: var(--color-primary, #007bff);
+  color: white;
+}
+
+.button--dropdown.button--active:hover {
+  background: var(--color-primary-dark, #0056b3);
+}
+

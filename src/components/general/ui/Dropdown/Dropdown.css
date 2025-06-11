@@ -1,0 +1,298 @@
+/**
+ * Base Dropdown Styles
+ * Uses CSS Variables from player-base.css
+ * 
+ * @author WCAG Player Team
+ * @version 2.0.0
+ */
+
+.dropdown-container {
+  position: relative;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown List - appears ABOVE button */
+.dropdown__list {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--player-control-bg);
+  border: 1px solid var(--player-border-color);
+  border-radius: var(--player-border-radius);
+  min-width: 80px;
+  max-height: 150px;
+  overflow-y: auto;
+  z-index: 1000;
+  margin-bottom: 12px; /* ✅ Mehr Abstand: 8px → 12px */
+  padding: calc(var(--player-spacing-sm) / 4) 0;
+  list-style: none;
+  box-shadow: var(--player-shadow-lg);
+  backdrop-filter: var(--player-backdrop);
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* Arrow pointing down to button */
+.dropdown__list::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--player-control-bg);
+}
+
+/* Dropdown Options */
+.dropdown__option {
+  padding: calc(var(--player-spacing-sm) / 2) var(--player-spacing-sm); /* 4px 8px */
+  color: var(--player-text-color);
+  cursor: pointer;
+  transition: var(--player-transition);
+  font-size: 11px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.dropdown__option:hover {
+  background: var(--player-hover-color);
+}
+
+.dropdown__option--focused {
+  background: var(--player-hover-color);
+}
+
+.dropdown__option--selected {
+  background: var(--player-primary-color);
+  font-weight: 600;
+}
+
+.dropdown__option--disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.dropdown__option--disabled:hover {
+  background: transparent;
+}
+
+/* Volume Slider Container */
+.dropdown__slider-container {
+  min-width: 50px;
+  height: 100px;
+  padding: var(--player-spacing-sm) calc(var(--player-spacing-sm) * 0.75); /* 8px 6px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+.volume-slider-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.volume-display {
+  font-size: 9px;
+  color: var(--player-primary-color);
+  font-weight: bold;
+  margin-bottom: calc(var(--player-spacing-sm) / 2); /* 4px */
+  text-align: center;
+  min-height: 10px;
+}
+
+/* ✅ CUSTOM VOLUME SLIDER - Ohne Range Input */
+.volume-slider-track-container {
+  position: relative;
+  width: 6px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume-slider-track {
+  position: absolute;
+  width: 6px;
+  height: 100%;
+  background: var(--player-border-color);
+  border-radius: 3px;
+}
+
+.volume-slider-fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: var(--player-primary-color);
+  border-radius: 3px;
+  transition: height 0.1s ease;
+}
+
+/* ✅ INVISIBLE Click Area für Funktionalität */
+.volume-slider-clickarea {
+  position: absolute;
+  width: 20px; /* Größerer Click-Bereich */
+  height: 100%;
+  cursor: pointer;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* ✅ SINGLE CUSTOM KNOB */
+.volume-slider-knob {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: var(--player-primary-color);
+  border: 1px solid var(--player-text-color);
+  border-radius: 50%;
+  left: 50%;
+  transform: translate(-50%, 50%); /* ✅ Center horizontal UND vertical */
+  transition: all 0.2s ease;
+  pointer-events: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Hover Effects */
+.volume-slider-track-container:hover .volume-slider-knob {
+  transform: translate(-50%, 50%) scale(1.05);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+.volume-slider-track-container:hover .volume-slider-track {
+  background: var(--player-hover-color);
+}
+
+/* ✅ ENTFERNE alte Range Input Styles komplett */
+.volume-slider-vertical {
+  display: none; /* ✅ Komplett entfernen */
+}
+
+/* Additional dropdown items */
+.dropdown-item {
+  display: block;
+  width: 100%;
+  padding: calc(var(--player-spacing-sm) * 0.375) calc(var(--player-spacing-sm) * 0.75); /* 3px 6px */
+  background: none;
+  border: none;
+  color: var(--player-text-color);
+  cursor: pointer;
+  text-align: center;
+  border-radius: calc(var(--player-border-radius) / 3); /* 2px */
+  font-size: 10px;
+  line-height: 1.2;
+  transition: var(--player-transition);
+}
+
+.dropdown-item:hover {
+  background: var(--player-hover-color);
+}
+
+.dropdown-item.active {
+  background: var(--player-primary-color);
+  color: var(--player-text-color);
+}
+
+/* Scrollbar - COMPLETELY HIDDEN */
+.dropdown__list::-webkit-scrollbar {
+  display: none; /* ✅ Komplett verstecken */
+}
+
+.dropdown__list::-webkit-scrollbar-track {
+  display: none;
+}
+
+.dropdown__list::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+/* Mobile - noch kompakter */
+@media (max-width: 768px) {
+  .dropdown__list {
+    margin-bottom: 10px; /* ✅ Auch auf Mobile höher */
+  }
+  
+  .dropdown__slider-container {
+    height: 80px;
+    min-width: 40px;
+    padding: calc(var(--player-spacing-sm) * 0.75) calc(var(--player-spacing-sm) / 2); /* 6px 4px */
+  }
+  
+  .volume-slider-track-container {
+    height: 60px;
+    width: 5px;
+  }
+  
+  .volume-slider-knob {
+    width: 6px;
+    height: 6px;
+  }
+  
+  .volume-slider-clickarea {
+    width: 16px; /* Kleinerer Click-Bereich auf Mobile */
+  }
+}
+
+/* Focus States */
+.dropdown__option:focus-visible,
+.dropdown-item:focus-visible {
+  outline: 2px solid var(--player-focus-color);
+  outline-offset: 2px;
+}
+
+.volume-slider-vertical:focus-visible {
+  outline: 2px solid var(--player-focus-color);
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .dropdown__list {
+    border: 2px solid ButtonText;
+    background: ButtonFace;
+  }
+  
+  .dropdown__option,
+  .dropdown-item {
+    color: ButtonText;
+  }
+  
+  .dropdown__option--selected,
+  .dropdown-item.active {
+    background: Highlight;
+    color: HighlightText;
+  }
+  
+  .volume-slider-vertical {
+    background: linear-gradient(
+      to top,
+      Highlight var(--volume, 50%),
+      GrayText var(--volume, 50%)
+    );
+    border: 1px solid ButtonText;
+  }
+  
+  .volume-slider-vertical::-webkit-slider-thumb {
+    background: ButtonText;
+    border: 2px solid ButtonFace;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .dropdown__option,
+  .dropdown-item,
+  .volume-slider-vertical {
+    transition: none;
+  }
+}

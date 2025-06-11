@@ -1,0 +1,139 @@
+/**
+ * Toggle Styles
+ */
+
+.toggle-container {
+  display: inline-block;
+}
+
+.toggle-container.small .toggle-switch {
+  width: 32px;
+  height: 18px;
+}
+
+.toggle-container.small .toggle-thumb {
+  width: 14px;
+  height: 14px;
+}
+
+.toggle-container.small .toggle-text {
+  font-size: 0.875rem;
+}
+
+.toggle-container.medium .toggle-switch {
+  width: 40px;
+  height: 22px;
+}
+
+.toggle-container.medium .toggle-thumb {
+  width: 18px;
+  height: 18px;
+}
+
+.toggle-container.medium .toggle-text {
+  font-size: 1rem;
+}
+
+.toggle-container.large .toggle-switch {
+  width: 48px;
+  height: 26px;
+}
+
+.toggle-container.large .toggle-thumb {
+  width: 22px;
+  height: 22px;
+}
+
+.toggle-container.large .toggle-text {
+  font-size: 1.125rem;
+}
+
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.toggle-label:has(.toggle-switch.disabled) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  background-color: #ccc;
+  border-radius: 50px;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+  outline: none;
+}
+
+.toggle-switch:focus-visible {
+  box-shadow: 0 0 0 2px #007bff;
+}
+
+.toggle-switch.checked {
+  background-color: #007bff;
+}
+
+.toggle-switch.checked .toggle-thumb {
+  transform: translateX(calc(100% + 2px));
+}
+
+.toggle-switch.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.toggle-slider {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 2px;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.toggle-text {
+  color: #333;
+  font-weight: 500;
+}
+
+.toggle-container:has(.toggle-switch.disabled) .toggle-text {
+  color: #999;
+}
+
+/* Dark Theme */
+@media (prefers-color-scheme: dark) {
+  .toggle-switch {
+    background-color: #555;
+  }
+  
+  .toggle-switch.checked {
+    background-color: #0066cc;
+  }
+  
+  .toggle-thumb {
+    background-color: #fff;
+  }
+  
+  .toggle-text {
+    color: #fff;
+  }
+  
+  .toggle-container:has(.toggle-switch.disabled) .toggle-text {
+    color: #666;
+  }
+}
