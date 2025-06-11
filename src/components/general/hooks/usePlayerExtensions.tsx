@@ -3,16 +3,11 @@ import { usePlayer } from '../../PlayerProvider';
 import { CONFIG } from '../config/playerConfig';
 
 export interface PlayerExtensionsActions {
-  // Fullscreen - nur wenn enabled
   handleToggleFullscreen?: () => void;
   isFullscreen?: boolean;
-  
-  // Picture in Picture - nur wenn enabled
   handleTogglePiP?: () => void;
   isPiPSupported?: boolean;
   isPiPActive?: boolean;
-  
-  // Modals - nur wenn enabled
   handleToggleInfo?: () => void;
   handleToggleSettings?: () => void;
   handleCloseModals?: () => void;
@@ -25,9 +20,9 @@ export const usePlayerExtensions = (
   videoRef?: React.RefObject<HTMLVideoElement>
 ): PlayerExtensionsActions => {
   
-  const { mediaPlayer } = usePlayer();
+  const { ui } = usePlayer();
   
-  // ✅ NUTZE CONFIG:
+  // ✅ CONFIG CHECKS:
   const fullscreenConfig = CONFIG.features.fullscreen[playerMode];
   const pipConfig = CONFIG.features.pip[playerMode];
   const infoConfig = CONFIG.features.info[playerMode];
@@ -35,10 +30,8 @@ export const usePlayerExtensions = (
   
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isPiPActive, setIsPiPActive] = useState(false);
-  const [infoOpen, setInfoOpen] = useState(false);
-  const [settingsOpen, setSettingsOpen] = useState(false);
 
-  // ✅ ALLE HANDLERS ALWAYS DEFINED - CONDITIONAL LOGIC INSIDE:
+  // ✅ HANDLERS:
   const handleToggleFullscreen = useCallback(() => {
     if (!fullscreenConfig.enabled) return;
     
@@ -74,25 +67,22 @@ export const usePlayerExtensions = (
 
   const handleToggleInfo = useCallback(() => {
     if (!infoConfig.enabled) return;
-    
-    setInfoOpen(!infoOpen);
-    if (settingsOpen) setSettingsOpen(false);
-  }, [infoOpen, settingsOpen, infoConfig.enabled]);
+    ui.setInfoOpen(!ui.infoOpen);
+    if (ui.settingsOpen) ui.setSettingsOpen(false);
+  }, [ui, infoConfig.enabled]);
 
   const handleToggleSettings = useCallback(() => {
     if (!settingsConfig.enabled) return;
-    
-    setSettingsOpen(!settingsOpen);
-    if (infoOpen) setInfoOpen(false);
-  }, [settingsOpen, infoOpen, settingsConfig.enabled]);
-
+    ui.setSettingsOpen(!ui.settingsOpen);
+    if (ui.infoOpen) ui.setInfoOpen(false);
+  }, [ui, settingsConfig.enabled]);
 
   const handleCloseModals = useCallback(() => {
-    setInfoOpen(false);
-    setSettingsOpen(false);
-  }, []);
+    ui.setInfoOpen(false);
+    ui.setSettingsOpen(false);
+  }, [ui]);
 
-  // ✅ CONDITIONAL RETURN - NUR ENABLED FEATURES:
+  // ✅ CONDITIONAL RETURN:
   const result: PlayerExtensionsActions = {};
 
   if (fullscreenConfig.enabled) {
@@ -108,12 +98,12 @@ export const usePlayerExtensions = (
 
   if (infoConfig.enabled) {
     result.handleToggleInfo = handleToggleInfo;
-    result.infoOpen = infoOpen;
+    result.infoOpen = ui.infoOpen;
   }
 
   if (settingsConfig.enabled) {
     result.handleToggleSettings = handleToggleSettings;
-    result.settingsOpen = settingsOpen;
+    result.settingsOpen = ui.settingsOpen;
   }
 
   if (infoConfig.enabled || settingsConfig.enabled) {

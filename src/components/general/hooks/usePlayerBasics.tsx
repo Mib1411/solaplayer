@@ -2,36 +2,27 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePlayer } from '../../PlayerProvider';
 import { CONFIG } from '../config/playerConfig';
 
-
 export interface PlayerBasicsActions {
-  // Play/Pause - nur wenn enabled
   handlePlay?: () => void;
   handlePause?: () => void;
   handleTogglePlay?: () => void;
-  
-  // Seek - nur wenn enabled
   handleSeek?: (time: number) => void;
   handleSkipForward?: (seconds?: number) => void;
   handleSkipBackward?: (seconds?: number) => void;
   handleReturnToStart?: () => void;
-  
-  // Volume - nur wenn enabled
   handleVolumeChange?: (volume: number) => void;
   handleToggleMute?: () => void;
-  
-  // Playback Rate - nur wenn enabled
   handleSpeedChange?: (rate: number) => void;
   
-  // ✅ CONTROLS STATE - GEHÖRT IN BASICS:
-  controlsVisible?: boolean;
-  setControlsVisible?: (value: boolean) => void;
-  toggleControls?: (value: boolean) => void;
-  hideControls?: boolean;
-  autoHideControls?: boolean;
-  
-  // ✅ PLAYBACK STATE:
-  hasStartedOnce?: boolean;
-  setHasStartedOnce?: (value: boolean) => void;
+  // ✅ LOKALE STATES:
+  volume?: number;
+  setVolume?: (value: number) => void;
+  isMuted?: boolean;
+  setIsMuted?: (value: boolean) => void;
+  playbackRate?: number;
+  setPlaybackRate?: (value: number) => void;
+  duration?: number;
+  setDuration?: (value: number) => void;
 }
 
 export const usePlayerBasics = (
@@ -46,17 +37,17 @@ export const usePlayerBasics = (
   const { 
     mediaPlayer: { 
       currentTime, isPlaying, hasStartedOnce, controlsVisible,
-      setIsPlaying, setHasStartedOnce, setControlsVisible 
+      setIsPlaying, setHasStartedOnce, setControlsVisible, seekTo
     } 
   } = usePlayer();
 
-  // ✅ LOKALE STATES (NICHT GLOBAL):
+  // ✅ LOKALE STATES:
   const [duration, setDuration] = useState(0);
   const [volume, setVolume] = useState(1);
   const [isMuted, setIsMuted] = useState(false);
   const [playbackRate, setPlaybackRate] = useState(1);
 
-  // ✅ ALLE CONFIG CHECKS:
+  // ✅ CONFIG CHECKS:
   const playPauseConfig = CONFIG.features.playPause?.[playerMode] || { enabled: false };
   const seekConfig = CONFIG.features.progressBar?.[playerMode] || { enabled: false };
   const volumeConfig = CONFIG.features.volume?.[playerMode] || { enabled: false };
@@ -66,7 +57,7 @@ export const usePlayerBasics = (
   const skipBackwardConfig = CONFIG.features.skipBackward?.[playerMode] || { enabled: false };
   const returnToStartConfig = CONFIG.features.returnToStart?.[playerMode] || { enabled: false };
 
-  // ✅ ALLE HANDLER (CONDITIONAL LOGIC INSIDE):
+  // ✅ HANDLERS:
   const handlePlay = useCallback(() => {
     if (!playPauseConfig.enabled) return;
     
@@ -110,10 +101,10 @@ export const usePlayerBasics = (
       youtubePlayer.seekTo(time);
     } else if (playerType === 'vimeo' && vimeoPlayer) {
       vimeoPlayer.seekTo(time);
-    } else if (playerType === 'html5' && mediaPlayer.seekTo) {
-      mediaPlayer.seekTo(time);
+    } else if (playerType === 'html5') {
+      seekTo(time);
     }
-  }, [playerType, youtubePlayer, vimeoPlayer, mediaPlayer, seekConfig.enabled]);
+  }, [playerType, youtubePlayer, vimeoPlayer, seekTo, seekConfig.enabled]);
 
   const handleSkipForward = useCallback((seconds = 10) => {
     if (!skipForwardConfig.enabled) return;
@@ -177,7 +168,7 @@ export const usePlayerBasics = (
     setPlaybackRate(rate);
   }, [playerType, youtubePlayer, vimeoPlayer, videoRef, speedConfig.enabled]);
 
-  // ✅ CONDITIONAL RETURN - ALLE HANDLER WENN CONFIG ENABLED:
+  // ✅ CONDITIONAL RETURN:
   const result: PlayerBasicsActions = {};
 
   if (playPauseConfig.enabled) {
@@ -220,15 +211,9 @@ export const usePlayerBasics = (
     result.setPlaybackRate = setPlaybackRate;
   }
 
-  // ✅ DURATION - FÜR ProgressBar:
+  // ✅ DURATION IMMER:
   result.duration = duration;
   result.setDuration = setDuration;
-
-  // ✅ CONTROLS:
-  result.controlsVisible = controlsVisible;
-  result.setControlsVisible = setControlsVisible;
-  result.hasStartedOnce = hasStartedOnce;
-  result.setHasStartedOnce = setHasStartedOnce;
 
   return result;
 };

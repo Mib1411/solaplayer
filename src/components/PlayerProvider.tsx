@@ -27,6 +27,7 @@ export interface PlayerContextType {
   mediaPlayer: {
     // ✅ NUR GLOBALE STATES:
     currentTime: number;
+    duration: number;
     isPlaying: boolean;
     hasStartedOnce: boolean;
     controlsVisible: boolean;
@@ -36,6 +37,7 @@ export interface PlayerContextType {
     
     // ✅ SETTERS:
     setCurrentTime: (value: number) => void;
+    setDuration: (value: number) => void;
     setIsPlaying: (value: boolean) => void;
     setHasStartedOnce: (value: boolean) => void;
     setControlsVisible: (value: boolean) => void;
@@ -51,8 +53,24 @@ export interface PlayerContextType {
   parsedContent: ParsedContent;
   setParsedContent: React.Dispatch<React.SetStateAction<ParsedContent>>;
   
+  // ✅ UI STATE:
+  ui: {
+    showTranscript: boolean;
+    showCC: boolean;
+    showChapters: boolean;
+    settingsOpen: boolean;
+    infoOpen: boolean;
+    audioDescActive: boolean;
+    setShowTranscript: (value: boolean) => void;
+    setShowCC: (value: boolean) => void;
+    setShowChapters: (value: boolean) => void;
+    setSettingsOpen: (value: boolean) => void;
+    setInfoOpen: (value: boolean) => void;
+    setAudioDescActive: (value: boolean) => void;
+  };
+  
   // ✅ HOOK ACTIONS - NICHT MEDIA PLAYER:
-  playerBasicsActions: any;     // ✅ SEPARATE!
+  playerBasicsActions: any;
   captionsActions: any;
   descriptionsActions: any;
   chaptersActions: any;
@@ -94,12 +112,21 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
   
   // ✅ GLOBALE STATES (ENTFERNE duration):
   const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [hasStartedOnce, setHasStartedOnce] = useState(false);
   const [controlsVisible, setControlsVisible] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [isSeeking, setIsSeeking] = useState(false);
   const [bufferedTime, setBufferedTime] = useState(0);
+  
+  // ✅ UI STATES:
+  const [showTranscript, setShowTranscript] = useState(false);
+  const [showCC, setShowCC] = useState(false);
+  const [showChapters, setShowChapters] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [infoOpen, setInfoOpen] = useState(false);
+  const [audioDescActive, setAudioDescActive] = useState(false);
   
   // ✅ PARSED CONTENT MIT TRANSCRIPT:
   const [parsedContent, setParsedContent] = useState<ParsedContent>({
@@ -182,34 +209,88 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
   const extensionsActions = usePlayerExtensions(playerMode, videoRef);
   const accessibilityActions = useAccessibility({ playerMode, enabled: true });
 
-  // ✅ MEDIA PLAYER - NUR GLOBALE STATES + SEEK:
-  const mediaPlayer = {
-    currentTime, setCurrentTime,
-    isPlaying, setIsPlaying,
-    hasStartedOnce, setHasStartedOnce,
-    controlsVisible, setControlsVisible,
-    isLoading, setIsLoading,
-    isSeeking, setIsSeeking,
-    bufferedTime, setBufferedTime,
-    seekTo,
-  };
+  // ✅ LOADING FUNCTIONS:
+  const loadChaptersCallback = useCallback(async (url: string): Promise<Chapter[]> => {
+    try {
+      const chapters = await loadChapters(url, parsedContent, setParsedContent);
+      return chapters;
+    } catch (error) {
+      console.error('Error loading chapters:', error);
+      throw error;
+    }
+  }, [parsedContent]);
+
+  const loadCaptionsCallback = useCallback(async (url: string): Promise<TranscriptCue[]> => {
+    try {
+      const captions = await loadCaptions(url, parsedContent, setParsedContent);
+      return captions;
+    } catch (error) {
+      console.error('Error loading captions:', error);
+      throw error;
+    }
+  }, [parsedContent]);
+
+  const loadDescriptionsCallback = useCallback(async (url: string): Promise<TranscriptCue[]> => {
+    try {
+      const descriptions = await loadDescriptions(url, parsedContent, setParsedContent);
+      return descriptions;
+    } catch (error) {
+      console.error('Error loading descriptions:', error);
+      throw error;
+    }
+  }, [parsedContent]);
+
+  const loadTranscriptCallback = useCallback(async (captionsUrl?: string, descriptionsUrl?: string): Promise<TranscriptCue[]> => {
+    try {
+      const transcript = await loadTranscript(captionsUrl, descriptionsUrl, parsedContent, setParsedContent);
+      return transcript;
+    } catch (error) {
+      console.error('Error loading transcript:', error);
+      throw error;
+    }
+  }, [parsedContent]);
 
   const contextValue: PlayerContextType = {
-    mediaPlayer,                // ✅ NUR GLOBAL STATES
+    mediaPlayer: {
+      currentTime, setCurrentTime,
+      duration, setDuration,
+      isPlaying, setIsPlaying,
+      hasStartedOnce, setHasStartedOnce,
+      controlsVisible, setControlsVisible,
+      isLoading, setIsLoading,
+      isSeeking, setIsSeeking,
+      bufferedTime, setBufferedTime,
+      seekTo,
+    },
+    
     videoSources,
     parsedContent,
     setParsedContent,
     
-    // ✅ SEPARATE HOOK ACTIONS:
-    playerBasicsActions,        // ✅ ALLE PLAYER BASICS
+    ui: {
+      showTranscript, setShowTranscript,
+      showCC, setShowCC,
+      showChapters, setShowChapters,
+      settingsOpen, setSettingsOpen,
+      infoOpen, setInfoOpen,
+      audioDescActive, setAudioDescActive,
+    },
+    
+    playerBasicsActions,
     captionsActions,
     descriptionsActions,
     chaptersActions,
     extensionsActions,
     accessibilityActions,
     
-    loadChapters, loadCaptions, loadDescriptions, loadTranscript,
-    setVideoRef, setPlayerType, setYoutubePlayer, setVimeoPlayer,
+    loadChapters: loadChaptersCallback,
+    loadCaptions: loadCaptionsCallback,
+    loadDescriptions: loadDescriptionsCallback,
+    loadTranscript: loadTranscriptCallback,
+    setVideoRef,
+    setPlayerType,
+    setYoutubePlayer,
+    setVimeoPlayer,
   };
 
   return (

@@ -31,7 +31,7 @@ export const useDescriptions = (
   
   const { parsedContent, loadDescriptions, mediaPlayer, ui } = usePlayer();
   
-  // ✅ NUTZE CONFIG:
+  // ✅ CONFIG CHECKS:
   const transcriptConfig = CONFIG.features.transcript[playerMode];
   const audioDescConfig = CONFIG.features.audioDescription[playerMode];
   
@@ -43,11 +43,7 @@ export const useDescriptions = (
     return {};
   }
 
-  // ✅ UI STATE AUS ui CONTEXT:
-  const showTranscript = ui.showTranscript;
-  const audioDescActive = ui.audioDescActive;
-  
-  // ✅ TTS STATE DIREKT HIER:
+  // ✅ TTS STATE:
   const [isSupported, setIsSupported] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -56,106 +52,44 @@ export const useDescriptions = (
   const synthRef = useRef<SpeechSynthesis | null>(null);
   const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
 
-  // ✅ LOAD DESCRIPTIONS VIA PlayerProvider:
+  // ✅ LOAD DESCRIPTIONS:
   useEffect(() => {
-    if ((!isTranscriptEnabled && !isAudioDescEnabled) || !descriptionsUrl) return;
+    if (!descriptionsUrl) return;
     
     async function preloadDescriptions() {
-      if (!descriptionsUrl) return; // Additional type guard
-      
       try {
-        console.log('🔄 PRE-LOADING DESCRIPTIONS VIA PROVIDER:', descriptionsUrl);
         setIsLoading(true);
-        await loadDescriptions(descriptionsUrl);
-        console.log('✅ DESCRIPTIONS PRE-LOADED VIA PROVIDER');
+        await loadDescriptions(descriptionsUrl!);
         setIsLoading(false);
       } catch (error) {
-        console.error('❌ DESCRIPTIONS PRE-LOADING FAILED:', error);
         setError('Fehler beim Laden der Audiodeskription');
         setIsLoading(false);
       }
     }
     
     preloadDescriptions();
-  }, [descriptionsUrl, isTranscriptEnabled, isAudioDescEnabled, loadDescriptions]);
+  }, [descriptionsUrl, loadDescriptions]);
 
-  // ✅ CHECK TTS SUPPORT:
+  // ✅ TTS SETUP:
   useEffect(() => {
     if (!isAudioDescEnabled) return;
     
-    const checkSupport = () => {
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        synthRef.current = window.speechSynthesis;
-        setIsSupported(true);
-        console.log('✅ TTS supported');
-      } else {
-        console.log('❌ TTS not supported');
-        setIsSupported(false);
-      }
-    };
-    
-    checkSupport();
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      synthRef.current = window.speechSynthesis;
+      setIsSupported(true);
+    }
   }, [isAudioDescEnabled]);
 
-  // ✅ FIND CURRENT DESCRIPTION:
-  useEffect(() => {
-    if (!parsedContent.descriptions || !audioDescActive) return;
-    
-    const description = parsedContent.descriptions.find((desc, idx) => {
-      const nextDesc = parsedContent.descriptions![idx + 1];
-      return mediaPlayer.currentTime >= desc.startTime && 
-             (!nextDesc || mediaPlayer.currentTime < nextDesc.startTime);
-    });
-    
-    if (description && description !== currentDescription) {
-      setCurrentDescription(description);
-      
-      // ✅ AUTO-SPEAK WHEN PLAYING:
-      if (mediaPlayer.isPlaying && isSupported) {
-        speak(description.text);
-      }
-    }
-  }, [mediaPlayer.currentTime, parsedContent.descriptions, audioDescActive, mediaPlayer.isPlaying]);
-
-  // ✅ PAUSE/RESUME BASED ON VIDEO STATE:
-  useEffect(() => {
-    if (!isSupported || !synthRef.current) return;
-    
-    if (mediaPlayer.isPlaying && audioDescActive) {
-      if (synthRef.current.paused) {
-        resume();
-      }
-    } else {
-      if (synthRef.current.speaking && !synthRef.current.paused) {
-        pause();
-      }
-    }
-  }, [mediaPlayer.isPlaying, audioDescActive, isSupported]);
-
-  // ✅ TTS FUNCTIONS DIREKT HIER:
+  // ✅ TTS FUNCTIONS:
   const speak = useCallback((text: string) => {
     if (!isSupported || !synthRef.current) return;
     
-    stop();
+    synthRef.current.cancel();
     
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.rate = 1;
     utterance.pitch = 1;
     utterance.volume = 1;
-    
-    utterance.onstart = () => {
-      console.log('🔊 TTS started:', text.substring(0, 50) + '...');
-    };
-    
-    utterance.onend = () => {
-      console.log('🔇 TTS ended');
-      utteranceRef.current = null;
-    };
-    
-    utterance.onerror = (event) => {
-      console.error('❌ TTS error:', event);
-      setError('TTS Fehler: ' + event.error);
-    };
     
     utteranceRef.current = utterance;
     synthRef.current.speak(utterance);
@@ -163,58 +97,36 @@ export const useDescriptions = (
 
   const stop = useCallback(() => {
     if (!isSupported || !synthRef.current) return;
-    
     synthRef.current.cancel();
     utteranceRef.current = null;
-    console.log('🛑 TTS stopped');
   }, [isSupported]);
 
   const pause = useCallback(() => {
     if (!isSupported || !synthRef.current) return;
-    
     synthRef.current.pause();
-    console.log('⏸️ TTS paused');
   }, [isSupported]);
 
   const resume = useCallback(() => {
     if (!isSupported || !synthRef.current) return;
-    
     synthRef.current.resume();
-    console.log('▶️ TTS resumed');
   }, [isSupported]);
 
-  // ✅ UI HANDLERS NUTZEN ui CONTEXT:
+  // ✅ HANDLERS:
   const handleToggleTranscript = useCallback(() => {
     if (!isTranscriptEnabled) return;
-    
-    console.log('Toggle Transcript - Before:', showTranscript);
-    ui.setShowTranscript(!showTranscript);
-    console.log('Toggle Transcript - After:', !showTranscript);
-  }, [showTranscript, isTranscriptEnabled, ui]);
+    ui.setShowTranscript(!ui.showTranscript);
+  }, [ui, isTranscriptEnabled]);
 
   const handleToggleAudioDesc = useCallback(() => {
     if (!isAudioDescEnabled) return;
     
-    console.log('Toggle AudioDesc - Before:', audioDescActive);
-    
-    if (!audioDescActive) {
-      console.log('🔊 Enabling Audio Description');
+    if (!ui.audioDescActive) {
       ui.setAudioDescActive(true);
     } else {
-      console.log('🔇 Disabling Audio Description');
       stop();
       ui.setAudioDescActive(false);
     }
-    
-    console.log('Toggle AudioDesc - After:', !audioDescActive);
-  }, [audioDescActive, isAudioDescEnabled, ui, stop]);
-
-  // ✅ CLEANUP:
-  useEffect(() => {
-    return () => {
-      stop();
-    };
-  }, [stop]);
+  }, [ui, isAudioDescEnabled, stop]);
 
   // ✅ CONDITIONAL RETURN:
   const result: DescriptionsActions = {};

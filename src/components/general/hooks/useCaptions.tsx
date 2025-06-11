@@ -9,7 +9,6 @@ export interface CaptionsActions {
   hasCC?: boolean;
   currentCue?: TranscriptCue | null;
   currentCueIndex?: number;
-  // ✅ ADD MISSING:
   currentCueIdx?: number;
   setCurrentCueIdx?: (idx: number) => void;
 }
@@ -19,19 +18,32 @@ export const useCaptions = (
   playerMode: 'base' | 'extended' = 'base'
 ): CaptionsActions => {
   
-  const { parsedContent, loadCaptions, mediaPlayer } = usePlayer();
+  const { parsedContent, loadCaptions, mediaPlayer, ui } = usePlayer();
   
   // ✅ CONFIG CHECK:
   const captionsConfig = CONFIG.features.captions[playerMode];
   const isEnabled = captionsConfig.enabled && !!captionsUrl;
 
-  // ✅ LOCAL STATE:
-  const [showCC, setShowCC] = useState(false);
   const [currentCueIdx, setCurrentCueIdx] = useState(-1);
 
   if (!isEnabled) {
     return {};
   }
+
+  // ✅ LOAD CAPTIONS:
+  useEffect(() => {
+    if (!captionsUrl) return;
+    
+    async function preloadCaptions() {
+      try {
+        await loadCaptions(captionsUrl!);
+      } catch (error) {
+        console.error('Error loading captions:', error);
+      }
+    }
+    
+    preloadCaptions();
+  }, [captionsUrl, loadCaptions]);
 
   // ✅ FIND CURRENT CUE:
   const currentCueIndex = parsedContent.captions?.findIndex((cue, idx) => {
@@ -50,8 +62,8 @@ export const useCaptions = (
   }, [currentCueIndex, currentCueIdx]);
 
   const handleToggleCC = useCallback(() => {
-    setShowCC(!showCC);
-  }, [showCC]);
+    ui.setShowCC(!ui.showCC);
+  }, [ui]);
 
   // ✅ CONDITIONAL RETURN:
   const result: CaptionsActions = {};
@@ -59,7 +71,7 @@ export const useCaptions = (
 
   if (components.CaptionsButton) {
     result.handleToggleCC = handleToggleCC;
-    result.showCC = showCC;
+    result.showCC = ui.showCC;
   }
 
   if (components.CaptionsOverlay) {
