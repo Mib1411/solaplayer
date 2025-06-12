@@ -1,4 +1,4 @@
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { usePlayer } from '../../PlayerProvider';
 import { CONFIG } from '../config/playerConfig';
 
@@ -22,8 +22,10 @@ export const usePlayerExtensions = (
   
   const { ui } = usePlayer();
   
-  // ✅ LOKALE STATES:
-  const [isFullscreen, setIsFullscreen] = useState(false);
+  // ✅ KEIN LOKALER FULLSCREEN STATE MEHR - NUTZE UI.ISFULLSCREEN
+  // const [isFullscreen, setIsFullscreen] = useState(false); ← ENTFERNT
+  
+  // ✅ NUR LOKALER PiP STATE (nicht global relevant):
   const [isPiPActive, setIsPiPActive] = useState(false);
 
   // ✅ CONFIG CHECKS:
@@ -32,6 +34,7 @@ export const usePlayerExtensions = (
   const infoConfig = CONFIG.features.info?.[playerMode] || { enabled: false };
   const settingsConfig = CONFIG.features.settings?.[playerMode] || { enabled: false };
 
+  // ✅ FULLSCREEN HANDLER - NUTZT GLOBALEN STATE:
   const handleToggleFullscreen = useCallback(() => {
     if (!fullscreenConfig.enabled) return;
     
@@ -43,6 +46,7 @@ export const usePlayerExtensions = (
     }
   }, [videoRef, fullscreenConfig.enabled]);
 
+  // ✅ PiP SUPPORT CHECK:
   const isPiPSupported = pipConfig.enabled && 
                         typeof window !== 'undefined' && 
                         'pictureInPictureEnabled' in document &&
@@ -79,17 +83,17 @@ export const usePlayerExtensions = (
     ui.setSettingsOpen(false);
   }, [ui]);
 
-  // Listen for fullscreen changes
+  // ✅ FULLSCREEN EVENT LISTENER - UPDATED GLOBALEN STATE:
   useEffect(() => {
     const handleFullscreenChange = () => {
-      setIsFullscreen(!!document.fullscreenElement);
+      ui.setIsFullscreen(!!document.fullscreenElement); // ✅ GLOBALEN STATE UPDATEN
     };
 
     document.addEventListener('fullscreenchange', handleFullscreenChange);
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
-  }, []);
+  }, [ui]);
 
-  // Listen for PiP changes
+  // ✅ PiP EVENT LISTENER - BLEIBT LOKAL:
   useEffect(() => {
     const handlePiPChange = () => {
       setIsPiPActive(!!document.pictureInPictureElement);
@@ -104,12 +108,12 @@ export const usePlayerExtensions = (
     };
   }, []);
 
-  // ✅ CONDITIONAL RETURN:
+  // ✅ CONDITIONAL RETURN - NUTZT GLOBALEN FULLSCREEN STATE:
   const result: PlayerExtensionsActions = {};
 
   if (fullscreenConfig.enabled) {
     result.handleToggleFullscreen = handleToggleFullscreen;
-    result.isFullscreen = isFullscreen;
+    result.isFullscreen = ui.isFullscreen; // ✅ GLOBALER STATE AUS CONTEXT
   }
 
   if (pipConfig.enabled) {

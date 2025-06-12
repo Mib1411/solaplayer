@@ -2,6 +2,8 @@
 
 import React, { lazy, Suspense } from 'react';
 import { usePlayer } from '../PlayerProvider';
+import { isFeatureEnabled } from '../../utils/player-utils';
+
 
 // DYNAMISCHE IMPORTS für alle Components
 const PlayPauseButton = lazy(() => import('../controls/PlayPauseButton').then(m => ({ default: m.PlayPauseButton })));
@@ -47,21 +49,18 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
   componentName,
   playerState,
   playerControls,
-  hasCC,
-  hasTranscript,
-  hasChapters,
-  hasAudioDesc,
-  availableQualities,
-  onFullPlayerClick,
+  playerMode = 'base',
   size = 18,
+  onFullPlayerClick,
   ...otherProps
 }) => {
   // ✅ NUTZE PLAYER CONTEXT:
-  const { ui, availableContent } = usePlayer();
+  const { ui, availableContent, playerType } = usePlayer();
 
   const renderComponent = () => {
     switch (componentName) {
       case 'PlayPauseButton':
+        if (!isFeatureEnabled('playPause', playerMode)) return null;
         return <PlayPauseButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -69,6 +68,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'VolumeButton':
+        if (!isFeatureEnabled('volume', playerMode)) return null;
         return <VolumeButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -76,6 +76,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'MuteButton':
+        if (!isFeatureEnabled('mute', playerMode)) return null;
         return <MuteButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -83,6 +84,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'CaptionsButton':
+        if (!isFeatureEnabled('captions', playerMode)) return null;
         // ✅ NUTZE availableContent.hasCaptions:
         if (!availableContent.hasCaptions) return null;
         return <CaptionsButton 
@@ -93,6 +95,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'CaptionsOverlay':
+        if (!isFeatureEnabled('captions', playerMode)) return null;
         // ✅ CONDITIONAL RENDERING MIT UI STATE:
         if (!ui.showCC || !availableContent.hasCaptions) return null;
         return <CaptionsOverlay
@@ -102,12 +105,14 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'ProgressBar':
+        if (!isFeatureEnabled('progressBar', playerMode)) return null;
         return <ProgressBar 
           playerControls={playerControls} 
           playerState={playerState} 
         />;
 
       case 'TranscriptButton':
+        if (!isFeatureEnabled('transcript', playerMode)) return null;
         // ✅ NUTZE availableContent.hasDescriptions:
         if (!availableContent.hasDescriptions) return null;
         return <TranscriptButton 
@@ -118,6 +123,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'TranscriptSidebar':
+        if (!isFeatureEnabled('transcript', playerMode)) return null;
         // ✅ CONDITIONAL RENDERING MIT UI STATE:
         if (!ui.showTranscript || !availableContent.hasDescriptions) return null;
         return <TranscriptSidebar
@@ -128,6 +134,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'ChaptersButton':
+        if (!isFeatureEnabled('chapters', playerMode)) return null;
         // ✅ NUTZE availableContent.hasChapters:
         if (!availableContent.hasChapters) return null;      
         return <ChaptersButton 
@@ -138,6 +145,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'PreviousChapterButton':
+        if (!isFeatureEnabled('chapterSkipping', playerMode)) return null;
         // ✅ RENDER IMMER - DISABLED STATE WIRD IN COMPONENT GEHANDELT:
         return <PreviousChapterButton 
           playerState={playerState} 
@@ -146,6 +154,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'NextChapterButton':
+        if (!isFeatureEnabled('chapterSkipping', playerMode)) return null;
         // ✅ RENDER IMMER - DISABLED STATE WIRD IN COMPONENT GEHANDELT:
         return <NextChapterButton 
           playerState={playerState} 
@@ -154,6 +163,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'ChaptersSidebar':
+        if (!isFeatureEnabled('chapters', playerMode)) return null;
         // ✅ CONDITIONAL RENDERING MIT UI STATE:
         if (!ui.showChapters || !availableContent.hasChapters) return null;
         return <ChaptersSidebar
@@ -163,6 +173,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'SettingsButton':
+        if (!isFeatureEnabled('settings', playerMode)) return null;
         return <SettingsButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -170,6 +181,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'SettingsModal':
+        if (!isFeatureEnabled('settings', playerMode)) return null;
         // ✅ NUTZE UI STATE AUS CONTEXT:
         return <SettingsModal
           open={ui.settingsOpen}
@@ -178,6 +190,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'InfoButton':
+        if (!isFeatureEnabled('info', playerMode)) return null;
         return <InfoButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -185,6 +198,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'InfoModal':
+        if (!isFeatureEnabled('info', playerMode)) return null;
         // ✅ NUTZE UI STATE AUS CONTEXT:
         return <InfoModal
           open={ui.infoOpen}
@@ -192,13 +206,16 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'FullscreenButton':
+        if (!isFeatureEnabled('fullscreen', playerMode)) return null;
         return <FullscreenButton 
-          playerState={playerState} 
-          playerControls={playerControls} 
-          size={size} 
+          onToggle={playerControls?.handleToggleFullscreen || (() => {})}
+          isActive={ui.isFullscreen}
+          size={size}
         />;
 
       case 'PiPButton':
+        if (!isFeatureEnabled('pip', playerMode)) return null;
+        if (playerType !== 'html5') return null;
         return <PiPButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -206,6 +223,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'SkipBackButton':
+        if (!isFeatureEnabled('skip', playerMode)) return null;
         return <SkipButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -214,6 +232,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'SkipForwardButton':
+        if (!isFeatureEnabled('skip', playerMode)) return null;
         return <SkipButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -222,6 +241,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'ReturnButton':
+        if (!isFeatureEnabled('skip', playerMode)) return null;
         return <SkipButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -230,6 +250,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'SpeedButton':
+        if (!isFeatureEnabled('speed', playerMode)) return null;
         return <SpeedButton 
           playerState={playerState} 
           playerControls={playerControls} 
@@ -237,6 +258,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'QualityButton':
+        if (!isFeatureEnabled('qualitySelector', playerMode)) return null;
         // ✅ NUTZE availableContent.hasQualities:
         if (!availableContent.hasQualities) return null;
         return <QualityButton 
@@ -247,6 +269,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'AudioDescButton':
+        if (!isFeatureEnabled('audioDescription', playerMode)) return null;
         // ✅ NUTZE availableContent.hasDescriptions:
         if (!availableContent.hasDescriptions) return null;
         return <AudioDescButton 
@@ -258,6 +281,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
         />;
 
       case 'ExpandButton':
+        // ✅ EXPAND HAT KEINE CONFIG - IST IMMER VERFÜGBAR
         return <ExpandButton 
           onFullPlayerClick={onFullPlayerClick || (() => {})} 
           size={size} 

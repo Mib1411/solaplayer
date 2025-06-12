@@ -1,4 +1,5 @@
-/**
+import { CONFIG } from '../components/general/config/playerConfig'
+/*
  * Player Utility Functions
  * Reine Funktionen ohne Seiteneffekte für Player-Logic
  */
@@ -103,4 +104,12 @@ export const parseVimeoUrl = (url: string): string | null => {
   }
   
   return null;
+};
+
+/**
+ * Prüft ob Feature für playerMode enabled ist
+ */
+export const isFeatureEnabled = (featureName: string, playerMode: 'base' | 'extended'): boolean => {
+  const feature = CONFIG.features[featureName as keyof typeof CONFIG.features];
+  return feature?.[playerMode]?.enabled || false;
 };

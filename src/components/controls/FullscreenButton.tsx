@@ -6,23 +6,25 @@ import { FullscreenIcon, ExitFullscreenIcon } from '../../utils/icons';
 import { PLAYER_LABELS } from '../../utils/constants';
 
 interface FullscreenButtonProps {
-  playerState: any;
-  playerControls: any;
+  onToggle: () => void;
+  isActive: boolean; // ✅ AUS UI CONTEXT
   size?: number;
 }
 
 export const FullscreenButton: React.FC<FullscreenButtonProps> = ({
-  playerState,
-  playerControls
+  onToggle,
+  isActive,
+  size = 18
 }) => {
   return (
     <Button
-      onClick={() => playerControls.handleToggleFullscreen()}
-      ariaLabel={playerState.isFullscreen ? PLAYER_LABELS.EXIT_FULLSCREEN : PLAYER_LABELS.FULLSCREEN}
+      onClick={onToggle}
+      ariaLabel={isActive ? PLAYER_LABELS.EXIT_FULLSCREEN : PLAYER_LABELS.FULLSCREEN}
       variant="toggle"
-      isActive={playerState.isFullscreen}
-      icon={<FullscreenIcon />}
-      iconActive={<ExitFullscreenIcon />}
-    />
+      isActive={isActive}
+      size={size}
+    >
+      {isActive ? <ExitFullscreenIcon size={size} /> : <FullscreenIcon size={size} />}
+    </Button>
   );
 };

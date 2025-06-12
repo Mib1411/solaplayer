@@ -60,6 +60,7 @@ export interface PlayerContextType {
     audioDescActive: boolean;
     hasStartedOnce: boolean;
     controlsVisible: boolean;
+    isFullscreen: boolean; // ✅ GLOBALER FULLSCREEN STATE HINZUFÜGEN
     setHasStartedOnce: (value: boolean) => void;
     setControlsVisible: (value: boolean) => void;
     setShowTranscript: (value: boolean) => void;
@@ -68,6 +69,7 @@ export interface PlayerContextType {
     setSettingsOpen: (value: boolean) => void;
     setInfoOpen: (value: boolean) => void;
     setAudioDescActive: (value: boolean) => void;
+    setIsFullscreen: (value: boolean) => void; // ✅ SETTER HINZUFÜGEN
   };
   
   // ✅ PLAYER REFS - KORRIGIERTE TYPES:
@@ -126,7 +128,8 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [audioDescActive, setAudioDescActive] = useState(false);
-  
+  const [isFullscreen, setIsFullscreen] = useState(false); // ✅ FULLSCREEN STATE HINZUFÜGEN
+
   // ✅ ZENTRALE PARSED CONTENT:
   const [parsedContent, setParsedContent] = useState<ParsedContent>({
     chapters: [],
@@ -284,6 +287,7 @@ export const PlayerProvider: React.FC<PlayerProviderProps> = ({
       setHasStartedOnce: setHasStartedOnce,
       controlsVisible: controlsVisible,
       setControlsVisible: setControlsVisible,
+      isFullscreen, setIsFullscreen, // ✅ FULLSCREEN HINZUFÜGEN
     },
     
     videoRef,
