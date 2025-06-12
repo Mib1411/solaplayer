@@ -1,7 +1,7 @@
 'use client';
 
 import React, { lazy, Suspense } from 'react';
-import { usePlayer } from '../PlayerProvider'; // ✅ HINZUFÜGEN!
+import { usePlayer } from '../PlayerProvider';
 
 // DYNAMISCHE IMPORTS für alle Components
 const PlayPauseButton = lazy(() => import('../controls/PlayPauseButton').then(m => ({ default: m.PlayPauseButton })));
@@ -28,8 +28,6 @@ const ExpandButton = lazy(() => import('../controls/ExpandButton').then(m => ({ 
 const PreviousChapterButton = lazy(() => import('../controls/ChaptersSkipButtons').then(m => ({ default: m.PreviousChapterButton })));
 const NextChapterButton = lazy(() => import('../controls/ChaptersSkipButtons').then(m => ({ default: m.NextChapterButton })));
 
-const size: number = 18; // Default size for icons
-
 interface ComponentLoaderProps {
   componentName: string;
   playerState?: any;
@@ -43,14 +41,12 @@ interface ComponentLoaderProps {
   size?: number;
   type?: string;
   [key: string]: any;
-  availableContent?: any;
 }
 
 export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
   componentName,
   playerState,
   playerControls,
-  chapterState,
   hasCC,
   hasTranscript,
   hasChapters,
@@ -58,117 +54,215 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
   availableQualities,
   onFullPlayerClick,
   size = 18,
-  availableContent,
   ...otherProps
 }) => {
-  const { ui } = usePlayer(); // ✅ UI State direkt holen!
+  // ✅ NUTZE PLAYER CONTEXT:
+  const { ui, availableContent } = usePlayer();
 
-  
   const renderComponent = () => {
     switch (componentName) {
       case 'PlayPauseButton':
-        return <PlayPauseButton playerState={playerState} playerControls={playerControls} size={size} />;
+        return <PlayPauseButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          size={size} 
+        />;
+
       case 'VolumeButton':
-        return <VolumeButton playerState={playerState} playerControls={playerControls} />;
-      case 'MuteButton':
-        return <MuteButton playerState={playerState} playerControls={playerControls} size={size} />;
-      case 'CaptionsButton':
-        console.log('CaptionsButton Props:', { hasCC, availableContent });
-        return <CaptionsButton playerState={playerState} playerControls={playerControls} hasCC={hasCC || false} size={size} />;
-      case 'CaptionsOverlay':
-        // ✅ CONDITIONAL RENDERING HINZUFÜGEN!
-        if (!playerState?.ui?.showCC) return null;
-        return <CaptionsOverlay
-          playerState={playerState}
-          captionsUrl={availableContent?.captionsUrl || ''}
+        return <VolumeButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
           size={size}
         />;
+
+      case 'MuteButton':
+        return <MuteButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          size={size} 
+        />;
+
+      case 'CaptionsButton':
+        // ✅ NUTZE availableContent.hasCaptions:
+        if (!availableContent.hasCaptions) return null;
+        return <CaptionsButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          hasCC={availableContent.hasCaptions}
+          size={size} 
+        />;
+
+      case 'CaptionsOverlay':
+        // ✅ CONDITIONAL RENDERING MIT UI STATE:
+        if (!ui.showCC || !availableContent.hasCaptions) return null;
+        return <CaptionsOverlay
+          playerState={playerState}
+          captionsUrl={availableContent.captionsUrl || ''}
+          size={size}
+        />;
+
       case 'ProgressBar':
-        return <ProgressBar playerControls={playerControls} playerState={playerState} />;
+        return <ProgressBar 
+          playerControls={playerControls} 
+          playerState={playerState} 
+        />;
+
       case 'TranscriptButton':
-        if (!hasTranscript ) return null;
-        return <TranscriptButton playerState={playerState}  playerControls={playerControls} />;
+        // ✅ NUTZE availableContent.hasDescriptions:
+        if (!availableContent.hasDescriptions) return null;
+        return <TranscriptButton 
+          playerState={playerState}  
+          playerControls={playerControls}
+          hasTranscript={availableContent.hasDescriptions}
+          size={size}
+        />;
+
       case 'TranscriptSidebar':
+        // ✅ CONDITIONAL RENDERING MIT UI STATE:
+        if (!ui.showTranscript || !availableContent.hasDescriptions) return null;
         return <TranscriptSidebar
           playerState={playerState}
           playerControls={playerControls}
-          captionsUrl={availableContent?.captionsUrl || ''} 
-          descriptionsUrl={availableContent?.descriptionsUrl || ''}
+          captionsUrl={availableContent.captionsUrl || ''} 
+          descriptionsUrl={availableContent.descriptionsUrl || ''}
         />;
+
       case 'ChaptersButton':
-        if (!hasChapters ) return null;      
-       return <ChaptersButton playerState={playerState} playerControls={playerControls}   />;
+        // ✅ NUTZE availableContent.hasChapters:
+        if (!availableContent.hasChapters) return null;      
+        return <ChaptersButton 
+          playerState={playerState} 
+          playerControls={playerControls}
+          hasChapters={availableContent.hasChapters}
+          size={size}
+        />;
 
       case 'PreviousChapterButton':
-          // ✅ RENDER IMMER - DISABLED STATE WIRD IN COMPONENT GEHANDELT:
-          return <PreviousChapterButton 
-            playerState={playerState} 
-            playerControls={playerControls} 
-          />;
+        // ✅ RENDER IMMER - DISABLED STATE WIRD IN COMPONENT GEHANDELT:
+        return <PreviousChapterButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          size={size}
+        />;
 
       case 'NextChapterButton':
         // ✅ RENDER IMMER - DISABLED STATE WIRD IN COMPONENT GEHANDELT:
         return <NextChapterButton 
           playerState={playerState} 
           playerControls={playerControls} 
+          size={size}
         />;
 
       case 'ChaptersSidebar':
-        if (!playerState?.ui?.showChapters) return null;
+        // ✅ CONDITIONAL RENDERING MIT UI STATE:
+        if (!ui.showChapters || !availableContent.hasChapters) return null;
         return <ChaptersSidebar
           playerState={playerState}
           playerControls={playerControls}
-          chaptersUrl={availableContent?.chaptersUrl || ''}
+          chaptersUrl={availableContent.chaptersUrl || ''}
         />;
+
       case 'SettingsButton':
-        return <SettingsButton playerState={playerState} playerControls={playerControls} size={size} />;
+        return <SettingsButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          size={size} 
+        />;
+
       case 'SettingsModal':
-        console.log('SettingsModal render:', {
-          open: ui?.settingsOpen,
-          playerState: playerState,
-          playerControls: playerControls
-        });
+        // ✅ NUTZE UI STATE AUS CONTEXT:
         return <SettingsModal
-          open={ui?.settingsOpen || false}
-          onClose={playerControls?.handleToggleSettings || (() => { })}
+          open={ui.settingsOpen}
+          onClose={playerControls?.handleToggleSettings || (() => {})}
           playerState={playerState}
         />;
+
       case 'InfoButton':
-        return <InfoButton playerState={playerState} playerControls={playerControls} />;
-      case 'InfoModal':
-        console.log('InfoModal render:', {
-          open: ui?.infoOpen,
-          playerState: playerState,
-          playerControls: playerControls
-        });
-        return <InfoModal
-          open={ui?.infoOpen || false}
-          onClose={playerControls?.handleToggleInfo || (() => { })}
+        return <InfoButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          size={size}
         />;
+
+      case 'InfoModal':
+        // ✅ NUTZE UI STATE AUS CONTEXT:
+        return <InfoModal
+          open={ui.infoOpen}
+          onClose={playerControls?.handleToggleInfo || (() => {})}
+        />;
+
       case 'FullscreenButton':
-        return <FullscreenButton playerState={playerState} playerControls={playerControls} size={size} />;
+        return <FullscreenButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          size={size} 
+        />;
+
       case 'PiPButton':
-        return <PiPButton playerState={playerState} playerControls={playerControls} size={size} />;
+        return <PiPButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          size={size} 
+        />;
+
       case 'SkipBackButton':
-        return <SkipButton playerState={playerState} playerControls={playerControls} type="back" size={size} />;
+        return <SkipButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          type="back" 
+          size={size} 
+        />;
+
       case 'SkipForwardButton':
-        return <SkipButton playerState={playerState} playerControls={playerControls} type="forward" size={size} />;
+        return <SkipButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          type="forward" 
+          size={size} 
+        />;
+
       case 'ReturnButton':
-        return <SkipButton playerState={playerState} playerControls={playerControls} type="return" size={size} />;
+        return <SkipButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          type="return" 
+          size={size} 
+        />;
+
       case 'SpeedButton':
-        return <SpeedButton playerState={playerState} playerControls={playerControls} size={size} />;
+        return <SpeedButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          size={size} 
+        />;
+
       case 'QualityButton':
-        return <QualityButton playerState={playerState} playerControls={playerControls} availableQualities={availableQualities || []} size={size} />;
+        // ✅ NUTZE availableContent.hasQualities:
+        if (!availableContent.hasQualities) return null;
+        return <QualityButton 
+          playerState={playerState} 
+          playerControls={playerControls} 
+          availableQualities={availableContent.sources || []} 
+          size={size} 
+        />;
+
       case 'AudioDescButton':
+        // ✅ NUTZE availableContent.hasDescriptions:
+        if (!availableContent.hasDescriptions) return null;
         return <AudioDescButton 
           playerState={playerState} 
           playerControls={playerControls} 
-          hasAudioDesc={hasAudioDesc || false}
-          descriptionsUrl={availableContent?.descriptionsUrl || ''}
+          hasAudioDesc={availableContent.hasDescriptions}
+          descriptionsUrl={availableContent.descriptionsUrl || ''}
           size={size}
         />;
+
       case 'ExpandButton':
-        return <ExpandButton onFullPlayerClick={onFullPlayerClick || (() => { })} size={size} />;
+        return <ExpandButton 
+          onFullPlayerClick={onFullPlayerClick || (() => {})} 
+          size={size} 
+        />;
+
       default:
         console.warn(`Unknown component: ${componentName}`);
         return null;
@@ -176,7 +270,7 @@ export const ComponentLoader: React.FC<ComponentLoaderProps> = ({
   };
 
   return (
-    <Suspense fallback={<div className="component-loading">..</div>}>
+    <Suspense fallback={<div className="component-loading">...</div>}>
       {renderComponent()}
     </Suspense>
   );

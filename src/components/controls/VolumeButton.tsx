@@ -8,11 +8,13 @@ import { PLAYER_LABELS, ARIA_LABELS } from '../../utils/constants';
 interface VolumeButtonProps {
   playerState: any;
   playerControls: any;
+  size?: number;
 }
 
 export const VolumeButton: React.FC<VolumeButtonProps> = ({
   playerState,
-  playerControls
+  playerControls,
+  size
 }) => {
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
   const [isDragging, setIsDragging] = useState(false);

@@ -17,7 +17,7 @@ export const MuteButton: React.FC<MuteButtonProps> = ({
 }) => {
   return (
     <Button
-      onClick={() => playerControls.handleToggleMute()}
+      onClick={() => playerControls.handleMute()}
       ariaLabel={playerState.isMuted ? PLAYER_LABELS.UNMUTE : PLAYER_LABELS.MUTE}
       variant="toggle"
       isActive={playerState.isMuted}

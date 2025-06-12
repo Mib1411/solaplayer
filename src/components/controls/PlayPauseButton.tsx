@@ -17,7 +17,7 @@ export const PlayPauseButton: React.FC<PlayPauseButtonProps> = ({
 }) => {
   return (
     <Button
-      onClick={() => playerControls.handleTogglePlay()}
+      onClick={() => playerControls.handlePlayPause()}
       ariaLabel={playerState.isPlaying ? PLAYER_LABELS.PAUSE : PLAYER_LABELS.PLAY}
       variant="toggle"
       isActive={playerState.isPlaying}

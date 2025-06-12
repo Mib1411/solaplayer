@@ -10,12 +10,15 @@ interface TranscriptButtonProps {
   playerState: any;
   playerControls: any;
   size?: number;
+  hasTranscript?: boolean;
 }
 
 // ❌ COMPONENT NUTZT size ABER KRIEGT ES NICHT:
 export const TranscriptButton: React.FC<TranscriptButtonProps> = ({
   playerState,
-  playerControls
+  playerControls,
+  size,
+  hasTranscript
 }) => {
 
   return (
